@@ -17,6 +17,19 @@
 \subsubsection{Kick-off}
 \label{sec:kick-off}
 \subsubsection{Ball in play}
+The ball is in play and kick-off ends once:
+\begin{itemize}
+  \item it is touched by the attacking team and moved clearly, or
+  \item \textit{KickOffBallFreeTime} \todo{Move/define time constants} seconds have elapsed in the \texttt{playing} state.
+\end{itemize}
+The GameController and head referee will indicate this by the call ``Ball Free''. The ball remains in play at all other times.
+
+\subsubsection{Ball out of play}
+The ball is out of play when:
+\begin{itemize}
+\item the ball has left the field of play, by wholly crossing the touchline or goal line (see Section~\ref{sec:inside_outside}), or
+\item play has been stopped by the referee, or game state
+\end{itemize}
 
 \subsection{Goals}
 \subsubsection{Goal Scored}
