@@ -36,20 +36,173 @@ The GameController signal (to the robots) of a goal being scored, will be delaye
 \subsubsection{Invalid Goal}
 \subsubsection{Competition Rules}
 
-\subsection{Kick-in / Throw-in}
+\subsection{Indirect Kick}
 
-\subsection{Goal-Kick}
+\subsubsection{Fallback mode}
 
-\subsection{Corner-Kick}
 
 \subsection{Free Kick}
-\subsubsection{Direct Free Kick}
-\subsubsection{Indirect Free Kick}
-\subsubsection{Visual gesture}
-\subsubsection{Execution}
+\label{sec:free_kick}
 
-\subsection{Indirect Kick}
-\subsubsection{Fallback mode}
+A free kick is a method of restarting play after various stoppages.
+Free kicks are classified as either \textbf{direct} or \textbf{indirect} (see~\cref{sec:direct_free_kick,sec:indirect_free_kick}).
+
+\unsure{Discuss: Maintain indirect + direct free kicks, AND indirect kick rule?}
+
+A free kick is initiated in the following situations:
+\begin{itemize}
+  \item When the ball goes over the touchlines, termed \emph{Kick-in} or \emph{Throw-in} (\cf~\cref{sec:kick_in}) --- indirect free kick.
+  \item When the ball goes over the goal line having last touched a player of the defending team, termed \emph{Corner Kick} (\cf~\cref{sec:corner_kick}) --- direct free kick.
+  \item When the ball goes over the goal line having last touched a player of the attacking team, termed \emph{Goal Kick} (\cf~\cref{sec:goal_kick}) --- direct free kick.
+  \item When a pushing foul or other infringement is awarded (\cf~\cref{sec:player_pushing}), termed a \emph{Pushing Free Kick} --- direct free kick.
+\end{itemize}
+
+The head referee will announce a free kick by calling one of:
+\begin{enumerate}
+  \item ``Kick-in \textless color\textgreater'' / ``Throw-in \textless color\textgreater'' for the team awarded the kick-in.
+  \item ``Corner Kick \textless color\textgreater'' for the team awarded the corner kick.
+  \item ``Goal Kick \textless color\textgreater'' for the team awarded the goal kick.
+  \item ``Foul \textless offending color\textgreater \textless offending number\textgreater'' for pushing free kicks.
+\end{enumerate}
+
+The GameController will then activate the sub-state for the respective free kick.
+The team awarded the free kick (termed the \emph{attacking team}) has \qty{\FreeKickTime}{\second} to complete the kick.
+
+\subsubsection{Direct Free Kick}
+\label{sec:direct_free_kick}
+
+A direct free kick allows the attacking team to score a goal directly from the kick:
+\begin{itemize}
+  \item If a direct free kick is kicked directly into the opponent's goal by the attacking team, a goal is awarded.
+  \item If a direct free kick is kicked directly into the team's own goal, a corner kick is awarded to the opposing team.
+\end{itemize}
+
+The following set plays are direct free kicks: \emph{Corner Kick}, \emph{Goal Kick}, and \emph{Pushing Free Kick}.
+
+Note: If the attacking team fails to execute the free kick within the time limit, the defending team may also score directly (see Failed Free Kick in~\cref{sec:free_kick_execution}).
+
+\subsubsection{Indirect Free Kick}
+\label{sec:indirect_free_kick}
+
+An indirect free kick requires the ball to be touched by another player before the attacking team can score a goal:
+\begin{itemize}
+  \item A goal can only be scored by the attacking team if the ball has been touched by another player (of either team) after the kick, before being kicked again into the goal.
+  \item If an indirect free kick is kicked directly into the opponent's goal by the attacking team without touching another player, a goal kick is awarded to the opposing team.
+  \item If an indirect free kick is kicked directly into the team's own goal, a corner kick is awarded to the opposing team.
+\end{itemize}
+
+The following set plays are indirect free kicks: \emph{Kick-in} / \emph{Throw-in}.
+
+Note: If the attacking team fails to execute the free kick within the time limit, the defending team may score directly without the indirect requirement (see Failed Free Kick in~\cref{sec:free_kick_execution}).
+
+\subsubsection{Visual Gesture}
+\label{sec:free_kick_gesture}
+
+\todo{Define visual gesture requirements for different divisions}
+
+The referee communicates which team is to take the free kick via a visual gesture.
+The gesture consists of raising one arm horizontally and sideways, parallel to the field line, while the other arm remains at rest.
+The raised arm points towards the defending team's goal (\ie the goal of the team that is \textit{not} taking the free kick).
+
+This gesture must be held for at least 5 seconds after the GameController signal is sent.
+The referee should stand as close as possible to the T-junction joining the halfway line to the touchline opposite to the technical area.
+
+\subsubsection{Execution}
+\label{sec:free_kick_execution}
+
+The referee places the ball according to the type of free kick (see~\cref{sec:kick_in,sec:goal_kick,sec:corner_kick} for specific ball placement rules).
+For a \emph{Pushing Free Kick}, the ball is left in place, repositioned only if required by the pushing rules (\cf~\cref{sec:player_pushing}).
+
+\paragraph{Avoidance Region}
+
+During a free kick, only the attacking team may approach within the avoidance region of the ball. For a goal kick, the avoidance region is the entire penalty area. For all other free kicks, the avoidance region is division dependent: \FreeKickRadius.
+\unsure{Confirm avoidance radius values for each field size or division}
+
+All robots of the defensive team must immediately move away from the ball to outside the avoidance region when the free kick is awarded.
+Defensive robots that violate these restrictions are penalized with ``Illegal Positioning'' (\cf~\cref{sec:illegal_positioning}), which results in a standard removal penalty (\cf~\cref{sec:removal_penalty}).
+Additional penalties against any further robots during the free kick, including pushing, do not result in an additional free kick but still incur the appropriate removal penalty.
+
+\paragraph{Completion}
+
+A free kick is deemed completed and play returns to normal when:
+\begin{itemize}
+  \item The attacking team moves the ball clearly (except for a robot getting up, which is exempt from this rule), or
+  \item The \qty{\FreeKickTime}{\second} time period expires (or game time expires).
+\end{itemize}
+
+The head referee announces completion by calling ``Ball Free'', and the GameController resumes the \texttt{playing} state.
+
+\paragraph{Failed Free Kick}
+
+If the attacking team fails to execute the free kick within the allotted \qty{\FreeKickTime}{\second}, the free kick expires and play resumes normally.
+In this situation:
+\begin{itemize}
+  \item The defending team may play the ball immediately after the free kick expires.
+  \item If the defending team plays the ball first (before the originally attacking team), they may score a direct goal regardless of whether the original free kick was direct or indirect.
+\end{itemize}
+
+\textbf{Example:} The blue team is awarded a kick-in (indirect free kick) but does not play the ball within \qty{\FreeKickTime}{\second}. The referee calls ``Ball Free''. A red robot immediately kicks the ball directly into the blue goal. The goal counts, as the failed-free-kick exception allows the defending team to score directly.
+
+\subsection{Kick-in / Throw-in}
+\label{sec:kick_in}
+
+A kick-in (or throw-in) is an \textbf{indirect free kick} (\cf~\cref{sec:indirect_free_kick}). A kick-in is awarded to the opponents of the player who last touched the ball when the whole of the ball leaves the field of play by crossing the touchline, either on the ground or in the air (see Section~\ref{sec:inside_outside}). Balls are deemed to be out based on the team that last touched the ball, irrespective of who actually kicked the ball.
+
+\subsubsection{Ball Placement}
+
+The ball is placed on the touchline at the point where it left the field.
+
+\subsubsection{Throw-in Option}
+
+Robots may also perform a throw-in with their hands instead of kicking. When performing a throw-in with hands, the robot must:
+\begin{itemize}
+  \item Face the field of play.
+  \item Have part of each foot either on the touchline or on the ground outside the touchline.
+  \item Hold the ball with at least one hand.
+  \item Deliver the ball from behind and over its head.
+  \item Release the ball within 10 seconds.
+\end{itemize}
+
+If a robot attempts to perform a throw-in with hands and fails to respect these rules, a free kick is awarded to the opposing team.
+
+\subsubsection{Examples}
+
+\textbf{Example 1:} A blue robot at midfield kicks the ball over the left touchline \qty{2}{\metre} into the red half of the field.
+The referee calls ``Kick-in red'' and the ball is replaced on the left touchline where it went out.
+
+\textbf{Example 2:} A blue robot kicks the ball but the ball touches a red robot at midfield before leaving the field near the halfway line.
+The ball is regarded as out by red; the referee calls ``Kick-in blue'' and the ball is replaced on the touchline where it went out.
+
+\subsection{Goal Kick}
+\label{sec:goal_kick}
+
+A goal kick is a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick})  awarded when the whole of the ball passes over the goal line, either on the ground or in the air, having last touched a player of the attacking team, and a goal is not scored.
+
+\subsubsection{Ball Placement}
+The ball is placed on the corner of the goal area on the same side of the field that the ball went out.
+That is, the corner inside the field where the goal area line meets the goal line (not the T-junction on the goal line itself).
+
+\subsubsection{Avoidance Region}
+For a goal kick, the avoidance region is the entire penalty area.
+All robots of the opposing team must remain outside the penalty area until the ball is in play (\cf~\cref{sec:free_kick_execution}).
+
+\subsubsection{Example}
+\textbf{Example:} A blue robot kicks the ball out the end of the field to the right of the goal the red team is defending.
+The referee calls ``Goal Kick red'' and the ball is placed on the right corner of the goal area.
+
+\subsection{Corner Kick}
+\label{sec:corner_kick}
+
+A corner kick is a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) awarded when the whole of the ball passes over the goal line, either on the ground or in the air, having last touched a player of the defending team, and a goal is not scored.
+
+\subsubsection{Ball Placement}
+
+The ball is placed on the corner of the field on the same side that the ball went out.
+
+\subsubsection{Example}
+
+\textbf{Example:} The red goalkeeper kicks the ball out the end of the field to the right of the goal.
+The referee calls ``Corner Kick blue'', the ball is placed on the corner to the right of the goal, and a free kick is started.
 
 \subsection{Penalty Kick}
 
