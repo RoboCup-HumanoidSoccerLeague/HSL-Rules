@@ -1,0 +1,139 @@
+
+\newcommand{\drawingScale}{0.01}
+
+% args: src(point) dst(point) sideLength orientation label
+\newcommand{\annotation}[5]{
+  \draw[thick] ($#1$) -- ($#1 + (#3:#4)$);
+  \draw[thick] ($#2$) -- ($#2 + (#3:#4)$);
+  \draw[<->, thick] ($#1 + (#3:#4/2)$) -- ($#2 + (#3:#4/2)$); 
+  \node at ($#1!0.5!#2 + (#3:#4)$) {#5};
+}
+
+% goalCenter goalWidth goalDepth goalDir
+\newcommand{\drawGoal}[4]{
+  \draw[goalLine]
+  ($#1 + (90+#4:#2/2)$) --
+  ($#1 + (90+#4:#2/2) + (180+#4:#3+\goalLineWidth/2)$) --
+  ($#1 + (-90+#4:#2/2) + (180+#4:#3+\goalLineWidth/2)$) --
+  ($#1 + (-90+#4:#2/2)$);
+}
+
+% pos, size
+\newcommand{\drawPenaltyMark}[2]{
+  \fill[white] #1 circle (#2/2);
+}
+
+\begin{tikzpicture}
+  [
+  x=\drawingScale*100cm,
+  y=\drawingScale*100cm,
+  fieldLine/.style = {line width=\drawingScale* 5cm, color=white},
+  goalLine/.style = {line width=\drawingScale * 10cm, color=white}
+  ]
+  \tikzmath{
+    \borderStrip=1.0;
+    \fieldLength=14.0;
+    \fieldWidth=9.0;
+    \goalDepth=0.6;
+    \goalWidth=2.6;
+    \goalAreaLength=1.0;
+    \goalAreaWidth=4.0;
+    \penaltyAreaLength=3.0;
+    \penaltyAreaWidth=6.0;
+    \penaltyMarkDist=2.0;
+    \penaltyMarkLength=0.1;
+    \cornerArcRadius=0.5;
+    \centerCircleDiameter=3.0;
+    \fieldLineWidth=.05;
+    \goalLineWidth=.1;
+    \arenaWidth=\fieldWidth+2*\borderStrip;
+    \arenaLength=\fieldLength+2*\borderStrip;
+    \hflw=\fieldLineWidth/2;%HalfFieldLineWidth
+  }
+  \coordinate (center) at (0,0);
+  % Corners of the field
+  \coordinate (fieldBL) at ($(-\fieldLength/2,-\fieldWidth/2)$);
+  \coordinate (fieldBR) at ($( \fieldLength/2,-\fieldWidth/2)$);
+  \coordinate (fieldTL) at ($(-\fieldLength/2, \fieldWidth/2)$);
+  \coordinate (fieldTR) at ($( \fieldLength/2, \fieldWidth/2)$);
+  % GoalCenters
+  \coordinate (goalL) at ($(-\fieldLength/2, 0)$);
+  \coordinate (goalR) at ($( \fieldLength/2, 0)$);
+  % Penalty Marks
+  \coordinate (penaltyMarkL) at ($(-\fieldLength/2 + \penaltyMarkDist, 0)$);
+  \coordinate (penaltyMarkR) at ($( \fieldLength/2 - \penaltyMarkDist, 0)$);
+  % Fill Arena
+  \fill[black!40!green] ($(-\arenaLength/2, -\arenaWidth/2)$) rectangle ($(\arenaLength/2, \arenaWidth/2)$);
+  % Borders of the field
+  \draw[fieldLine] ($(fieldBL) + (\hflw,\hflw)$) rectangle
+  ($(fieldTR) - (\hflw,\hflw)$);
+  
+  % Corner Arcs
+  \draw[fieldLine] (fieldBL) + (0:\cornerArcRadius) arc (0:90:\cornerArcRadius);
+  \draw[fieldLine] (fieldBR) + (90:\cornerArcRadius) arc (90:180:\cornerArcRadius);
+  \draw[fieldLine] (fieldTR) + (180:\cornerArcRadius) arc (180:270:\cornerArcRadius);
+  \draw[fieldLine] (fieldTL) + (270:\cornerArcRadius) arc (270:360:\cornerArcRadius);
+
+  % Center line
+  \draw[fieldLine] ($(0, -\fieldWidth/2 + \hflw)$) rectangle ($(0, \fieldWidth/2 - \hflw)$);
+  % Goals
+  \drawGoal{(goalL)}{\goalWidth}{\goalDepth}{0};
+  \drawGoal{(goalR)}{\goalWidth}{\goalDepth}{180};
+  % Goal areas
+  \draw[fieldLine] ($(-\fieldLength/2+\hflw,-\goalAreaWidth/2+\hflw)$)
+  rectangle ($(-\fieldLength/2-\hflw+\goalAreaLength,\goalAreaWidth/2-\hflw)$);
+  \draw[fieldLine] ($(\fieldLength/2-\hflw,-\goalAreaWidth/2+\hflw)$)
+  rectangle ($(\fieldLength/2+\hflw-\goalAreaLength,\goalAreaWidth/2-\hflw)$);
+  % Penalty areas
+  \draw[fieldLine] ($(-\fieldLength/2+\hflw,-\penaltyAreaWidth/2+\hflw)$)
+  rectangle ($(-\fieldLength/2-\hflw+\penaltyAreaLength,\penaltyAreaWidth/2-\hflw)$);
+  \draw[fieldLine] ($(\fieldLength/2-\hflw,-\penaltyAreaWidth/2+\hflw)$)
+  rectangle ($(\fieldLength/2+\hflw-\penaltyAreaLength,\penaltyAreaWidth/2-\hflw)$);
+  % Penalty marks
+  \drawPenaltyMark{(penaltyMarkL)}{\penaltyMarkLength}
+  \drawPenaltyMark{(penaltyMarkR)}{\penaltyMarkLength}
+  % Center circle
+  \draw[fieldLine] (center) circle (\centerCircleDiameter/2 - \fieldLineWidth/2);
+  \drawPenaltyMark{(center)}{\penaltyMarkLength}
+  % Annotation basis for goals
+  \coordinate (goalLFront) at ($(goalL) + (0:\fieldLineWidth)$);
+  \coordinate (goalLBack) at ($(goalL) + (180:\goalDepth)$);
+  \coordinate (goalLBottom) at ($(goalL) - (90:\goalWidth/2 - \goalLineWidth/2)$);
+  \coordinate (goalLTop) at ($(goalL) + (90:\goalWidth/2 - \goalLineWidth/2)$);
+  % Annotation Basis for goal Area
+  \coordinate (goalAreaLT1) at ($(-\fieldLength/2,\goalAreaWidth/2)$);
+  \coordinate (goalAreaLT2) at ($(goalAreaLT1) + (0:\goalAreaLength)$);
+  \coordinate (goalAreaLT3) at ($(goalAreaLT2) + (-90:\goalAreaWidth)$);
+  % Annotation Basis for penalty Area
+  \coordinate (penaltyAreaLT1) at ($(\fieldLength/2,\penaltyAreaWidth/2)$);
+  \coordinate (penaltyAreaLT2) at ($(penaltyAreaLT1) + (180:\penaltyAreaLength)$);
+  \coordinate (penaltyAreaLT3) at ($(penaltyAreaLT2) + (-90:\penaltyAreaWidth)$);
+  % Annotation Basis for center circle
+  \coordinate (centerA1) at ($(center) + (-45:\centerCircleDiameter/2)$);
+  \coordinate (centerA2) at ($(center) + (135:\centerCircleDiameter/2)$);
+  % Annotations for border strip
+  \coordinate (borderStripA1) at ($(fieldTL) + (90:\borderStrip)$);
+  \coordinate (borderStripA2) at ($(fieldTL) + (180:\borderStrip)$);
+  
+  % === ADDED: Annotation Basis for Corner Arc (Top Right) ===
+  \coordinate (cornerArcMeasureStart) at ($(fieldTR) + (180:\cornerArcRadius)$);
+  % ==========================================================
+
+  % Size annotations
+  \annotation{(fieldBL)}{(fieldBR)}{-90}{0.25}{A}
+  \annotation{(fieldBR)}{(fieldTR)}{0}{0.25}{B}
+  \annotation{(goalLFront)}{(goalLBack)}{90}{0.25}{C}
+  \annotation{(goalLBottom)}{(goalLTop)}{0}{0.25}{D}
+  \annotation{(goalAreaLT1)}{(goalAreaLT2)}{90}{0.25}{E}
+  \annotation{(goalAreaLT2)}{(goalAreaLT3)}{0}{0.25}{F}
+  \annotation{(penaltyMarkR)}{(goalR)}{90}{0.25}{I}
+  \annotation{(centerA1)}{(centerA2)}{45}{0.25}{J}
+  \annotation{(fieldTL)}{(borderStripA1)}{0}{0.25}{K}
+  \annotation{(fieldTL)}{(borderStripA2)}{-90}{0.25}{K}
+  \annotation{(penaltyAreaLT1)}{(penaltyAreaLT2)}{90}{0.25}{G}
+  \annotation{(penaltyAreaLT2)}{(penaltyAreaLT3)}{180}{0.25}{H}
+  
+  % === ADDED: Corner Arc Annotation (K) ===
+  \annotation{(cornerArcMeasureStart)}{(fieldTR)}{90}{0.25}{L}
+  % ========================================
+\end{tikzpicture}

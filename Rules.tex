@@ -56,6 +56,12 @@
 \newtcbtheorem[number within=section]{hintbox}{}%
 {colback=red!10,colframe=red!45!black,fonttitle=\bfseries}{th}
 
+\usepackage{tikz}
+\usetikzlibrary{backgrounds,arrows,calc,math,positioning,shapes, decorations.markings,decorations.pathreplacing}
+
+\usepackage{tikz-3dplot}
+
+
 
 \sloppy
 \newcommand{\ie}{\mbox{i.\,e.}\xspace}
@@ -107,7 +113,7 @@
 \begin{center}
   Questions or comments on these rules should be submitted via the following channels:
   \begin{itemize}
-      \item \url{https://github.com/RoboCup-SPL/Rules/issues};
+      \item \url{https://github.com/RoboCup-HumanoidSoccerLeague/HSL-Rules/issues};
       \item Discord server: \url{TBA}, channel \texttt{\#rule-book};
       \item Email to \url{tba@tba.com}.
   \end{itemize}
@@ -134,16 +140,17 @@
 \include{rules/robot_players}
 \newpage
 
-\include{rules/competitions_divisions}
+\include{rules/judgement}
 \newpage
+
+% TIS CHAPTER WAS REMOVED BY REINALDO AS IT CONTAINS THE SAME INFORMATION AS CHAPTER 3
+%\include{rules/competitions_divisions}
+%\newpage
 
 \include{rules/game}
 \newpage
 
 \include{rules/forbidden_actions}
-\newpage
-
-\include{rules/judgement}
 \newpage
 
 \appendix
