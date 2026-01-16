@@ -6,17 +6,27 @@
 \subsection{Penalty Procedure}
 \label{sec:penalty_procedure}
 
+If an infringement is detected, the head referee clearly announces the offense and the assistant referee sends the corresponding signal through the game controller. 
+If a robot commits an offense in the vicinity of the ball (0.75 m for small size, 1.5 m for middle and large size)\info{From humanoid league, to be discussed}, the game is interrupted and the offending player is removed according to the standard removal penalty. The offending player may additionally be issued a yellow or red card. After the offending robot is removed, the opposing team restarts play with a free kick. If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
+
 \subsection{Standard Removal Penalty}
 \label{sec:removal_penalty}
+
+Robots that commit an offense receive a standard removal penalty. If a player receives a standard removal penalty, the head referee announces this by calling "pick-up [color] [player number]". The offending player is marked as picked up in the game controller. The robot handler of the offending team must immediately pick up the offending robot and remove it from the field. The robot handler must not interfere with the game in any way while picking up the robot.
+
+After the robot is removed from play, the team is allowed to perform any kind of maintenance on the robot. When the robot is ready to serve its penalty, the robot handler places the robot on the side line outside of the field, on the height of the penalty mark and announces to the head referee that the robot is ready. After the head referee confirms that the robot is ready, the penalized robot must serve a time penalty of $30$ seconds before it is allowed to enter the field. While the penalty is being served, the team is not allowed to interfere with the robot in any way. If the team interferes with the robot, the penalty needs to be retaken.
 
 \subsection{Forbidden Actions}
 \label{sec:forbidden_actions}
 
 \subsubsection{Manual Interaction by Team Members}
+
+Team members are not allowed to interfere with the game or with any robots that are currently in play or serving time penalties in any way, unless explicitly instructed to do so by the head referee.
+
 \subsubsection{Damage to the Field}
 \label{sec:damage}
 
-A robot that damages the field, or poses a threat to spectator safety, will be removed from the field for the remainder of the game.
+A robot that damages the field, or poses a threat to spectator safety, will be removed from the field for the remainder of the game.     
 
 \subsubsection{Disciplinary Sanctions}
 \subsubsection{Cautionable Offences}
@@ -64,3 +74,15 @@ Robots must remain inside the field (see Section~\ref{sec:field}) during play, e
 
 \subsection{Aborting a Penalty}
 \label{sec:aborting_penalty}
+
+\subsection{Penalties against Teams or Humans}
+The referee can issue yellow and red cards against humans or teams at their discretion. Cards can be issued for offenses such as
+
+\begin{itemize}
+    \item Offensive or abusive behaviour
+    \item Repeatedly ignoring referee instructions
+    \item Repeatedly entering the field without permission
+    \item Breaking the game rules to gain an advantage
+\end{itemize}
+
+Cards that are issued against humans or teams must be reported to the TC immediately after the game. Cards against humans or teams persist between games. Receiving two yellow cards results in a red card. If a human receives a red card, they will not be allowed to enter the field or team area during games for the remainder of the competition. If a team receives a red card, they are disqualified from the competition. 

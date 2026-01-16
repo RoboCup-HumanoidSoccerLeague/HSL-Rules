@@ -3,20 +3,22 @@
 \section{Teams and Players}
 \label{sec:teams_and_players}
 
-\subsection{Division and complexity level}
+\subsection{Divisions and Configurations}
 \label{sec:divisions}
 
-A team belongs to one division, which is one of Small, Mid and Large. Main-competition matches only take place between members in the same division.
+A team belongs to one division, which is one of Small, Middle and Large. Main competition matches only take place between members in the same division.
 
-A team also has one complexity level, which is either Foundation or Advanced. Teams of different levels may play each other: if at least one team in the match is Foundation, then the match is Foundation, otherwise it is Advanced. (As of this draft version, the complexity level only affects the maximum team size.)
+Teams in each division can choose to play in two team configurations: Foundation - with a smaller number of players; and Advanced - with a larger number of players. If in a game one of the teams chooses to play in a Foundation configuration, then both teams must play in this configuration to ensure fairness. The maximum number of players in a game for each configuration is shown in Table \ref{tab:number_of_players}.
 
-Both the division and the complexity level of a team are defined before the competition (precise modality TBD) and cannot change during the competition itself.
+In the Middle division, starting from the quarter-finals onwards, all matches will be played in the Advanced configuration.
+
+Both the division and the configuration of a team are defined before the competition (precise modality TBD) and cannot change during the competition itself.
 
 \improvement{Maybe move some definitions from the beginning of Comp. Structure over here?}
 
 \subsection{Number of Players}
 \label{sec:number_of_players}
-A match is played by two teams, each with a \textbf{maximum} number of players determined by the division the game takes place in and the complexity level of the playing teams, as illustrated by the following table:
+A match is played by two teams, each with a \textbf{maximum} number of players determined by the division the game takes place in and the configuration level of the playing teams, as illustrated by the following table:
 
 \begin{tblr}{
   width=1.0\linewidth,
@@ -26,14 +28,19 @@ A match is played by two teams, each with a \textbf{maximum} number of players d
   hline{3-Y} = {dashed},
   vline{2,3} = {abovepos = -1, belowpos = -1},
 }
-Division & At least 1 Foundation team & 2 Advanced teams\\
+Division & Foundation team & Advanced teams\\
 %
 Small & 4 & 7 \\
 Mid   & 3 & 5 \\
 Large & 3 & 5 \\
+\label{tab:number_of_players}
 \end{tblr}
 
+
+
+
 At most one player per team on the field may be designated as \emph{goalkeeper}, the others are all \emph{field players}.
+
 When playing at full strength, a team must have a \emph{goalkeeper} on the field. \improvement{Goalie distinguishing feature TBD: Number? Color?}
 
 Each of the players has a unique jersey number from the set $\{1, 2, 3, \ldots, 20\}$. \improvement{Will we have flexible numbers on the game controller? Otherwise, the numbers should be limited to the game controller numbers.}
@@ -44,12 +51,92 @@ In addition, each team may prepare \emph{substitute players} \improvement{Number
 A \emph{substitute player} may be substituted in to become a \emph{field player} or \emph{goalkeeper}.
 
 \subsection{Substitution procedure}
+
+\subsubsection{Changing the goalkeeper}
+Any of the other players may change places with the goalkeeper, provided that the referee is informed before the change is made. The change is requested during a stoppage in the match.
+
+All substitutes are subject to the authority and jurisdiction of the referee, whether called upon to play or not.
+
 \improvement{Some more sections of the Humanoid rule book, like substitution procedures for players and goalkeeper, sanctions, etc. should be moved to the chapter Game Process }
+
+
 
 \section{Robot Players}
 \label{sec:robot_players}
 
+\subsection{The Design of the Robots}
+\label{sec:design_of_robots}
+Robots participating in the \leaguenameabbr must have a human-like body shape with a torso, head, two arms, and two legs, as well as human-like symmetry and proportions regarding sizes of the body parts and weight distribution. \info{Definition of humanoid robot from Kajima et al, 2005}
 
+The robots must be able to stand upright on their feet, to walk on their legs and to be able to recover from a fall (get back to a standing position). 
+
+The only allowed modes of locomotion are bipedal walking, running, and jumping. Soccer related movements such as dribbling, kicking, or other forms of ball handling are also allowed.
+
+The design of the robot's arms, including their length and placement, shall permit arm use and behaviors that are reasonably comparable to those of humans. Examples of permitted uses include assisting in getting up after a fall or picking up and throwing the ball (where otherwise allowed by the rules).
+
+Arm configurations that enable behaviors significantly different from those of humans are not permitted. In particular, 
+robots must not use their arms to provide continuous support for locomotion, such as walking on arms or using arms as additional legs.
+
+\subsubsection{Size Restrictions}
+
+All robots participating in the \leaguenameabbr must comply with the following restrictions:\improvement{to be discussed - including height restrictions}
+
+The length of the legs $H_{leg}$, including the feet, satisfies 0.35{\textperiodcentered}$H_{top}$ ${\leq}$ $H_{leg}$ ${\leq}$ 0.7{\textperiodcentered}$H_{top}$,  where $H_{top}$ is the height of the top of the robot. 
+The length of the leg is measured from the first rotating joint where its axis lies in the plane parallel to the standing ground to the tip of the foot.
+
+A classic piece of human anatomy and art history, Leonardo da Vinci’s “Vitruvian Man” famously depicts a man whose arm span is equal to his height, creating a 1:1 ratio. 
+Therefore, the arm span, $A_{span}$, including the hands, should satisfy 0.8{\textperiodcentered}$H_{top}$ ${\leq}$ $A_{span}$ ${\leq}$ 1.2{\textperiodcentered}$H_{top}$.
+
+Based on $H_{top}$, the following size restrictions apply for each division:
+%
+\begin{itemize}
+\item Small:  $H_{top}$ ${\leq}$ 1.1 meters;
+\item Middle: $H_{top}$ ${\leq}$ 1.25 meters;
+\item Large:  $H_{top}$ ${\leq}$ 1.9 meters.
+\end{itemize}
+
+$H_{top}$ is defined as the height of the robot when standing upright (with fully extended knees).
+$H_{top}$ is measured with the head of the robot oriented in such a way that it
+is tilted to either its maximum upwards tilt angle or the horizon line,
+whichever is lower.
+
+The height of the head $H_{head}$, including the neck, satisfies $0.1 \cdot H_{top} \leq H_{head} \leq 0.3 \cdot H_{top}$. $H_{head}$ is defined as the vertical distance from the axis of the first arm joint at the shoulder to the top of the head.
+
+\subsubsection{Weight Restrictions}
+
+The robot's Body-Mass Index (BMI) is defined as follows:
+$\mathrm{BMI} = \frac{M}{{H_{top}}^2}$,
+where $M$ is the mass of the robot in kg and $H_{top}$ its height in meters.
+
+The Body Mass Index (BMI) of the robot should be: $5 \leq \mathrm{BMI} \leq 30$.
+
+The following weight restrictions apply for each division:
+%
+\begin{itemize}
+\item Small:  Weight${\leq}$ 15 kilograms;
+\item Middle: Weight ${\leq}$ 25 kilograms;
+\item Large:  Weight ${\leq}$ 80 kilograms.
+\end{itemize}
+
+\subsubsection{Safety}\info{From the humanoid league rules, to be discussed}
+
+A player must not use equipment or wear anything that is dangerous to himself or another player.
+
+Robots competing in the physical competition must be equipped with an emergency stop button that makes the robot immediately desist with all motions, 
+or ideally go limp and/or cut power to the actuators.
+In addition to the emergency stop button, robots may only have up to two additional physical or virtual buttons\info{to be discussed: 4.7.1 allows buttons, community also requests to allow more buttons (NAO). Usage during the game can be restricted}: One to start the robot behaviour and one to stop the behaviour. 
+The buttons must be clearly labeled. If the robot has more buttons that cannot be detached, they must be visibly masked during the games.
+
+In ...tbd... size, robot handlers are allowed to carry an additional remote emergency stop button. \improvement{to be discussed, will there still be robot handlers?}
+This button must be worn either around the neck or on the belt of the robot handler and must be clearly marked. 
+Each emergency stop button can only be connected to the robot of the robot handler that holds the button.
+The remote emergency button cannot perform any additional functions and does not replace the regular emergency button. 
+Robot handlers must keep their hands clearly away from the button unless the button is being pressed. 
+Robot handlers must not use the remote emergency button to intentionally incapacitate their robots.
+
+\improvement{to be discussed, add other safety measures from our discussion?}
+
+\label{sec:design_of_robots}
 
 \subsection{Approved Standard Platforms}
 The following commercially available robotic platforms are approved for participation in the \leaguenameabbr. 
@@ -75,78 +162,13 @@ Unitiree  & G1++, H1++ \\
 
 Additional humanoid robot platforms can be approved upon request. Please send your request for approval to \url{rc-spl-tc@lists.robocup.org}. \improvement{Change to new mailing list when ready}
 
-\subsection{The Design of the Robots}
-\label{sec:design_of_robots}
-Robots participating in the \leaguenameabbr must have a human-like body shape with a torso, head, two arms, and two legs, as well as human-like symmetry and proportions regarding sizes of the body parts and weight distribution. \info{Definition of humanoid robot from Kajima et al, 2005}
-
-The robots must be able to stand upright on their feet, to walk on their legs and to be able to recover from a fall (get back to a standing position). 
-
-The only allowed modes of locomotion are bipedal walking, running, and jumping, \improvement{as well as soccer-related movements such as dribbling, kicking, or other forms of ball handling}.
-
-The design of the robot's arms, including their length and placement, shall permit arm use and behaviors that are reasonably comparable to those of humans. Examples of permitted uses include \info{Derived from Heinrichs suggestion} 
-assisting in getting up after a fall or picking up and throwing the ball (where otherwise allowed by the rules).
-
-Arm configurations that enable behaviors significantly different from those of humans are not permitted. In particular, 
-robots must not use their arms to provide continuous support for locomotion, such as walking on arms or using arms as additional legs.
-
-\subsubsection{Size Restrictions}
-
-All robots participating in the \leaguenameabbr must comply with the following restrictions:\improvement{to be discussed - including height restrictions}
-
-The length of the legs $H_{leg}$, including the feet, satisfies 0.35{\textperiodcentered}$H_{top}$ ${\leq}$ $H_{leg}$ ${\leq}$ 0.7{\textperiodcentered}$H_{top}$,  where $H_{top}$ is the height of the top of the robot. 
-The length of the leg is measured from the first rotating joint where its axis lies in the plane parallel to the standing ground to the tip of the foot.
-
-A classic piece of human anatomy and art history, Leonardo da Vinci’s “Vitruvian Man” famously depicts a man whose arm span is equal to his height, creating a 1:1 ratio. 
-Therefore, the arm span, $A_{span}$, including the hands, should satisfy 0.8{\textperiodcentered}$H_{top}$ ${\leq}$ $A_{span}$ ${\leq}$ 1.2{\textperiodcentered}$H_{top}$.
-
-Based on $H_{top}$, the following size restrictions apply:
-
-\begin{itemize}
-\item xx cm ${\leq}$ $H_{top}$ ${\leq}$ xxx cm to play in the xy class, \improvement{to be discussed - define divisions}
-\item xxx cm ${\leq}$ $H_{top}$ ${\leq}$ xxx cm to play in the z class.
-\end{itemize}
-
-$H_{top}$ is defined as the height of the robot when standing upright (with fully extended knees).
-$H_{top}$ is measured with the head of the robot oriented in such a way that it
-is tilted to either its maximum upwards tilt angle or the horizon line,
-whichever is lower.
-
-The height of the head $H_{head}$, including the neck, satisfies $0.1 \cdot H_{top} \leq H_{head} \leq 0.3 \cdot H_{top}$. $H_{head}$ is defined as the vertical distance from the axis of the first arm joint at the shoulder to the top of the head.
-
-\subsubsection{Weight Restrictions}
-
-The robot's Body-Mass Index (BMI) is defined as follows:
-$\mathrm{BMI} = \frac{M}{{H_{top}}^2}$,
-where $M$ is the mass of the robot in kg and $H_{top}$ its height in meters.
-
-The Body Mass Index (BMI) of the robot should be: $5 \leq \mathrm{BMI} \leq 30$.
-
-\subsubsection{Safety}\info{From the humanoid league rules, to be discussed}
-
-A player must not use equipment or wear anything that is dangerous to himself or another player (including any kind of jewellery)\unsure{do we need to mention jewellery?}.
-
-Robots competing in the physical competition must be equipped with an emergency stop button that makes the robot immediately desist with all motions, 
-or ideally go limp and/or cut power to the actuators.
-In addition to the emergency stop button, robots may only have up to two additional physical or virtual buttons\info{to be discussed: 4.7.1 allows buttons, community also requests to allow more buttons (NAO). Usage during the game can be restricted}: One to start the robot behaviour and one to stop the behaviour. 
-The buttons must be clearly labeled. If the robot has more buttons that cannot be detached, they must be visibly masked during the games.
-
-In ...tbd... size, robot handlers are allowed to carry an additional remote emergency stop button. \improvement{to be discussed, will there still be robot handlers?}
-This button must be worn either around the neck or on the belt of the robot handler and must be clearly marked. 
-Each emergency stop button can only be connected to the robot of the robot handler that holds the button.
-The remote emergency button cannot perform any additional functions and does not replace the regular emergency button. 
-Robot handlers must keep their hands clearly away from the button unless the button is being pressed. 
-Robot handlers must not use the remote emergency button to intentionally incapacitate their robots.
-
-\improvement{to be discussed, add other safety measures from our discussion?}
-
-\label{sec:design_of_robots}
-
 \subsection{Hardware}
 \label{sec:hardware}
 
 \improvement{to be discussed, divisions, list of permitted robots, self-built robots, etc.}
 
 Modifications or additions to the robot hardware are allowed.\improvement{to be discussed}
+
 
 No additional hardware is permitted, including off-board sensing or processing systems.
 Additional sensors besides those originally installed on the robots are likewise not allowed.
@@ -204,7 +226,8 @@ An IMU with an integrated compass can be used as long as the compass is disabled
 
 The sensors can be placed in the head and/or in the torso of the robot.
 
-The number of the orientation sensors is limited to 4.
+%Removed at the Town Meeting
+%The number of the orientation sensors is limited to 4.
 
 
 \subsubsection{Sound Perception}
@@ -246,8 +269,8 @@ RGB camera & yes & opening angle limit: horizontal $\leq$ \SI{180}{\degree}, ver
 Stereo camera & yes & \\
 Event camera & yes & \\
 
-Active RGB-D based on infrared projection & no &  \\
-Active RGB-D based on time of flight (TOF) & no &  \\
+Active RGB-D based on infrared projection & no & discouraged\\
+Active RGB-D based on time of flight (TOF) & no & discouraged\\
 
 % sound perception
 Microphone array & yes & \\
@@ -255,6 +278,7 @@ Microphone array & yes & \\
 % Orientation
 Gyro & yes & \\
 Accelerometer & yes & \\
+Compass & no & magnetic measurement sensors are not allowed\\ 
 Integrated inertial measurement units (IMU) & yes & no compass or must be disabled and not used\\
 
 % Haptic sensing
@@ -272,12 +296,34 @@ Sonar / ultrasound sensors & no & \\
 Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
 \end{tblr}
 
-
+\info{Reinaldo: I think we forgot about compass, so I added to the table}
 
 \unsure{Clarity needed for manufacturers that do not provide IMU details, just access to data}
 
 \subsection{Team Markers}
 \label{sec:team_markers}
+
+Robot bodies must be colored mostly with a neutral color, such as black, gray, white, or silver, and be non-reflective.
+
+Robots must use colored jersey shirts as team markers. A jersey is a tank top-style shirt that may start at the neck and go down to the waistline, and does not cover the arms of the robots. It must cover at least 50\% of the upper body of the robot.  
+
+Jerseys must have a primary color that comprises more than half of the jersey. The primary color must be recognizable from the front and back.
+
+Jerseys should not contain distracting patterns that could be confused with other elements of the soccer field, such as field lines or the ball.
+
+Jersey material must be non-reflecting, non-shiny, and non-glittery. Jerseys may be manufactured from fabric and fine mesh.
+
+The two teams must wear colors that distinguish them from each other and also the referee and the assistant referees.
+
+Each team must provide two jersey designs in distinctly different solid colors. The jersey color must clearly contrast with any uncovered parts of the robot to ensure reliable identification.
+
+Robots must display clear identification numbers (player number): a large number on the back and a smaller number on the front.
+
+The goal keeper robot must be marked uniquely so that it can be easily distinguished from the other robots of a team by the referees.
+
+Sponsorship logos will be allowed on jerseys, though detailed guidelines are still being finalized.
+
+Jersey designs must be submitted for approval prior to the competition.
 
 \info{to be discussed}
 
