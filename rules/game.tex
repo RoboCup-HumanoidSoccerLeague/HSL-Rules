@@ -14,15 +14,28 @@
 \subsection{Kick-off}
 \subsubsection{Field-Side Selection and Initial Kick-off}
 \subsubsection{Initial Kick-off}
-\subsubsection{Kick-off}
 \label{sec:kick-off}
 \subsubsection{Ball in play}
+The ball is in play and kick-off ends once:
+\begin{itemize}
+  \item it is touched by the attacking team and has visibly moved at least one ball radius from its initial position, or
+  \item \textit{KickOffBallFreeTime} \todo{Move/define time constants} seconds have elapsed in the \texttt{playing} state.
+\end{itemize}
+The GameController and head referee will indicate this by the call ``Ball Free''.
+
+\subsubsection{Ball out of play}
+The ball is out of play when:
+\begin{itemize}
+  \item the ball has left the field of play, by wholly crossing the touchline or goal line (see Section~\ref{sec:inside_outside}), or
+  \item play has been stopped by the referee.
+\end{itemize}
+The ball remains in play at all other times.
 
 \subsection{Goals}
 \subsubsection{Goal Scored}
 \label{sec:goal}
 
-A goal, including own goal, is achieved when the entire ball (not only the center of the ball) goes over the goal-side edge of the goal line, \ie the ball is completely inside the goal.\footnote{
+A goal, including an own goal, is scored when the ball is considered \textit{inside} the goal as defined in Section~\ref{sec:inside_outside}.\footnote{
   The goal line is part of the field.
 }
 
