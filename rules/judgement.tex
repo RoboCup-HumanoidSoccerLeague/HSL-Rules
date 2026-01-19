@@ -4,14 +4,15 @@
 \label{sec:judgement}
 \info{Move to: Law 5 - The Referee}
 
-The referees are the only humans permitted on the carpeted area (\ie the field and the border area). They have the duty to enforce the rules of play and ensure the game proceeds smoothly before, during, and after the scheduled time.
+Each match is controlled by a number of referees, who have the authority and the duty to enforce the rules of play and ensure the game proceeds smoothly before, during, and after the scheduled time.
+The referees are the only humans permitted on the carpeted area (\ie the field and the border area).
 
 \subsection{Head Referee}
 \info{Law 5.1 - The authority of the referee}
 \label{sec:head_referee}
 The head referee is the principal authority of the game and takes all decisions regarding the flow of the match and the enforcement of the rules. 
 \info{Law 5.2 - Decisions of the referee}
-Any decision of the head referee is valid. The head referee’s decision is final and can not be changed afterwards, even by video proof. There is no discussion about decisions during the game, neither between the assistant referees and the head referee, nor between the audience or the teams and the head referee.
+The head referee takes decisions to the best of theeir ability according to the rules and the spirit of the game. Any decision of the head referee is valid. The head referee's decision is final and can not be changed afterwards, even by video proof. There is no discussion about decisions during the game, neither between the assistant referees and the head referee, nor between the audience or the teams and the head referee.
 
 \textbf{Calls.} The head referee announces decisions by a clear loud call, and (as required) whistle sound. The whistle, or where there is no whistle the first verbal word of the referees calls, defines the point in time at which the decision is made. The referees should make efforts to use consistent and clear calls, and it is preferable for referees to use the calls as specified in these rules.\footnote{The calls specified in these rules are detailed in English. With the agreement of the teams, the referees may use suitable calls in any language. The exception to this are technical challenges that depend on the calls as specified.} The intention of specifying the referee calls is for clarity and consistency across games.
 
@@ -24,6 +25,26 @@ The head referee should be equipped with a suitable referee jersey, whistle, coi
 
 \info{Law 5.3 - Powers and duties - missing larger parts from Fifa rules}
 The head referee may decide at any point before or during a game to relocate any objects around the field, or direct persons to another position around the field.
+
+\subsubsection{Powers and duties}
+
+The head referee:
+
+\begin{itemize}
+    \item enforces the rules
+    \item controls the match in cooperation with the assistant referees and the GameController operator
+    \item ensures that any ball used meets the requirements of Law ???
+    \item ensures that the players' equipment meets the requirements of Law ???
+    \item stops, suspends or abandons the match, at their discretion, for any infringements of the rules
+    \item stops, suspends or abandons the match because of outside interference of any kind
+    \item allows play to continue when the team against which an offence has been committed will benefit from such an advantage and penalises the original offence if the anticipated advantage does not ensue at that time
+    \item punishes the more serious offence when a player commits more than one offence at the same time
+    \item takes action against team officials who fail to conduct themselves in a responsible manner and may, at their discretion, expel them from the field of play and its immediate surrounds
+    \item acts on the advice of the assistant referees regarding incidents that they has not seen
+    \item ensures that no unauthorised persons enter the field of play
+    \item indicates the restart of the match after it has been stopped
+    \item provides the appropriate authorities with a match report, which includes information on any disciplinary action taken against players and/or team officials and any other incidents that occurred before, during or after the match
+\end{itemize}
 
 \subsection{Assistant Referees}
 \label{sec:assistant_referee}
@@ -42,16 +63,16 @@ The assistant referees should be equipped with a suitable referee jersey, and bl
 
 \subsubsection{The Stationary Assistant}
 
-\textit{This only makes sense to have if the indirect kick rule and/or the referee gestures from SPL-2025 are used.}
+\textit{This only makes sense to have as an explicit rule if the indirect kick rule and/or the referee gestures from SPL-2025 are used.}
 
 \subsection{GameController Operator}
 \label{sec:gamecontroller_operator}
 
 The operator of the GameController sits at a PC in the technical area. As with the head referee, the operator should make efforts to use consistent and clear calls.
 
-They will signal any change in the game state or penalties to the robots via the wireless as they are announced by the head referee. Note that for both kick-offs and goals, the moment of whistling is determining, not the verbal announcement of the head referee. They should repeat the call of the head referee as they do so, to make sure it was heard correctly.
+They will signal any change in the game state or penalties to the robots via the wireless as they are announced by the head referee. Note that for both kick-offs and goals, the moment of whistling is determining, not the verbal announcement of the head referee. They should repeat the call of the head referee as they do so, to confirm it was heard correctly.
 
-The operator will also inform the assistant referees when a timed penalty is over and a robot has to be placed back on the field. \improvement{If the penalty procedure would benefit from an advance warning about 10 seconds before the end of the penalty, it can be mentioned here.} They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from ready to set.
+The operator will also inform the assistant referees when a timed penalty is over and a robot has to be placed back on the field. \improvement{If the penalty procedure would benefit from an advance warning about 10 seconds before the end of the penalty, it can be mentioned here.} They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}.
 
 They are also responsible for keeping the time of each half. They should count aloud the remaining seconds in a half once the time remaining is 5 s or less.
 
@@ -72,14 +93,17 @@ If no agreement can be found, the default is that the responsibility for most ca
 Common examples of tasks that can be delegated are:
 
 \begin{itemize}
-    \item Determining which team is to be given a free kick when the ball goes out of the field (Section ???) and communicating this to the head referee. The final call is still made by the latter.
-    \item Indicating violations requiring a penalty, with the final call still being made by the head referee.
+    \item Indicating when the ball leaves the field
+    \item Determining which team is to be given a free kick when the ball goes out of the field (Section ???) and communicating this to the head referee
+    \item Indicating violations requiring a penalty, especially if they happened out of the view of the head referee
     \item \textit{More examples should be added depending on how the rules are shaped up}
 \end{itemize}
 
+Note that the final decision is still made by the head referee.
+
 The above list is not prescriptive: the head referee can always choose to delegate zero, one, some, or all of these tasks. It is also not exhaustive: through discussion among the head referee, the assistants, and the GameController operator, other tasks not listed here may be identified and delegated.
 
-Care should be taken to not overburden any one person and not to blur the roles of head and assistant referees. Conflicts in the authority of the referees should be avoided, but if any do occur, the head referee’s decision is final.
+Care should be taken to not overburden any one person and not to blur the roles of head and assistant referees. Conflicts in the authority of the referees should be avoided, but if any do occur, the head referee's decision is final.
 
 \subsubsection{Pre-game Team Meeting}
 \info{Law 7.x}
@@ -103,13 +127,6 @@ During all phases of the match teams and referees are communicating with respect
 
 
 The head referee and the assistant referees should wear socks of black or dark blue color and avoid reserved colors (white and green) in their leg clothing. They may \improvement{Pending safety for bigger divisions} enter the field in particular situations, e. g., to remove a robot when applying a penalty. They should avoid interfering with the robots as much as possible.
-
-\subsubsection{Visual Signal}
-\label{sec:referee_visual_signal}
-\info{Law 5.6 - Referee signals or Law 6.6 Assistant referee signals}
-
-
-\textit{Pending decision}
 
 \subsubsection{Additional Assistant Referee}
 \label{sec:additional_assistant_referee}
