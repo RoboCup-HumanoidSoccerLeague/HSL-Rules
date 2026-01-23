@@ -83,6 +83,114 @@ The game is continued at the center mark. A goal can be scored directly from a d
 
 \subsection{Law 12 – Fouls and Misconduct}
 
+\textbf{Procedure}
+
+The referee has the authority to take disciplinary sanctions from the moment they enter the field of play until they
+leaves the field of play after the final whistle. Removal penalties, warnings, yellow and red cards are used to discipline players according to the nature of the offense committed.
+Warnings, yellow and red cards given to robots only accumulate for the current game and are cleared after the end of each game.
+
+\textbf{ Removal Penalty}
+
+Robots committing offenses must be removed from play and must serve a time penalty of 30 seconds.
+A removal penalty is issued for the following offenses:
+\begin{itemize}
+	\item Being incapable of play as defined below
+	\item Being granted a pick up as defined below
+	\item Holding the ball for more than 5 seconds as defined below
+	\item Receiving a warning or yellow card
+	\item Any other offense not further defined by the rules
+\end{itemize} 
+
+A removal penalty is issued by the head referee announcing "Penalty [team color] [player number]".When a penalty is called, the designated robot handler has to remove the robot immediately and by that interacting
+as little as possible with the game. While the robot is removed from play, the team may perform any kind of maintenance on the robot. However, the robot may only reenter the field after maintenance is complete and will only start serving its penalty after it has been placed. When the robot is ready to serve its penalty, it is placed on the sideline of the field on the height of the penalty mark of the own team, facing the opposing sideline. After the robot handler has let go of the robot, they announce "[team color][player number] ready". The referee acknowledges this and the robot starts serving its time penalty.
+
+If the robot re-enters the field before its time penalty has fully elapsed, or if it is touched by a human after it has begun serving the penalty, the robot must restart its 30 second time penalty and receives a warning. 
+
+If a removal penalty occurs within 1 m of the ball, play must be stopped. Play is resumed via a free kick.
+
+\textbf{Definition of Incapable Robots}
+
+Players not capable of play (e.g. players not walking on two legs, players not able to stand, or players with obvious
+malfunctions) are not permitted to participate in the game. They must be removed from the field. It is up to the
+referee to judge whether a player is capable of play. The referee may ask the team leader of a player suspected to be incapable of play to demonstrate playing ability at any time. A player is incapable of play if 
+
+\begin{itemize}
+	\item The player is obviously damaged
+	\item The player fell and is not able to get back into a standing or walking position within 20 seconds
+	\item The player is the goalkeeper, a ball is within 0.5 m of the robot within the goal area, and the robot does not show any attempt to remove the ball
+	\item The player poses a threat to itself, other players or humans
+	\item The player is damaging the field or the arena
+\end{itemize}
+
+\textbf{Request for Pick-up}
+
+A robot handler may request to pick up a robot if and only if a robot is in a dangerous situation that is likely to lead to physical injuries. The head referee must approve this request prior to the robot handler touching the robot. If a team member touches a robot without the allowance of the referee, the respective robot and the person touching it eacb receive an official warning.
+The referee may deny a request for pick up. A pick up is not granted for reasons such as being incorrectly configured or being unable to see the ball.
+
+\textbf{Illegal positioning}
+
+A robot is deemed to be illegally positioned if, during the SET phase, it is located in the opposing half, outside the field of play, or inside the centre circle when it does not have kick-off. Robots that are illegally positioned must be removed from play and placed on the sideline as described in the removal penalty section. However, unlike a removal penalty, an illegally positioned robot does not incur a time penalty and may re-enter the field immediately once play has resumed.
+
+\textbf{Ball Holding}
+
+A player receives a removal penalty if it holds the ball for more than 5 seconds in a way that the ball cannot be removed from the player. The goal keeper may hold the ball for up to 10 seconds. To be considered removable, more than half of the ball's volume must be outside the convex hull of the player, projected to the ground. If the ball enters the convex hull repeatedly, it must be removable in between for the majority of the time. If more than one player of a team is in the vicinity of the ball, the convex hull is taken around all players of the same team who prevent removal of the ball.
+
+\textbf{Untangling}
+
+If entangled robots fail to untangle themselves, the referee might ask designated robot handlers of both teams to untangle the robots. Untangling must not make significant changes to robot positions or heading directions. Untangled robots must be laid on the ground not closer than 50cm to the ball and in a way not gaining an advantage. Being entangled does not incur a penalty.
+
+\textbf{Cautionable offenses}
+
+The yellow card is used to communicate that a player has been cautioned.
+A player is cautioned and shown the yellow card if they commit any of the following offenses:
+
+\begin{itemize}
+	\item Unsporting behaviour
+	\item Pushing as defined below
+	\item Damaging the field of play or the arena
+	\item Persistent infringement of the Laws of the Game
+	\item Delaying the restart of play
+	\item Entering the field of play without the referee’s permission
+	\item Receiving a second warning
+\end{itemize}
+
+\textbf{Definition of Pushing}
+
+A robot is cautioned for forcefully pushing an opposing player in a manner that significantly destabilizes the player. Examples for forceful contacts include falling into another player or walking into another player at significant speed. A robot is also cautioned if it walks into another player for more than 5 seconds, even when the applied force is minimal.
+
+Front to front contact between players does not lead to a caution unless one player walks with a significantly higher speed or with significantly more force. \todo{Should kicking a player also be punished?} A player that is currently getting up from a fall cannot commit a pushing offense.
+
+\textbf{Sending-off offenses}
+The red card is used to communicate that a player has been sent off.
+A player is sent off if they commit any of the following offenses:
+
+\begin{itemize}
+	\item Serious foul play
+	\item Endangering any human
+	\item Receiving a second yellow card
+\end{itemize}
+
+A player who has been sent off must leave the vicinity of the field of play and the technical area for the remainder of the game.
+
+\textbf{Substituting a Cautioned Player}
+
+Teams may substitute a player who has received official warnings or cautions as usual. However, all warnings and cautions issued to the substituted player are transferred to the player entering the field.
+Players who have received a red card may not be substituted. As a result, the team must play the remainder of the match with one fewer player.
+
+\textbf{Penalties against Teams and Humans}
+
+The referee can issue yellow and red cards against humans or teams at their discretion. Cards can be issued for offenses such as
+
+\begin{itemize}
+	\item Offensive or abusive behaviour
+	\item Repeatedly ignoring referee instructions
+	\item Repeatedly entering the field without permission
+	\item Breaking the game rules to gain an advantage
+\end{itemize}
+
+Cards that are issued against humans or teams must be reported to the TC immediately after the game. Cards against humans or teams persist between games. Receiving two yellow cards results in a red card. If a human receives a red card, they will not be allowed to enter the field or team area during games for the remainder of the competition. If a team receives a red card, they are disqualified from the competition. 
+
+
 \subsection{Law 13 – Free Kicks}
 
 \subsection{Law 14 – The Penalty Kick}
