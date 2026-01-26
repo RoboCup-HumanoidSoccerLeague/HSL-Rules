@@ -17,7 +17,7 @@ The head referee is the principal authority of the game and takes all decisions 
 \subsubsection{Decisions of the head referee}
 The head referee takes decisions to the best of their ability according to the rules and the spirit of the game. Any decision of the head referee is valid.
 
-The head referee's decision is final and can not be changed afterwards, even by video proof. There is no discussion about decisions during the game, neither between the assistant referees and the head referee, nor between the audience or the teams and the head referee.
+The head referee's decision is final and can not be changed afterwards, even by video proof. There is no discussion about decisions during the game, neither between the assistant referee and the head referee, nor between the audience or the teams and the head referee.
 
 The head referee cmmunicates their decision via verbal calls, occasionally complemented by a whistle sound.
 
@@ -27,7 +27,7 @@ The head referee cmmunicates their decision via verbal calls, occasionally compl
 
 \subsubsection{Powers and duties}
 
-The head referee enforces the rules of the game and controls the match in cooperation with the assistant referees and the GameController operator.
+The head referee enforces the rules of the game and controls the match in cooperation with the assistant referee and the GameController operator.
 
 The head referee must ensure that the equipment worn by all robots and humans on the field meets the relevant requirements (Laws ???).
 
@@ -37,7 +37,7 @@ The head referee adjudicates all infringements of the rules, and stops, suspends
 
 When a robot commits multiple offenses at the same time, only the most serious one is called.
 
-The head referee should act on the advice of the assistant referees regarding incidents that they has not seen.
+The head referee should act on the advice of the assistant referee regarding incidents that they has not seen.
 
 The head referee has the right to take action against team officials who fail to conduct themselves in a responsible manner and may, at their discretion, expel them from the field of play and its immediate surrounds.
 
@@ -49,26 +49,20 @@ The head referee can request any robot be stopped if it becomes a threat to the 
 
 The head referee ensures that no unauthorised persons enter the field of play.
 
-The head referee should avoid handling the ball (except for placing a ball for kick-off), and avoid handling the robots. Their duty is to monitor and adjudicate the game. The head referee should only handle robots and the ball if absolutely necessary to expedite gameplay or removal of penalized robots, where the assistant referees are otherwise occupied or too far away, and only if it doesn't compromise their own safety.
+The head referee should avoid handling the ball (except for placing a ball for kick-off), and avoid handling the robots. Their duty is to monitor and adjudicate the game. The head referee should only handle robots and the ball if absolutely necessary to expedite gameplay or removal of penalized robots, where the assistant referee is otherwise occupied or too far away, and only if it doesn't compromise their own safety.
 
 The head referee may decide at any point before or during a game to relocate any objects around the field, or direct persons to another position around the field.
 
 
 
-\subsection{Law 5.2 - Assistant Referees}
+\subsection{Law 5.2 - Assistant Referee}
 \label{sec:assistant_referee}
 
-\textit{The following paragraph depends on future safety decisions, specifically regarding whether assistant referees will be allowed to handle the robots, and in which circumstances. Such decisions may also depend on the division.}
+The assistant referee assists the head referee with offenses and other events when they have a clearer view. For example, they indicate when the ball has completely crossed over the line of the field, and which team is awarded the resulting goal or free kick. They can also point out rule violations that occurred outside of the head referee's view.
 
-The assistant referees handle the \improvement{Potentially add: (unless otherwise specified by division rules)} robots and the ball. They take the robots out when they are penalized, and they put the robots in again. If a team requests to pick up a robot, an assistant referee will pick it up and give it to one of the team members once the head referee approves. An assistant referee will also put the robot back on the field. An assistant referee will also replace the ball when it goes off the field or becomes stuck between a players feet. At the discretion of the head referee, more tasks can be delegated to the assistants (Section 5.4).
+The assistant referee is also tasked with placing the ball for a free kick after it goes out of the field.
 
-Assistant referees should only enter the field to execute a decision made by the main referee. They should not prevent robots from falling during the game.
-
-A game has at least two assistant referees. If agreed upon by the referee teams or under certain circumstances, additional assistants may be present, up to a total maximum of four. See \autoref{sec:referee_duty}.
-
-\subsubsection{The Stationary Assistant}
-
-\textit{This only makes sense to have as an explicit rule if the indirect kick rule and/or the referee gestures from SPL-2025 are used.}
+Note that only calls made by the head referee are valid. Still, they should take the assistant referee's input into account, especially when the assistant was in a better position to observe the event.
 
 \subsection{Law 5.3 - GameController Operator}
 \label{sec:gamecontroller_operator}
@@ -77,7 +71,7 @@ The operator of the GameController is a referee who sits at a PC in the technica
 
 They will signal any change in the game state or penalties to the robots via the wireless as they are announced by the head referee. Note that for both kick-offs and goals, the moment of whistling is determining, not the verbal announcement of the head referee. They should repeat the call of the head referee as they do so, to confirm it was heard correctly.
 
-The operator will also inform the assistant referees when a timed penalty is over and a robot has to be placed back on the field. \improvement{If the penalty procedure would benefit from an advance warning about 10 seconds before the end of the penalty, it can be mentioned here.} They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}.
+The operator will also inform the robot handlers when a timed penalty is over and a robot has to be placed back on the field. \improvement{If the penalty procedure would benefit from an advance warning about 10 seconds before the end of the penalty, it can be mentioned here.} They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}.
 
 They are also responsible for keeping the time of each half. They should count aloud the remaining seconds in a half once the time remaining is \qty{5}{\second} or less.
 
@@ -108,29 +102,29 @@ The team captain is the only person allowed to communicate with the referees. Th
 
 \subsection{Law 5.7 - Robot Handlers}
 
-The robot handlers are team officials. They are the only people allowed to touch robots of their own teams (except for those that are picked up).
-
-The division rules specify whether robot handlers are allowed, and if so, how many. In divisions that do not allow handlers, the assistant referees take their place, handling both teams' robots.
+The robot handlers are team officials. They are the only people allowed to touch robots of their own teams (except for those that are picked up). Each team must provide one or two handlers.
 
 During the game, the robot handlers stay in a designated area and must receive permission from the head referee before entering the field.
 
-The robot handlers are tasked with removing their robots from the field when they are penalized, picked up, or otherwise removed from play. They must do so with minimum interference with the game.
+The robot handlers are tasked with removing their robots from the field when they are penalized, picked up, or otherwise removed from play. They must do so as swiftly as possible when instructed by the head referee, and with minimum interference with the game.
+
+\improvement{Put either here or in forbidden actions: refusing to follow head ref's instructions is considered unsporting conduct}
 
 When play is stopped, the robot handlers inform the head referee when their robots are ready to resume.
+
+Robot handlers should only enter the field to execute a decision made by the head referee. They should not prevent robots from falling during an official game.
 
 A robot handler may not touch a robot from a different team.
 
 \subsection{Law 5.8 - Humans allowed on the field}
 
-During the game, starting at the XYZ (Standby? Ready?) state, only the following people are allowed on the carpeted area (i.e. on the field and the surrounding border area):
+During the game, starting at the Ready state, only the following people are allowed on the carpeted area (i.e. on the field and the surrounding border area):
 
 \begin{itemize}
     \item The referees;
-    \item The robot handlers, in divisions where they are allowed;
+    \item The robot handlers;
     \item And no one else.
 \end{itemize}
-
-Division-specific rules may overrule this general law.
 
 In addition, only the team captains and at most two more people per team are allowed next to the \improvement{The exact name of this area depends on how the tables are laid out} GameController tables. The remaining humans locate themselves around the other sides of the field if they want to watch the match. This allows the referees easier communication with the team and the GameController operator gets less disturbed.
 
@@ -142,30 +136,7 @@ In addition, only the team captains and at most two more people per team are all
 \subsection{Law 6.1 - Pre-game Referee Meeting and Task Delegation}
 \label{sec:referee_delegation}
 
-At least \qty{15}{\minute} before the start of the game, the people who are going to serve as referees meet up to discuss the upcoming game. At least, they must assign among themselves the roles of head referee and GameController operator, with the remaining people acting as assistant referees.
-
-The head referee should also communicate whether they are going to delegate any duties to the assistants. Other topics that ensure a smooth cooperation among the referees can also be discussed.
-
-The head referee should talk to the assistants to determine what tasks or lesser decisions, if any, they wish to delegate to them to ensure that the game is arbitrated as smoothly as possible. This is left to the discretion of the head referee, based on their expertise in the role and their ability to focus on multiple events happening in the game at the same time and apply the corresponding rules.
-
-The head referee must clearly communicate what tasks are delegated to which person, so that everyone understands their duties during the game.
-
-If no agreement can be found, the default is that the responsibility for most calls and decisions falls upon the head referee, as determined by the rules.
-
-Common examples of tasks that can be delegated are:
-
-\begin{itemize}
-    \item Indicating when the ball leaves the field
-    \item Determining which team is to be given a free kick when the ball goes out of the field (Section ???) and communicating this to the head referee
-    \item Indicating violations requiring a penalty, especially if they happened out of the view of the head referee
-    \item \textit{More examples should be added depending on how the rules are shaped up}
-\end{itemize}
-
-Note that the final decision is still made by the head referee.
-
-The above list is not prescriptive: the head referee can always choose to delegate zero, one, some, or all of these tasks. It is also not exhaustive: through discussion among the head referee, the assistants, and the GameController operator, other tasks not listed here may be identified and delegated.
-
-Care should be taken to not overburden any one person and not to blur the roles of head and assistant referees. Conflicts in the authority of the referees should be avoided, but if any do occur, the head referee's decision is final.
+\textit{This section is being removed, as the presence of the robot handlers makes the tasks that were here the assistants' main duty.}
 
 \subsection{Law 6.2 - Pre-game Team Meeting}
 \info{Law 7.x}
