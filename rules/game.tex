@@ -208,6 +208,22 @@ When competition rules require there to be a winning team after a match or home-
 \item kicks from the penalty mark
 \end{itemize}
 
+\subsection{Mercy Rule}
+\label{sec:mercy_rule}
+
+A game will conclude once the game score shows a goal difference of 10. Ending the game is mandatory once a goal difference of 10 is reached.
+
+\subsection{Ball Stop Rule}
+\label{sec:ball_stop_rule}
+
+If the time for a half ends while the ball is still in motion, the half is extended until any of the following events happens:
+\begin{itemize}
+  \item The ball comes to a complete stop, or
+  \item The ball leaves the field of play. If this causes a valid goal to be scored, the goal is counted.
+\end{itemize}
+
+This extension should last a few seconds at most.
+
 \section{Law 11 – Offsides}
 
 Offsides are not used in the RoboCup Humanoid Soccer League.
@@ -568,11 +584,6 @@ If a team was going to have kick-off at the time the referee timeout was called 
 
 The head referee may decide to add time to the clock if a substantial delay (such as network issues) causes excessive game time to be lost. The decision to add time to the clock should be made immediately after the incident. The GameController operator should execute this addition of time using the GameController interface.
 
-\section{Mercy Rule}
-\label{sec:mercy_rule}
-
-A game will conclude once the game score shows a goal difference of 10. Ending the game is mandatory once a goal difference of 10 is reached.
-
 \section{Drop Ball}
 \label{sec:drop_ball}
 
@@ -581,15 +592,6 @@ In the event that play needs to resume after a stoppage in which neither team ha
 A drop ball is conducted like a kick-off variant. As in an ordinary kick-off, it is preceded by a \texttt{ready} phase to allow the robots to reach their positions and a \texttt{set} phase where the referee places the ball in the middle of the field. The main difference is that neither team is given kick-off, and no team is allowed in the center circle until the \texttt{playing} state, as there is no team designated to take the kick-off. The head referee signals the start of play by blowing the whistle, and with the transition into \texttt{playing} the ball is immediately in play.
 
 The head referee calls ``Drop Ball'' before the \texttt{ready} phase begins.
-
-\section{Ball Stop Rule}
-\label{sec:ball_stop_rule}
-
-If a game half were to extend longer than the allotted time due to an ongoing attack situation by a team, the half should end if:
-\begin{itemize}
-  \item The ball comes to a complete stop, or
-  \item The ball leaves the field of play with no immediate continuation of play by other robots.
-\end{itemize}
 
 \section{Penalty Kick Shoot-Out}
 \label{sec:penalty_shoot_out}
