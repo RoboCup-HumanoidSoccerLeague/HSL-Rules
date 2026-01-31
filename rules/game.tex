@@ -1,9 +1,49 @@
 % !TeX root = ../Rules.tex
 % !TeX spellcheck = en_US
-\section{Game Process}
-\label{sec:game}
 
-Law 7 and the following ones.
+\section{Robot States}
+\label{sec:robot_states}
+
+Throughout a match, robots transition through several defined states controlled by the GameController. Robots must respond appropriately to each state transition.
+
+\subsection{Initial}
+\label{sec:state_initial}
+
+The \texttt{initial} state is active before the game begins. Robots should be placed in their starting positions by robot handlers. Robots are permitted to move their heads and perform calibration routines but must not locomote (move their legs or walk).
+
+\subsection{Ready}
+\label{sec:state_ready}
+
+The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off or other set plays. Robots must reach legal positions before the \texttt{set} state begins.
+
+\subsection{Set}
+\label{sec:state_set}
+
+The \texttt{set} state indicates that robots must be stationary in their positions. No locomotion is permitted during this state. Movement of the robot's head is allowed. Any robot that moves its legs or locomotes during the \texttt{set} state will be penalized for Forbidden Motion (\cf~\cref{sec:motion_in_set}).
+
+The head referee signals the transition from \texttt{set} to \texttt{playing} by blowing the whistle. The whistle is sounded only for kick-off and drop ball situations. After the whistle, the GameController sends the \texttt{playing} signal with a delay of \qty{\ReadyDelayTime}{\second} to encourage teams to implement whistle detection.
+
+\subsection{Playing}
+\label{sec:state_playing}
+
+The \texttt{playing} state is the main game state where robots actively participate in the match. All normal game rules apply during this state.
+
+\subsection{Penalized}
+\label{sec:state_penalized}
+
+A robot in the \texttt{penalized} state has been removed from play due to an infringement. The robot must remain stationary outside the field until its penalty time expires. After the penalty expires, the robot autonomously re-enters the field from the designated re-entry point (\cf~\cref{sec:removal_penalty}).
+
+\subsection{Finished}
+\label{sec:state_finished}
+
+The \texttt{finished} state indicates the end of a game half or the match. Robots should cease all game-related activity.
+
+\subsection{Emergency Stop}
+\label{sec:state_emergency_stop}
+
+The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted. Robots must respond to this signal immediately.
+
+The head referee signals an emergency stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the emergency stop signal. Play resumes when the referee determines it is safe to continue.
 
 \section{Law 7 – The Duration of the Match}
 

@@ -45,7 +45,7 @@ The head referee can request any robot be stopped if it becomes a threat to the 
 
 The head referee ensures that no unauthorised persons enter the field of play.
 
-The head referee should avoid handling the ball (except for placing a ball for kick-off), and avoid handling the robots. Their duty is to monitor and adjudicate the game. The head referee should only handle robots and the ball if absolutely necessary to expedite gameplay or removal of penalized robots, where the assistant referees are otherwise occupied or too far away, and only if it doesn't compromise their own safety.
+The head referee should avoid handling the ball (except for placing a ball for kick-off), and avoid handling the robots. Their duty is to monitor and adjudicate the game. The head referee should only handle robots and the ball if absolutely necessary to expedite gameplay, where the robot handlers are otherwise occupied or too far away, and only if it doesn't compromise their own safety.
 
 The head referee may decide at any point before or during a game to relocate any objects around the field, or direct persons to another position around the field.
 
@@ -56,9 +56,11 @@ The head referee may decide at any point before or during a game to relocate any
 
 \textit{The following paragraph depends on future safety decisions, specifically regarding whether assistant referees will be allowed to handle the robots, and in which circumstances. Such decisions may also depend on the division.}
 
-The assistant referees handle the \improvement{Potentially add: (unless otherwise specified by division rules)} robots and the ball. They take the robots out when they are penalized, and they put the robots in again. If a team requests to pick up a robot, an assistant referee will pick it up and give it to one of the team members once the head referee approves. An assistant referee will also put the robot back on the field. An assistant referee will also replace the ball when it goes off the field or becomes stuck between a players feet. At the discretion of the head referee, more tasks can be delegated to the assistants (Section 5.4).
+The assistant referees assist the head referee in officiating the match. They help monitor play, track the ball going out of bounds, and communicate with the head referee about incidents they observe.
 
-Assistant referees should only enter the field to execute a decision made by the main referee. They should not prevent robots from falling during the game.
+Assistant referees may replace the ball when it goes off the field or becomes stuck between a player's feet. Robot handling is performed by the designated robot handlers (\cf~\cref{sec:robot_handlers}), not by assistant referees, unless otherwise discussed with teams beforehand.
+
+Assistant referees should only enter the field to execute a decision made by the head referee. They should not prevent robots from falling during the game.
 
 A game has at least two assistant referees. If agreed upon by the referee teams or under certain circumstances, additional assistants may be present, up to a total maximum of four. See \autoref{sec:referee_duty}.
 
@@ -73,7 +75,7 @@ The operator of the GameController sits at a PC in the technical area. As with t
 
 They will signal any change in the game state or penalties to the robots via the wireless as they are announced by the head referee. Note that for both kick-offs and goals, the moment of whistling is determining, not the verbal announcement of the head referee. They should repeat the call of the head referee as they do so, to confirm it was heard correctly.
 
-The operator will also inform the assistant referees when a timed penalty is over and a robot has to be placed back on the field. \improvement{If the penalty procedure would benefit from an advance warning about 10 seconds before the end of the penalty, it can be mentioned here.} They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}.
+The operator will also inform the robot handlers when a timed penalty is over and a robot has to be placed back on the field. They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}.
 
 They are also responsible for keeping the time of each half. They should count aloud the remaining seconds in a half once the time remaining is \qty{5}{\second} or less.
 
@@ -110,10 +112,9 @@ The team captain represents the team during the pre-game meeting.
 The team captain is the only person allowed to communicate with the referees. This includes making requests for pickup (Section ???).
 
 \subsection{Law 6.2 - Robot Handlers}
+\label{sec:robot_handlers}
 
-The handlers are the only people allowed to touch robots of their own teams (except for those that are picked up).
-
-The division rules specify whether robot handlers are allowed, and if so, how many. In divisions that do not allow handlers, the assistant referees take their place, handling both teams' robots.
+The robot handlers are the only people allowed to touch robots of their own teams (except for those that are picked up by referees in exceptional, or pre-discussed, circumstances).
 
 During the game, the robot handlers stay in a designated area and must receive permission from the head referee before entering the field.
 
@@ -173,7 +174,7 @@ During all phases of the match teams and referees are communicating with respect
 \subsection{Law 7.4 - Referees during the Match}
 \label{sec:referee_during_match}
 
-The head referee and the assistant referee usually oversee the game from outside the field. They may \improvement{Pending safety for bigger divisions} enter the field in particular situations, e. g., to remove a robot when applying a penalty. They should avoid interfering with the robots as much as possible.
+The head referee and the assistant referees usually oversee the game from outside the field. Robot handlers enter the field to remove or place robots when penalties are applied (\cf~\cref{sec:robot_handlers}). Referees should avoid interfering with the robots as much as possible.
 
 \subsection{Law 7.5 - Referees after the match}
 

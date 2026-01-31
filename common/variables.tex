@@ -10,8 +10,43 @@
 
 % Free Kick variables
 \newcommand{\FreeKickTime}{30} % seconds to complete a free kick
-\newcommand{\FreeKickRadiusSmall}{0.75} % metres
-\newcommand{\FreeKickRadiusMedium}{1.0} % metres - TODO: confirm values
-\newcommand{\FreeKickRadiusLarge}{1.5} % metres
-% Helper macro to display all values
-\newcommand{\FreeKickRadius}{\qty{\FreeKickRadiusSmall}{\metre} (Small), \qty{\FreeKickRadiusMedium}{\metre} (Medium), \qty{\FreeKickRadiusLarge}{\metre} (Large)}
+\newcommand{\KickOffBallFreeTime}{10} % seconds after which ball is free during kick-off
+% Free kick avoidance radius is defined as the center circle radius for each field size
+% This means the same exclusion zone as during kick-off applies to all free kicks
+% See field dimensions table in environment.tex for specific values
+% \newcommand{\FreeKickRadius}{the center circle radius (see Table~\ref{tab:field_dim})}
+
+% Penalty and timing variables
+\newcommand{\StandardPenaltyTime}{30} % seconds
+\newcommand{\StandardPenaltyIncrease}{15} % seconds added for each subsequent penalty
+\newcommand{\ReadyDelayTime}{10} % seconds delay after whistle before GameController playing signal
+
+% Game Stuck variables
+\newcommand{\LocalGameStuckTime}{10} % seconds ball hasn't moved
+\newcommand{\GlobalGameStuckTime}{30} % seconds no robot within proximity of ball
+\newcommand{\GameStuckProximity}{1} % metres
+
+% Penalty Kick variables
+\newcommand{\PenaltyKickTime}{60} % seconds for penalty kick attempt
+\newcommand{\PenaltyShootoutKickTime}{60} % seconds for shootout penalty kick
+
+% Robot activity thresholds
+\newcommand{\FallenRobotGetUpTime}{20} % seconds to start get-up
+\newcommand{\FallenRobotGetUpAttempts}{3} % maximum get-up attempts
+\newcommand{\FallenRobotGetUpAttemptsDisturbed}{4} % attempts if externally disturbed
+\newcommand{\FallenRobotPenaltyTime}{45} % seconds removal penalty
+\newcommand{\InactiveRobotTime}{10} % seconds before inactive penalty
+
+% Ball holding variables
+\newcommand{\BallHoldingTime}{5} % seconds for field players
+\newcommand{\BallHoldingTimeGoalkeeper}{10} % seconds for goalkeeper in own penalty area
+
+% Timeout variables
+\newcommand{\TeamTimeoutDuration}{5} % minutes maximum
+\newcommand{\TeamTimeoutReadyTime}{2} % minutes for other team to be ready
+
+% Communication limits
+\newcommand{\UDPPacketLimit}{12000} % packets per half
+\newcommand{\UDPPacketSize}{512} % bytes
+\newcommand{\UDPDebugPacketRate}{1} % packet per second per robot
+\newcommand{\GameControllerPacketRate}{1} % packets per second

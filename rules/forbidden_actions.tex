@@ -3,11 +3,16 @@
 \section{Forbidden Actions and Penalties}
 \label{sec:forbidden_actions}
 
+The following actions are forbidden. In general, when a penalty applies, the robot shall be removed, not the ball.
+
 \subsection{Penalty Procedure}
 \label{sec:penalty_procedure}
 
-If an infringement is detected, the head referee clearly announces the offense and the assistant referee sends the corresponding signal through the game controller. 
-If a robot commits an offense in the vicinity of the ball (0.75 m for small size, 1.5 m for middle and large size)\info{From humanoid league, to be discussed}, the game is interrupted and the offending player is removed according to the standard removal penalty. The offending player may additionally be issued a yellow or red card. After the offending robot is removed, the opposing team restarts play with a free kick. If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
+When a robot commits an infraction, the head referee shall call out the \textbf{infraction} committed, the \textbf{team color} of the robot, and the \textbf{jersey number} of the robot. The penalty for the infraction will be applied immediately by an assistant referee. The robot handlers should perform the actual movement of the robots for the penalty so that the head referee can continue focusing on the game. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
+
+If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is \FreeKickRadius{}), the game is interrupted and the offending player is removed according to the standard removal penalty. After the offending robot is removed, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
+
+For penalties that are timed, the penalty time is considered to be over at the end of each half.
 
 \subsection{Standard Removal Penalty}
 \label{sec:removal_penalty}
