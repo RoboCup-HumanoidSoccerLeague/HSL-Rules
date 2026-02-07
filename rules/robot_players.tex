@@ -1,9 +1,9 @@
 % !TeX root = ../Rules.tex
 % !TeX spellcheck = en_US
-\section{Teams and Players}
+\subsection{Law 3 -- Teams and Players}
 \label{sec:teams_and_players}
 
-\subsection{Divisions and Configurations}
+subsubsection{Divisions and Configurations}
 \label{sec:divisions}
 
 A team belongs to one division, which is one of Small, Middle and Large. Main competition matches only take place between members in the same division.
@@ -16,7 +16,7 @@ Both the division and the configuration of a team are defined before the competi
 
 \improvement{Maybe move some definitions from the beginning of Comp. Structure over here?}
 
-\subsection{Number of Players}
+\subsubsection{Number of Players}
 \label{sec:number_of_players}
 A match is played by two teams, each with a \textbf{maximum} number of players determined by the division the game takes place in and the configuration level of the playing teams, as illustrated by the following table:
 
@@ -45,12 +45,12 @@ When playing at full strength, a team must have a \emph{goalkeeper} on the field
 
 Each of the players has a unique jersey number from the set $\{1, 2, 3, \ldots, 20\}$. \improvement{Will we have flexible numbers on the game controller? Otherwise, the numbers should be limited to the game controller numbers.}
 
-\subsection{Number of Substitutes}
+\subsubsection{Number of Substitutes}
 \label{sec:number_of_substitutes}
 In addition, each team may prepare \emph{substitute players} \improvement{Number of allowed substitutes, needs clarity - limited, unlimited?} outside the field.
 A \emph{substitute player} may be substituted in to become a \emph{field player} or \emph{goalkeeper}.
 
-\subsection{Substitution Procedure}
+\subsubsection{Substitution Procedure}
 \label{sec:substitution_procedure}
 
 In all matches, the names and jersey numbers of the substitutes must be given to the referee prior to the start of the match. Any substitute whose name is not given to the referee at this time may not take part in the match.
@@ -67,7 +67,7 @@ To replace a player with a substitute, the following conditions must be observed
   \item All substitutes are subject to the authority and jurisdiction of the referee, whether called upon to play or not.
 \end{itemize}
 
-\subsubsection{Changing the Goalkeeper}
+\paragraph{Changing the Goalkeeper}
 
 Any of the other players may change places with the goalkeeper, provided that:
 \begin{itemize}
@@ -77,10 +77,10 @@ Any of the other players may change places with the goalkeeper, provided that:
 
 
 
-\section{Robot Players}
+\subsubsection{Robot Players}
 \label{sec:robot_players}
 
-\subsection{The Design of the Robots}
+\paragraph{The Design of the Robots}
 \label{sec:design_of_robots}
 Robots participating in the \leaguenameabbr must have a human-like body shape with a torso, head, two arms, and two legs, as well as human-like symmetry and proportions regarding sizes of the body parts and weight distribution. \info{Definition of humanoid robot from Kajima et al, 2005}
 
@@ -93,7 +93,7 @@ The design of the robot's arms, including their length and placement, shall perm
 Arm configurations that enable behaviors significantly different from those of humans are not permitted. In particular, 
 robots must not use their arms to provide continuous support for locomotion, such as walking on arms or using arms as additional legs.
 
-\subsubsection{Size Restrictions}
+\paragraph{Size Restrictions}
 
 All robots participating in the \leaguenameabbr must comply with the following restrictions:\improvement{to be discussed - including height restrictions}
 
@@ -118,7 +118,7 @@ whichever is lower.
 
 The height of the head $H_{head}$, including the neck, satisfies $0.1 \cdot H_{top} \leq H_{head} \leq 0.3 \cdot H_{top}$. $H_{head}$ is defined as the vertical distance from the axis of the first arm joint at the shoulder to the top of the head.
 
-\subsubsection{Weight Restrictions}
+\paragraph{Weight Restrictions}
 
 The robot's Body-Mass Index (BMI) is defined as follows:
 $\mathrm{BMI} = \frac{M}{{H_{top}}^2}$,
@@ -134,7 +134,7 @@ The following weight restrictions apply for each division:
 \item Large:  Weight ${\leq}$ 80 kilograms.
 \end{itemize}
 
-\subsubsection{Safety}\info{From the humanoid league rules, to be discussed}
+\paragraph{Safety}\info{From the humanoid league rules, to be discussed}
 
 A player must not use equipment or wear anything that is dangerous to himself or another player.
 
@@ -154,7 +154,7 @@ Robot handlers must not use the remote emergency button to intentionally incapac
 
 \label{sec:design_of_robots}
 
-\subsection{Approved Standard Platforms}
+\subsubsection{Approved Standard Platforms}
 The following commercially available robotic platforms are approved for participation in the \leaguenameabbr. 
 
 The following are the list of pre-approved standard platforms that require no modifications:
@@ -178,7 +178,7 @@ Unitiree  & G1++, H1++ \\
 
 Additional humanoid robot platforms can be approved upon request. Please send your request for approval to \url{rc-spl-tc@lists.robocup.org}. \improvement{Change to new mailing list when ready}
 
-\subsection{Hardware}
+\subsubsection{Hardware}
 \label{sec:hardware}
 
 \improvement{to be discussed, divisions, list of permitted robots, self-built robots, etc.}
@@ -189,7 +189,7 @@ Modifications or additions to the robot hardware are allowed.\improvement{to be 
 No additional hardware is permitted, including off-board sensing or processing systems.
 Additional sensors besides those originally installed on the robots are likewise not allowed.
 
-\subsection{Sensors}
+\subsubsection{Sensors}
 \label{sec:sensors}
 
 Teams participating in the \leaguenameabbr competitions are encouraged to equip their robots with sensors that have an equivalent in human senses. 
@@ -208,11 +208,11 @@ The sensors are evaluated along the following two general guidelines:
 
 Generally, \emph{passive sensors} are preferred to \emph{active} sensors that actively emit signals.
 
-\subsubsection{Intrinsic Perception and Proprioception}
+\paragraph{Intrinsic Perception and Proprioception}
 Any sensing capability aiming at measuring the internal state of the robot is permitted. 
 This includes temperature, current consumed by the motors, joint positions, etc.
 
-\subsubsection{Visual Perception}
+\paragraph{Visual Perception}
 The visual sensors, e.g., cameras of the robot shall be arranged such that the combined visual field is \emph{contiguous} and limited to dimensions similar to a human, which corresponds to limitations in the opening angle: horizontal $\leq$ \SI{180}{\degree} and vertical $\leq$ \SI{140}{\degree}.
 
 % Placement
@@ -226,7 +226,7 @@ The cameras are restricted to visual information in the range of the light visib
 The cameras can provide dense visual information, such as a rasterized image, or sparse information, such as visual events (event cameras).
 
 
-\subsubsection{Visual (dense) Depth Perception}
+\paragraph{Visual (dense) Depth Perception}
 
 Passive integrated devices that provide dense depth information, such as stereo cameras, are permitted and encouraged.
 
@@ -234,7 +234,7 @@ Active integrated devices that provide depth information, such as cameras with a
 Their use might be prohibited in the future.
 
 
-\subsubsection{Orientation}
+\paragraph{Orientation}
 
 Sensors providing information regarding the robot's orientation in space with relation to the ground are permitted. This includes sensors such as gyrometer, accelerometer, as well as integrated inertial measurement units (IMU), as long as they provide only relative measurements and no measurements of the absolute direction, such as a compass.
 
@@ -246,17 +246,17 @@ The sensors can be placed in the head and/or in the torso of the robot.
 %The number of the orientation sensors is limited to 4.
 
 
-\subsubsection{Sound Perception}
+\paragraph{Sound Perception}
 The sound sensors, e.g., microphones, shall be placed in the head of the robot.
 The number of microphones is limited to \todo{To be defined. Suggested: 8}.
 
-\subsubsection{Haptic Sensing}
+\paragraph{Haptic Sensing}
 Any passive sensor allowing haptic measurement is permitted, such as force sensors, touch sensors, buttons/bumpers, capacitative touch sensors.
 
 Haptic sensors can be placed at any location of the robot's body and are not limited in number.
 
 
-\subsubsection{Distance Sensing}
+\paragraph{Distance Sensing}
 
 Active and passive sensors for one-dimensional distance sensing with a limited range are permitted if their use is limited to compensate for shortcomings in the spatial awareness of the robot in the close proximity.
 
@@ -265,7 +265,7 @@ The number of such distance sensors is limited to 4.
 
 The use of distance sensors is discouraged and might be prohibited in the future.
 
-\subsubsection{Summary}
+\paragraph{Summary}
 The following table briefly summarizes pre-approved sensors.
 The use of listed sensors that are considered human-like is encouraged.
 The use of listed sensors that are not considered human-like is accepted, but discouraged and might be prohibited or limited in the future.
@@ -316,7 +316,7 @@ Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
 
 \unsure{Clarity needed for manufacturers that do not provide IMU details, just access to data}
 
-\subsection{Team Markers}
+\subsubsection{Team Markers}
 \label{sec:team_markers}
 
 Robot bodies must be colored mostly with a neutral color, such as black, gray, white, or silver, and be non-reflective.
@@ -345,14 +345,14 @@ Jersey designs must be submitted for approval prior to the competition.
 \info{to be discussed}
 
 
-\subsection{Goalkeeper}
+\subsubsection{Goalkeeper}
 \label{sec:goalkeeper}
 
 The \emph{goalkeeper} may use any of the allowed jersey numbers.
 The \emph{goalkeeper} must wear a jersey with a primary color different from the primary colors used by the \emph{field players} of both teams.
 
 
-\subsection{Communication}
+\subsubsection{Communication}
 
 Robots participating in the \leaguenameabbr competitions must act autonomously during a game. 
 
@@ -360,7 +360,7 @@ Any use external power supply, teleoperation, remote control, remote processing,
 
 Communication is only allowed among robots on the field, \improvement{between the robots and the referees,} and between the robots and the GameController.
 
-\subsubsection{Acoustic and Visual Communication}
+\paragraph{Acoustic and Visual Communication}
 \label{sec:acoustic}
 
 %In general, there are no restrictions on communication between robots in play on the field using visual signaling (\eg, gestures) or the robot's built-in microphones, speakers, and infrared transceivers.
@@ -370,7 +370,7 @@ The robots are permitted to communicate through visual signaling (\eg, gestures)
 Communication that causes excessive discomfort to an audience, affects the safety of an audience, or violates normal playing rules is not permitted.
 
 
-\subsubsection{Wireless Communications}
+\paragraph{Wireless Communications}
 \label{sec:wireless}
 
 The robots are permitted to communicate through WiFi using builtin wireless adapters. 
@@ -432,3 +432,5 @@ Robots are permitted to send status update packets to the GameController.
 
 Team specific debug information may be sent to an external computer owned by the team. 
 A robot may send debug information at most once every second in a single UDP packet with the size of at most 64kB.
+
+\subsection{Law 4 -- The Players' Equipment (missing!)}
