@@ -4,7 +4,6 @@
 \input{common/variables}
 \input{common/dates}
 
-\setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
 
 \usepackage{times,fullpage,xspace,fancyhdr,url,color}
@@ -61,7 +60,11 @@
 
 \usepackage{tikz-3dplot}
 
-
+\usepackage{tocloft}
+\cftsetindents{section}{0em}{2em}
+\cftsetindents{subsection}{0em}{2em}
+\renewcommand\cfttoctitlefont{\hfill\Large\bfseries}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
 
 \sloppy
 \newcommand{\ie}{\mbox{i.\,e.}\xspace}
@@ -84,7 +87,6 @@
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{12pt plus 6pt minus 3 pt}
-\setcounter{tocdepth}{1}
 \widowpenalty=10000
 \clubpenalty=10000
 
@@ -120,8 +122,8 @@
 \end{center}
 
 \newpage
+\setcounter{tocdepth}{2}
 \tableofcontents
-%\setcounter{tocdepth}{3}
 
 \thispagestyle{fancy}
 
@@ -152,7 +154,7 @@
 
 \newpage
 
-%\appendix
+\appendix
 % THIS CHAPTER WAS REMOVED BY REINALDO AS IT CONTAINS THE SAME INFORMATION AS CHAPTER 3
 %\include{rules/app_competition_rules}
 %\newpage
@@ -160,6 +162,6 @@
 %\include{rules/app_venue_setup}
 %\newpage
 
-%\include{rules/app_technical_drawings}
+\include{rules/app_technical_drawings}
 
 \end{document}
