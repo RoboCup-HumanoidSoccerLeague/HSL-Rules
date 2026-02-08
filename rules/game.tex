@@ -19,9 +19,11 @@ The \texttt{ready} state begins when signaled by the GameController. During this
 \subsection{Set}
 \label{sec:state_set}
 
-The \texttt{set} state indicates that robots must be stationary in their positions. No locomotion is permitted during this state. Movement of the robot's head is allowed. Any robot that moves its legs or locomotes during the \texttt{set} state will be penalized for Forbidden Motion (\cf~\cref{sec:motion_in_set}).
+The \texttt{set} state indicates that robots must be stationary in their positions. Robots that could not reach legal positions by the end of \texttt{ready} are penalized for Illegal Position during this state.
 
-The head referee signals the transition from \texttt{set} to \texttt{playing} by blowing the whistle. The whistle is sounded only for kick-off and drop ball situations. After the whistle, the GameController sends the \texttt{playing} signal with a delay of \qty{\ReadyDelayTime}{\second} to encourage teams to implement whistle detection.
+No locomotion is permitted during this state, except for the minimum necessary to get up if the robot has fallen. Movement of the robot's head is also allowed. Any robot that moves its legs or locomotes during the \texttt{set} state will be penalized for Forbidden Motion (\cf~\cref{sec:motion_in_set}).
+
+The head referee signals the transition from \texttt{set} to \texttt{playing} by blowing the whistle. For kick-off and drop ball situations, the GameController sends the \texttt{playing} signal with a delay of \qty{\ReadyDelayTime}{\second} after the whistle, to encourage teams to implement whistle detection.
 
 \subsection{Playing}
 \label{sec:state_playing}
@@ -41,9 +43,21 @@ The \texttt{finished} state indicates the end of a game half or the match. Robot
 \subsection{Emergency Stop}
 \label{sec:state_emergency_stop}
 
-The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted. Robots must respond to this signal immediately.
+The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
 
-The head referee signals an emergency stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the emergency stop signal. Play resumes when the referee determines it is safe to continue.
+The head referee signals an emergency stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the emergency stop signal.
+
+The game clock, secondary timers, and penalty timers are paused during an emergency stop. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
+
+During an emergency stop, robots remain in place and must not be moved, except for untangling. If the situation requires the robots to be removed from the field, a different call must be made, such as a referee timeout.
+
+Play resumes when the head referee determines it is safe to continue. The procedure for resuming the game from an emergency stop is as follows:
+\begin{itemize}
+  \item The ball is placed where it was at the time of the stop (if it was in play)
+  \item All humans leave the field
+  \item The head referee signals play to continue
+  \item The game resumes in the same state as it was when it was stopped.
+\end{itemize}
 
 \section{Law 7 – The Duration of the Match}
 \label{sec:duration_of_match}
@@ -56,7 +70,7 @@ Each game period has a duration of 10 minutes.
 
 \subsection{Half-Time Break}
 
-The half-time break must be at least 10 minutes, unless otherwise agreed by the teams. When multiple games are played on adjacent fields, the half-time break can extend to allow Match Officials to move between fields, and any other time taken for such logistical considerations.
+The half-time break must be at least 10 minutes, unless otherwise agreed by the teams. When multiple games are played on adjacent fields, the half-time break can extend to allow the referees to move between fields, and any other time taken for such logistical considerations.
 
 During the half-time break both teams may perform any modifications on the hardware or software of the robots, change robots, or do anything else that can be done within the time allotted.
 
@@ -85,10 +99,13 @@ Allowance is made in either period for all time lost through:
 \item assessment of injury to players
 \item removal of injured players from the field of play for treatment
 \item wasting time
+\item external circumstances (e.g. network issues)
 \item any other cause
 \end{itemize}
 
-The allowance for time lost is at the discretion of the referee.
+The allowance for time lost is at the discretion of the head referee. It is announced during the final minute of each half, and it is always expressed in whole minutes. The GameController operator executes this addition of time using the GameController interface.
+
+In exceptional circumstances, the head referee may decide to add time to the clock immediately after an incident rather than waiting until the final minute of a half.
 
 % Following subsection was edited by Prof. Azer Babaev 
 \section{Law 8 – The Start and Restart of Play}
@@ -792,11 +809,6 @@ The head referee may call a timeout at any time if deemed necessary. A referee t
 Referees may call multiple timeouts during a game if needed. Teams may do anything during these timeouts, but they must be ready to play \textbf{\TeamTimeoutReadyTime{} minutes} after the referee ends a timeout. The referee should end the timeout once the circumstance for which the timeout was called has been resolved. In cases where the circumstance is not resolved within 10 minutes, the Technical Committee should be consulted regarding when or if play should continue.
 
 If a team was going to have kick-off at the time the referee timeout was called (e.g., during most stoppages of play), that team shall kick-off when the game resumes. Otherwise, the drop ball rule (\cf~\cref{sec:drop_ball}) applies instead.
-
-\section{Extra Time}
-\label{sec:extra_time}
-
-The head referee may decide to add time to the clock if a substantial delay (such as network issues) causes excessive game time to be lost. The decision to add time to the clock should be made immediately after the incident. The GameController operator should execute this addition of time using the GameController interface.
 
 \section{Drop Ball}
 \label{sec:drop_ball}
