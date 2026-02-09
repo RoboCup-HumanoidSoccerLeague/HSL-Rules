@@ -164,7 +164,8 @@ Note that measurements are from the outside of the lines as the lines are part o
 \subsubsection{Goals}
 \label{sec:goals}
 A goal must be placed on the center of each goal line. 
-A goal consists of two vertical posts equidistant from the corner flagposts and joined at the top by a horizontal crossbar. 
+A goal consists of two vertical posts equidistant from the corner {\color{red}flagposts} and joined at the top by a horizontal crossbar. 
+\improvement{This references to a "flag post". We do not have flagposts in HSL. Remove this reference.}
 
 The goalposts and crossbar must be made of wood, metal, or other approved material and must not be dangerous to the players.
 
@@ -198,9 +199,16 @@ Off-the-shelf goals may be used if they satisfy these requirements.
 \subsubsection{Definition of Inside and Outside}
 
 \label{sec:inside_outside}
-An object (such as a robot or the ball) is considered \textit{inside} a region of the field if any part of it overlaps or touches the boundary lines that define that region, or if it is fully contained within the region, in the air or on the ground. It is considered \textit{outside} the region only when no part of it, or its downwards projection, remains within or on the boundary lines of that region. This definition applies to any designated area of the field, except the goal (see Figure~\ref{fig:field_line_names}).
+An object (such as a {\color{red} robot} or the ball) \unsure{TW: are there other objects? if not why mentioned this?} is considered \textit{inside} a region of the field if any part of it overlaps or touches the boundary lines that define that region, or if it is fully contained within the region, in the air or on the ground. It is considered \textit{outside} the region only when no part of it, or its downwards projection, remains within or on the boundary lines of that region. This definition applies to any designated area of the field, except the goal area (See Figure~\ref{fig:field_line_names}).
 
 \textbf{Exception for the goal:} The ball is only considered \textit{inside} the goal (and thus a goal is scored) if, and only if, the entire ball has wholly crossed the goal-side edge of the goal line \emph{between the goal posts and below the crossbar}, \ie{} when no part of the ball remains on or above the goal line, and the entire ball is within the volume enclosed by the goal frame and the net.
+\improvement{TW: This needs to be discussed for robots.}
+
+\improvement{TW: This definition, \textit{for robots} is inconsistent with former-SPL rules. I am unsure about former-HL. Robots are defined as inside/outside an area based on the feet touching (or body touching). The projection of the body has implications for illegal positioning, etc. This also has implications if a robot is "in the air". We haven't seen jumping robots yet.}
+
+\improvement{TW: The terms inside/outside appear to be repeatedly redefined in various places. All should refer back to this section.}
+
+\textbf{Exception for the Goal:} The ball is only considered \textit{inside} the goal (and thus a goal is scored) when the entire ball has wholly crossed the goal-side edge of the goal line, \ie{}, when no part of the ball remains on or above the goal line and the ball is outside the field of play.
 
 \subsubsection{Venue Setup}
 \label{sec:venue_setup}
