@@ -45,6 +45,8 @@ The \texttt{finished} state indicates the end of a game half or the match. Robot
 
 The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
 
+\improvement{Consequences for not complying are to be discussed in the next TC meeting(s)}
+
 The head referee signals an emergency stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the emergency stop signal.
 
 The game clock, secondary timers, and penalty timers are paused during an emergency stop. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
@@ -66,7 +68,7 @@ The match consists of three parts: the first play period (first half), a half-ti
 
 \subsection{Periods of Play}
 
-Each game period has a duration of 10 minutes.
+Each game period has a duration of 10 minutes, starting from the beginning of the Playing state of the initial whistle.
 
 \subsection{Half-Time Break}
 
@@ -79,15 +81,10 @@ The head referee signals the beginning of each half with a single whistle blow.
 The head referee signals the end of the first half with two short whistle blows, and the end of the second half with two short plus one long whistle blow. 
 The head referee should make all whistle sounds from the T-junction of the halfway line.
 
-\subsection{Penalty Kick Extension}
-\label{sec:penalty_kick_extension}
+\subsection{Ready and Set States}
+\label{sec:ready_set_clock}
 
-If a penalty kick has to be taken or retaken, the duration of either half is extended until the penalty kick is completed.
-
-\subsection{Set and Ready States}
-\label{sec:set_ready_clock}
-
-During the Set and Ready states, the game clock should not be stopped in both knock-out and round-robin games.
+In both knock-out and round-robin games, the game clock is not stopped during the Ready and Set states other than the initial kickoff of a period.
 
 \subsection{Allowance for Time Lost}
 \label{sec:allowance_time_lost}
@@ -115,13 +112,18 @@ A game will conclude once the game score shows a goal difference of 10. Ending t
 \subsection{Ball Stop Rule}
 \label{sec:ball_stop_rule}
 
-If the time for a period ends while the ball is still in motion, the period is extended until any of the following events happens:
+If the time for a period would end while the ball is still in motion, the period is extended instead until any of the following events happens:
 \begin{itemize}
   \item The ball comes to a complete stop, or
   \item The ball leaves the field of play. If this causes a valid goal to be scored, the goal is counted.
 \end{itemize}
 
 This extension should last a few seconds at most.
+
+\subsection{Penalty Kick Extension Rule}
+\label{sec:penalty_kick_extension}
+
+If the time for a period would end while a penalty kick is taking place, the period is extended instead until the penalty kick is completed (\cf~\cref{sec:penalty_kick}). Note that this rule applies to any game state as long as the penalty kick substate is active, including the Ready and Set preceding the actual kick.
 
 % Following subsection was edited by Prof. Azer Babaev 
 \section{Law 8 – The Start and Restart of Play}
