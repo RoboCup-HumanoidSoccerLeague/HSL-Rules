@@ -363,7 +363,7 @@ The following actions are forbidden. In general, when a penalty applies, the rob
 When a robot commits an infraction, the head referee shall call out the \textbf{infraction} committed, the \textbf{team color} of the robot, and the \textbf{jersey number} of the robot. The penalty for the infraction will be applied immediately. The robot handlers should perform the actual movement of the robots for the penalty so that the head referee can continue focusing on the game. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
 
 Unless otherwise stated, all infractions result in the removal of the infringing robot from the field of play for a particular amount of time, after which it will be returned to the field of play (see Subsection \ref{sec:removal_penalty}).
-If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size—see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is removed according to the standard removal penalty. After the offending robot is removed, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
+If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size - see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is removed according to the standard removal penalty. After the offending robot is removed, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
 
 For penalties that are timed, the penalty time is considered to be over at the end of each half.
 
@@ -374,7 +374,7 @@ Unless otherwise stated, all infractions result in the removal of the infringing
 
 When the head referee indicates an infraction has been committed that results in the standard removal penalty, the robot handler for that team will remove the robot immediately from the field of play. The robot should be removed in such a way as to minimize the movement of the other robots and the ball. If the ball is inadvertently moved when removing the robot, the ball should be replaced to the position it was in when the robot was removed.
 
-The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up.
+The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up or sitting down.
 
 The initial duration of the standard removal penalty time is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, the penalty time increases by \qty{\StandardPenaltyIncrease}{\second} each time a team commits any infraction. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty.
 
@@ -413,7 +413,7 @@ If an illegal defender kicks an own goal, the goal is scored for the opponent. I
 \paragraph{Motion in Set}
 \label{sec:motion_in_set}
 
-Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are awarded a standard penalty. The head referee will call ``Forbidden Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
+Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are awarded a standard penalty. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
 
 \paragraph{Local Game Stuck Penalty}
 \label{sec:pen_local_game_stuck}
@@ -463,7 +463,7 @@ This rule applies to upright robots only, i.e., robots that are supported by the
 \paragraph{Leaving the Field}
 \label{sec:leaving_the_field}
 
-A robot that intentionally leaves the carpeted playing area will be subject to the standard removal penalty. The head referee will call ``Leaving the Field \textless robot color\textgreater \textless robot number\textgreater''.
+A robot that leaves the carpeted playing area will be subject to the standard removal penalty. The head referee will call ``Leaving the Field \textless robot color\textgreater \textless robot number\textgreater''.
 
 Additionally, a robot will also be subject to the standard removal penalty when:
 \begin{itemize}
@@ -570,7 +570,7 @@ The referee can issue warnings, yellow and red cards against humans or teams at 
 	\item Breaking the game rules to gain an advantage
 \end{itemize}
 
-Cards that are issued against humans or teams must be reported to the Technical Committee immediately after the game. Cards against humans or teams persist between games. A human who receives a red card will be prohibited from entering the field or team area during games for the remainder of the competition. A team that commits serious or repeated violations may be disqualified from the competition. 
+Cards that are issued against humans or teams must be reported to the Organizing Committee immediately after the game. Cards against humans or teams persist between games. A human who receives a red card will be prohibited from entering the field or team area during games for the remainder of the competition. A team that commits serious or repeated violations may be disqualified from the competition. 
 
 \law{13}{Free Kicks}
 \label{sec:free_kick}
