@@ -1,9 +1,9 @@
 % !TeX root = ../Rules.tex
 % !TeX spellcheck = en_US
-\section{Teams and Players}
+\subsection{Law 3 -- Teams and Players}
 \label{sec:teams_and_players}
 
-\subsection{Divisions and Configurations}
+\subsubsection{Divisions and Configurations}
 \label{sec:divisions}
 
 A team belongs to one division, which is one of Small, Middle and Large. Main competition matches only take place between members in the same division.
@@ -12,48 +12,42 @@ Teams in each division can choose to play in two team configurations: Foundation
 
 In the Middle division, starting from the quarter-finals onwards, all matches will be played in the Advanced configuration.
 
-Both the division and the configuration of a team are defined before the competition (precise modality TBD) and cannot change during the competition itself.
+The division and the configuration preference of a team must be submitted before the competition. The division must not change during the competition itself.
+The division must be submitted at the time of team registration. In addition, each team shall submit its preferred configuration prior to the competition, by a deadline specified by the organizers, in order to enable proper field planning.
+A team may request to play in a different configuration during the competition by submitting a request to the organizers. Approval of such a request is at the sole discretion of the organizers.
 
-\improvement{Maybe move some definitions from the beginning of Comp. Structure over here?}
-
-\subsection{Number of Players}
+\subsubsection{Number of Players}
 \label{sec:number_of_players}
 A match is played by two teams, each with a \textbf{maximum} number of players determined by the division the game takes place in and the configuration level of the playing teams, as illustrated by the following table:
 
-\begin{tblr}{
-  width=1.0\linewidth,
-  colspec = {Q[l]Q[l]X[l]},
-  row{1}={fg=black, font=\bfseries}, %, 
-  hline{2} = {solid},
-  hline{3-Y} = {dashed},
-  vline{2,3} = {abovepos = -1, belowpos = -1},
-}
-Division & Foundation team & Advanced teams\\
-%
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+        Division & Foundation teams & Advanced teams\\
+        \hline
 Small & 4 & 7 \\
+        \hline
 Mid   & 3 & 5 \\
+        \hline
 Large & 3 & 5 \\
-\label{tab:number_of_players}
-\end{tblr}
-
-
-
+        \hline
+    \end{tabular}
+    \caption{Number of players}
+    \label{tab:number_of_players}
+\end{table}
 
 At most one player per team on the field may be designated as \emph{goalkeeper}, the others are all \emph{field players}.
+When playing at full strength, a team must have a \emph{goalkeeper} on the field.
 
-When playing at full strength, a team must have a \emph{goalkeeper} on the field. \improvement{Goalie distinguishing feature TBD: Number? Color?}
-
-Each of the players has a unique jersey number from the set $\{1, 2, 3, \ldots, 20\}$. \improvement{Will we have flexible numbers on the game controller? Otherwise, the numbers should be limited to the game controller numbers.}
-
-\subsection{Number of Substitutes}
+\subsubsection{Number of Substitutes}
 \label{sec:number_of_substitutes}
-In addition, each team may prepare \emph{substitute players} \improvement{Number of allowed substitutes, needs clarity - limited, unlimited?} outside the field.
+In addition, each team may prepare \emph{substitute players} outside the field. The number of substitute players is not limited.
 A \emph{substitute player} may be substituted in to become a \emph{field player} or \emph{goalkeeper}.
 
-\subsection{Substitution Procedure}
+\subsubsection{Substitution Procedure}
 \label{sec:substitution_procedure}
-
-In all matches, the names and jersey numbers of the substitutes must be given to the referee prior to the start of the match. Any substitute whose name is not given to the referee at this time may not take part in the match.
+In all matches, the jersey numbers of the substitutes must be given to the referee prior to the start of the match. Any substitute whose jersey number is not given to the referee at this time may not take part in the match.
 
 To replace a player with a substitute, the following conditions must be observed:
 \begin{itemize}
@@ -67,7 +61,7 @@ To replace a player with a substitute, the following conditions must be observed
   \item All substitutes are subject to the authority and jurisdiction of the referee, whether called upon to play or not.
 \end{itemize}
 
-\subsubsection{Changing the Goalkeeper}
+\paragraph{Changing the Goalkeeper}
 
 Any of the other players may change places with the goalkeeper, provided that:
 \begin{itemize}
@@ -75,14 +69,12 @@ Any of the other players may change places with the goalkeeper, provided that:
   \item The change is requested during a stoppage in the match.
 \end{itemize}
 
-
-
-\section{Robot Players}
+\subsubsection{Robot Players}
 \label{sec:robot_players}
 
-\subsection{The Design of the Robots}
+\paragraph{The Design of the Robots}
 \label{sec:design_of_robots}
-Robots participating in the \leaguenameabbr must have a human-like body shape with a torso, head, two arms, and two legs, as well as human-like symmetry and proportions regarding sizes of the body parts and weight distribution. \info{Definition of humanoid robot from Kajima et al, 2005}
+Robots participating in the \leaguenameabbr must have a human-like body shape with a torso, head, two arms, and two legs, as well as human-like symmetry and proportions regarding sizes of the body parts and weight distribution.
 
 The robots must be able to stand upright on their feet, to walk on their legs and to be able to recover from a fall (get back to a standing position). 
 
@@ -93,9 +85,9 @@ The design of the robot's arms, including their length and placement, shall perm
 Arm configurations that enable behaviors significantly different from those of humans are not permitted. In particular, 
 robots must not use their arms to provide continuous support for locomotion, such as walking on arms or using arms as additional legs.
 
-\subsubsection{Size Restrictions}
+\paragraph{Size Restrictions}
 
-All robots participating in the \leaguenameabbr must comply with the following restrictions:\improvement{to be discussed - including height restrictions}
+All robots participating in the \leaguenameabbr must comply with the following restrictions:
 
 The length of the legs $H_{leg}$, including the feet, satisfies 0.35{\textperiodcentered}$H_{top}$ ${\leq}$ $H_{leg}$ ${\leq}$ 0.7{\textperiodcentered}$H_{top}$,  where $H_{top}$ is the height of the top of the robot. 
 The length of the leg is measured from the first rotating joint where its axis lies in the plane parallel to the standing ground to the tip of the foot.
@@ -118,7 +110,7 @@ whichever is lower.
 
 The height of the head $H_{head}$, including the neck, satisfies $0.1 \cdot H_{top} \leq H_{head} \leq 0.3 \cdot H_{top}$. $H_{head}$ is defined as the vertical distance from the axis of the first arm joint at the shoulder to the top of the head.
 
-\subsubsection{Weight Restrictions}
+\paragraph{Weight Restrictions}
 
 The robot's Body-Mass Index (BMI) is defined as follows:
 $\mathrm{BMI} = \frac{M}{{H_{top}}^2}$,
@@ -134,27 +126,29 @@ The following weight restrictions apply for each division:
 \item Large:  Weight ${\leq}$ 80 kilograms.
 \end{itemize}
 
-\subsubsection{Safety}\info{From the humanoid league rules, to be discussed}
+\paragraph{Safety}
 
 A player must not use equipment or wear anything that is dangerous to himself or another player.
 
-Robots competing in the physical competition must be equipped with an emergency stop button that makes the robot immediately desist with all motions, 
-or ideally go limp and/or cut power to the actuators.
-In addition to the emergency stop button, robots may only have up to two additional physical or virtual buttons\info{to be discussed: 4.7.1 allows buttons, community also requests to allow more buttons (NAO). Usage during the game can be restricted}: One to start the robot behaviour and one to stop the behaviour. 
-The buttons must be clearly labeled. If the robot has more buttons that cannot be detached, they must be visibly masked during the games.
+Robots are encouraged to be equipped with an emergency stop button that makes the robot immediately desist with all motions, 
+or ideally go limp and/or cut power to the actuators. 
 
-In ...tbd... size, robot handlers are allowed to carry an additional remote emergency stop button. \improvement{to be discussed, will there still be robot handlers?}
+Robot operators must be able to immediately bring a robot to a safe state. 
+The mechanism used to do this (e.g. emergency button on the robot, remote emergency button) is secondary. 
+Most important is that robot operators are able to bring a robot to a safe state in an emergency.
+
+Robot handlers are allowed to carry an additional remote emergency stop button.
 This button must be worn either around the neck or on the belt of the robot handler and must be clearly marked. 
 Each emergency stop button can only be connected to the robot of the robot handler that holds the button.
-The remote emergency button cannot perform any additional functions and does not replace the regular emergency button. 
-Robot handlers must keep their hands clearly away from the button unless the button is being pressed. 
+The remote emergency button cannot perform any additional functions. 
+Robot handlers must keep their hands clearly away from the button unless the button is actively being pressed. 
 Robot handlers must not use the remote emergency button to intentionally incapacitate their robots.
 
-\improvement{to be discussed, add other safety measures from our discussion?}
+\improvement[inline]{to be discussed, add additional GameController based mechanism to immediately stop all robots, for example by setting an emergency stop game state}
 
 \label{sec:design_of_robots}
 
-\subsection{Approved Standard Platforms}
+\subsubsection{Approved Standard Platforms}
 The following commercially available robotic platforms are approved for participation in the \leaguenameabbr. 
 
 The following are the list of pre-approved standard platforms that require no modifications:
@@ -178,23 +172,19 @@ Unitiree  & G1++, H1++ \\
 
 Additional humanoid robot platforms can be approved upon request. Please send your request for approval to \url{rc-spl-tc@lists.robocup.org}. \improvement{Change to new mailing list when ready}
 
-\subsection{Hardware}
+\subsubsection{Hardware}
 \label{sec:hardware}
 
-\improvement{to be discussed, divisions, list of permitted robots, self-built robots, etc.}
-
-Modifications or additions to the robot hardware are allowed.\improvement{to be discussed}
-
+Modifications or additions to the robot hardware are permitted as long as the resulting robot does not become non-compliant with these rules.
 
 No additional hardware is permitted, including off-board sensing or processing systems.
 Additional sensors besides those originally installed on the robots are likewise not allowed.
 
-\subsection{Sensors}
+\subsubsection{Sensors}
 \label{sec:sensors}
 
 Teams participating in the \leaguenameabbr competitions are encouraged to equip their robots with sensors that have an equivalent in human senses. 
-These sensors must be placed at a position roughly equivalent to the location of the human's biological sensors. In particular, ...
-\improvement{to be discussed}
+These sensors must be placed at a position roughly equivalent to the location of the human's biological sensors.
 
 The sensors and their placement shall be chosen such that they allow the robot a spatial perception similar to humans.
 %
@@ -208,17 +198,16 @@ The sensors are evaluated along the following two general guidelines:
 
 Generally, \emph{passive sensors} are preferred to \emph{active} sensors that actively emit signals.
 
-\subsubsection{Intrinsic Perception and Proprioception}
+\paragraph{Intrinsic Perception and Proprioception}
 Any sensing capability aiming at measuring the internal state of the robot is permitted. 
 This includes temperature, current consumed by the motors, joint positions, etc.
 
-\subsubsection{Visual Perception}
-The visual sensors, e.g., cameras of the robot shall be arranged such that the combined visual field is \emph{contiguous} and limited to dimensions similar to a human, which corresponds to limitations in the opening angle: horizontal $\leq$ \SI{180}{\degree} and vertical $\leq$ \SI{140}{\degree}.
+\paragraph{Visual Perception}
+The visual sensors, e.g., cameras of the robot shall be arranged such that the combined visual field is \emph{contiguous} and limited to dimensions similar to a human, which corresponds to limitations in the opening angle: horizontal $\leq$ \SI{220}{\degree} and vertical $\leq$ \SI{160}{\degree}. 
+Please note that these ranges may be adjusted to more human-like viewing angles in the future.
 
-% Placement
 The visual sensors shall be located in the head of the robot.
 
-% 
 The combined dynamic visual field that can be observed by the robot solely by moving its cameras (similar to human eye movements) and the head is limited to horizontal $\leq$ \SI{340}{\degree} and vertical $\leq$ \SI{220}{\degree}.
 
 The cameras are restricted to visual information in the range of the light visible to humans.
@@ -226,7 +215,7 @@ The cameras are restricted to visual information in the range of the light visib
 The cameras can provide dense visual information, such as a rasterized image, or sparse information, such as visual events (event cameras).
 
 
-\subsubsection{Visual (dense) Depth Perception}
+\paragraph{Visual (dense) Depth Perception}
 
 Passive integrated devices that provide dense depth information, such as stereo cameras, are permitted and encouraged.
 
@@ -234,29 +223,25 @@ Active integrated devices that provide depth information, such as cameras with a
 Their use might be prohibited in the future.
 
 
-\subsubsection{Orientation}
+\paragraph{Orientation}
 
 Sensors providing information regarding the robot's orientation in space with relation to the ground are permitted. This includes sensors such as gyrometer, accelerometer, as well as integrated inertial measurement units (IMU), as long as they provide only relative measurements and no measurements of the absolute direction, such as a compass.
 
-An IMU with an integrated compass can be used as long as the compass is disabled.
+An IMU with an integrated compass can be used as long as the compass not used.
 
 The sensors can be placed in the head and/or in the torso of the robot.
 
-%Removed at the Town Meeting
-%The number of the orientation sensors is limited to 4.
-
-
-\subsubsection{Sound Perception}
+\paragraph{Sound Perception}
 The sound sensors, e.g., microphones, shall be placed in the head of the robot.
-The number of microphones is limited to \todo{To be defined. Suggested: 8}.
+The number of microphones is not limited.
 
-\subsubsection{Haptic Sensing}
+\paragraph{Haptic Sensing}
 Any passive sensor allowing haptic measurement is permitted, such as force sensors, touch sensors, buttons/bumpers, capacitative touch sensors.
 
 Haptic sensors can be placed at any location of the robot's body and are not limited in number.
 
 
-\subsubsection{Distance Sensing}
+\paragraph{Distance Sensing}
 
 Active and passive sensors for one-dimensional distance sensing with a limited range are permitted if their use is limited to compensate for shortcomings in the spatial awareness of the robot in the close proximity.
 
@@ -265,7 +250,7 @@ The number of such distance sensors is limited to 4.
 
 The use of distance sensors is discouraged and might be prohibited in the future.
 
-\subsubsection{Summary}
+\paragraph{Summary}
 The following table briefly summarizes pre-approved sensors.
 The use of listed sensors that are considered human-like is encouraged.
 The use of listed sensors that are not considered human-like is accepted, but discouraged and might be prohibited or limited in the future.
@@ -312,55 +297,15 @@ Sonar / ultrasound sensors & no & \\
 Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
 \end{tblr}
 
-\info{Reinaldo: I think we forgot about compass, so I added to the table}
-
-\unsure{Clarity needed for manufacturers that do not provide IMU details, just access to data}
-
-\subsection{Team Markers}
-\label{sec:team_markers}
-
-Robot bodies must be colored mostly with a neutral color, such as black, gray, white, or silver, and be non-reflective.
-
-Robots must use colored jersey shirts as team markers. A jersey is a tank top-style shirt that may start at the neck and go down to the waistline, and does not cover the arms of the robots. It must cover at least 50\% of the upper body of the robot.  
-
-Jerseys must have a primary color that comprises more than half of the jersey. The primary color must be recognizable from the front and back.
-
-Jerseys should not contain distracting patterns that could be confused with other elements of the soccer field, such as field lines or the ball.
-
-Jersey material must be non-reflecting, non-shiny, and non-glittery. Jerseys may be manufactured from fabric and fine mesh.
-
-The two teams must wear colors that distinguish them from each other and also the referee and the assistant referees.
-
-Each team must provide two jersey designs in distinctly different solid colors. The jersey color must clearly contrast with any uncovered parts of the robot to ensure reliable identification.
-
-Robots must display clear identification numbers (player number): a large number on the back and a smaller number on the front.
-
-The goal keeper robot must be marked uniquely so that it can be easily distinguished from the other robots of a team by the referees.
-
-Sponsorship logos will be allowed on jerseys, though detailed guidelines are still being finalized.
-
-Jersey designs must be submitted for approval prior to the competition.
-
-
-\info{to be discussed}
-
-
-\subsection{Goalkeeper}
-\label{sec:goalkeeper}
-
-The \emph{goalkeeper} may use any of the allowed jersey numbers.
-The \emph{goalkeeper} must wear a jersey with a primary color different from the primary colors used by the \emph{field players} of both teams.
-
-
-\subsection{Communication}
+\subsubsection{Communication}
 
 Robots participating in the \leaguenameabbr competitions must act autonomously during a game. 
 
 Any use external power supply, teleoperation, remote control, remote processing, remote sensing, or remote brain of any kind is prohibited.
 
-Communication is only allowed among robots on the field, \improvement{between the robots and the referees,} and between the robots and the GameController.
+Communication is only allowed among robots on the field, between the robots and the referees, and between the robots and the GameController.
 
-\subsubsection{Acoustic and Visual Communication}
+\paragraph{Acoustic and Visual Communication}
 \label{sec:acoustic}
 
 %In general, there are no restrictions on communication between robots in play on the field using visual signaling (\eg, gestures) or the robot's built-in microphones, speakers, and infrared transceivers.
@@ -370,7 +315,7 @@ The robots are permitted to communicate through visual signaling (\eg, gestures)
 Communication that causes excessive discomfort to an audience, affects the safety of an audience, or violates normal playing rules is not permitted.
 
 
-\subsubsection{Wireless Communications}
+\paragraph{Wireless Communications}
 \label{sec:wireless}
 
 The robots are permitted to communicate through WiFi using builtin wireless adapters. 
@@ -386,7 +331,7 @@ The network configuration (\eg IP addresses, channels, SSIDs, and required encry
 \paragraph{Robot-To-Robot Communication:}
 
 % AP
-Wireless robot-to-robot communication between the robot players is allowed and must the access points provided by the event organizers. 
+Wireless robot-to-robot communication between the robot players is allowed and must use the access points provided by the event organizers. 
 Direct wireless communication between the robots (using the so-called ad-hoc mode) is prohibited.
 
 % protocol
@@ -401,7 +346,7 @@ Unicast communication between robots is prohibited.
 % event based
 Each team is allowed to send in total a maximum of 12000 messages during a complete game.
 
-For each minute of extra game time, the limit is increased by 600 packets.
+For each minute of additional time added by the \emph{Allowance for time lost} rule (see Section \ref{sec:allowance_time_lost}), the limit is increased by 600 packets.
 
 % when to count?
 Only messages sent by the robot players in the following game states count towards the communication limit: ready, set and playing.
@@ -410,13 +355,7 @@ Limits do not apply during penalty kick shoot-out.
 
 The number and the size of the messages sent by each team is monitored by the GameController.
 
-A violation of the permitted maximal size of a message or the maximal number of messages is subject to penalty.
-\todo[inline]{What is the penalty?}
-
-% If a team exceeds their limit the game is scored with 0 goals for the offending team. 
-% Robot-to-robot communication that violates the SPL rules result in a game scored with 0 goals for the offending team (even when discovered after the game was finished).
-
-%If a knock-out game results in a draw and both teams exceeded their message limit, the team last exceeding their limit wins the game.
+A violation of the permitted maximal size of a message or the maximal number of messages is subject to penalty (see Section \ref{sec:jamming}).
 
 The limit of allowed packets will be lowered in future competitions to encourage a progress towards human-like communication and coordination.
 
@@ -425,10 +364,49 @@ The limit of allowed packets will be lowered in future competitions to encourage
 
 Robots are permitted to send status update packets to the GameController.
 
-\todo[inline]{describe GC communication}
+\todo[inline]{describe GC communication - Heinrich will provide a section}
 
 
 \paragraph{Debug Communication:}
 
 Team specific debug information may be sent to an external computer owned by the team. 
 A robot may send debug information at most once every second in a single UDP packet with the size of at most 64kB.
+
+
+\subsection{Law 4 -- The Players' Equipment}
+
+\subsubsection{Team Markers}
+\label{sec:team_markers}
+
+Robot bodies must be colored mostly with a neutral color, such as black, gray, white, or silver, and be non-reflective.
+
+Robots must use colored jersey shirts as team markers. A jersey is a tank top-style shirt that may start at the neck and go down to the waistline, and does not cover the arms of the robots. It must cover at least 50\% of the upper body of the robot.  
+
+Each robot has a unique jersey number from the set $\{1, 2, 3, \ldots, 20\}$. 
+
+Jerseys must have a primary color that comprises more than half of the jersey. The primary color must be recognizable from the front and back.
+
+Jerseys should not contain distracting patterns that could be confused with other elements of the soccer field, such as field lines or the ball.
+
+Jersey material must be non-reflecting, non-shiny, and non-glittery. Jerseys may be manufactured from fabric and fine mesh.
+
+The two teams must wear colors that distinguish them from each other and also the referee and the assistant referees.
+
+Each team must provide two jersey designs in distinctly different solid colors. The jersey color must clearly contrast with any uncovered parts of the robot to ensure reliable identification.
+
+Robots must display clear identification numbers (player number): a large number on the back and a smaller number on the front.
+
+The goal keeper robot must be marked uniquely so that it can be easily distinguished from the other robots of a team by the referees.
+
+Sponsorship logos are allowed only on the jerseys. Logos must not occupy more than $50\%$ of the jersey surface, ensuring that at least half of the jersey remains in primary color.
+Logos must not interfere with the player numbers, and they must not include distracting patterns and colors that could be confused with other elements of the soccer field, such as the field lines or the ball.
+
+Jersey designs must be submitted for approval prior to the competition by a deadline specified by the organizers.
+Jerseys shall be reviewed and approved by the technical committee prior to the competition.
+
+\subsubsection{Goalkeeper}
+\label{sec:goalkeeper}
+
+The \emph{goalkeeper} may use any of the allowed jersey numbers.
+The \emph{goalkeeper} must wear a jersey with a primary color different from the primary colors used by the \emph{field players} of both teams.
+
