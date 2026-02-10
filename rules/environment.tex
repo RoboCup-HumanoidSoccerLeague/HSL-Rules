@@ -172,20 +172,23 @@ Goals must be anchored securely to the ground.
 
 Off-the-shelf goals may be used if they satisfy these requirements. 
 
+
+    
+
 \begin{table}[h]
     \centering
-    \begin{tabular}{|c|c|c|c|}
-    \hline
+    \begin{tblr}{
+        colspec = {X[l] X[c] X[c] X[c]},
+        width=\linewidth,
+        hlines,
+        vlines,
+        row{1} = {font=\bfseries}, % header
+    }% begin tblr
         Division & Width (meters) & Height (meters) & Depth (meters)\\
-        \hline
-        \hline
-        Small & 1.8 to 1.9 & 1.2 to 1.3 & 0.5 to 1.0 \\
-        \hline
-        Middle & 2.4 to 2.6 & 1.5 to 1.9 & 0.7 to 1.2\\
-        \hline
-        Large & 2.6 to 3.1 & 1.8 to 2.0 & 1.0 to 2.0\\
-        \hline
-    \end{tabular}
+        Small    & 1.8 to 1.9 & 1.2 to 1.3 & 0.5 to 1.0 \\
+        Middle   & 2.4 to 2.6 & 1.5 to 1.9 & 0.7 to 1.2\\
+        Large    & 2.6 to 3.1 & 1.8 to 2.0 & 1.0 to 2.0\\
+    \end{tblr}
     \caption{Allowed ranges for goal dimensions.}
     \label{tab:goal_dim}
 \end{table}
@@ -235,23 +238,26 @@ All balls must be spherical, made of or resembles the weight, form, movement cha
 
 The balls for each division\footnote{The TC and OC will decide on only one type of the ball per division that will be used by all teams during the 2026 competition.} are defined in \Cref{tab:balls}.
 
+    
+
 \begin{table}[h]
     \centering
-    \begin{tabular}{|c|c|c|}
-    \hline
+    \begin{tblr}{
+        colspec = {X[l] X[l]},
+        width=\linewidth,
+        hlines,
+        vlines,
+        row{1} = {font=\bfseries}, % header
+    }% begin tblr
         Division & Ball Type\\
-        \hline
-        \hline
-        Small & FIFA Mini Ball\\
-        \hline
-        Middle & FIFA size 3 or 4\\
-        \hline
-        Large &FIFA size 5 \\
-        \hline
-    \end{tabular}
+        Small    & FIFA Mini Ball\\
+        Middle   & FIFA size 3 or 4\\
+        Large    & FIFA size 5 \\
+    \end{tblr}
     \caption{Balls used in each division}
     \label{tab:balls}
 \end{table}
+
 
 \sublaw{Replacement of a defective ball}
 

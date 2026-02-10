@@ -22,17 +22,18 @@ A match is played by two teams, each with a \textbf{maximum} number of players d
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{|c|c|c|}
-    \hline
+    \begin{tblr}{
+        colspec = {X[l] X[c] X[c]},
+        width=\linewidth,
+        hlines,
+        vlines,
+        row{1} = {font=\bfseries}, % header
+    }% begin tblr
         Division & Foundation teams & Advanced teams\\
-        \hline
-Small & 4 & 7 \\
-        \hline
-Mid   & 3 & 5 \\
-        \hline
-Large & 3 & 5 \\
-        \hline
-    \end{tabular}
+        Small & 4 & 7 \\
+        Mid   & 3 & 5 \\
+        Large & 3 & 5 \\
+    \end{tblr}
     \caption{Number of players}
     \label{tab:number_of_players}
 \end{table}
