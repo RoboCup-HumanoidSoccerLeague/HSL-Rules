@@ -544,18 +544,23 @@ The aborted penalty will not be added to the total team penalty count and will n
 
 If entangled robots fail to untangle themselves, the referee may ask designated robot handlers of both teams to untangle the robots. Untangling must not make significant changes to robot positions or heading directions. Untangled robots must be placed on the ground no closer than \qty{50}{\centi\metre} to the ball and in a way that does not give either team an advantage. Being entangled does not incur a penalty.
 
+
 \sublaw{Jamming}
 \label{sec:jamming}
 
 During a match, robots shall not jam the communication and sensor systems of the opponents:
 
-\begin{description}
-	\item[Wireless communication.] Each team is allowed to send a maximum of \UDPPacketLimit{} UDP packets of up to \qty{\UDPPacketSize}{\byte} per game, in addition to \UDPDebugPacketRate{} packet per second per robot to a single team device on the wired network for debugging purposes (no size constraint for debug packets, but must be within the maximum single UDP packet size). Any team that exceeds the team communication limits, as tracked by the GameController, will have all goals automatically nullified for the game. The GameController will communicate at \GameControllerPacketRate{} packet(s) per second. If a team violates these limits, penalties will apply. If a team violates this rule in multiple games, disqualification from the tournament (including all technical challenges and side competitions) will be a potential consequence. Except for the wireless equipment and access points provided by the organizers of the competition, nobody close to the field is allowed to use \qty{2.4}{\giga\hertz} or \qty{5}{\giga\hertz} radio equipment (including cellular phones and/or Bluetooth devices).
+\paragraph{Wireless Communication}
+If a team violates the general regulations defined in \Cref{sec:communication}, penalties will apply. 
+First violation will result in a warning.
+Repeated violation might result in disqualification from the tournament (including all technical challenges and side competitions). 
 	
-	\item[Acoustic interference.] Both teams and the audience shall avoid intentionally confusing the robots by producing sounds similar to the game whistle or to sounds used by the robots to communicate with each other.
+\paragraph{Wireless Robot-To-Robot Communication} Any team that exceeds the limits for wireless robot-to-robot communication defined in \Cref{sec:robot-to-robot}, as tracked by the GameController, will have all goals automatically nullified for the game.
 	
-	\item[Visual perception.] The use of flashlights or other bright light sources is not allowed during games. However, flash photography from the audience is allowable as long as the head referee believes the purpose is not to jam any of the robots.
-\end{description}
+\paragraph{Acoustic interference} Both teams and the audience shall avoid intentionally confusing the robots by producing sounds similar to the game whistle or to sounds used by the robots to communicate with each other.
+	
+\paragraph{Visual perception} The use of flashlights or other bright light sources is not allowed during games. However, flash photography from the audience is allowable as long as the head referee believes the purpose is not to jam any of the robots.
+
 
 
 \sublaw{Penalties Against Teams or Humans}
