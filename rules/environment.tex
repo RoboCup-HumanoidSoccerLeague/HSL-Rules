@@ -9,10 +9,11 @@
 
 The competition consists of three distinct divisions, categorized specifically by the maximum physical height and weight of the robotic platforms.
 
-To ensure a fair and proportionate competitive environment, the field dimensions, number of players and ball size will vary to align with the specific requirements of each division\footnote{See section \ref{sec:divisions} for more details.}.
+To ensure a fair and proportionate competitive environment, the field dimensions, number of players and ball size will vary to align with the specific requirements of each division (see \Cref{sec:divisions} for more details).
 
 \subsubsection{Field surface}
 \label{sec:field_surface}
+
 The matches are played on artificial turf with a height between approximately 20 to 30 mm, except for the small division, which has a height between 8 and 12 mm, also approximately.
 
 The color of artificial turf must be green. No particular shade is required, but the green must contrast well with the field markings and the ball and should not be very dark.
@@ -36,17 +37,18 @@ The goal area and the penalty area are defined using lines drawn at right angles
 
 All lines must be of the same width, which must be between 5 and 12 cm.
 
-Figure \ref{fig:field_line_names} shows the field markings with the lines and its names.
+\Cref{fig:field_line_names} shows the field markings with the lines and its names.
 
 \begin{figure}[h]
     \centering
-    \centerline{\includegraphics[width=0.7\columnwidth]{figs/Figure-1-line-names.png}}
-    \caption{A labeled diagram illustrating the standard markings and key areas of a soccer field.}      
+    \includegraphics[width=0.7\columnwidth]{figs/Figure-1-line-names.png}
+    \caption{Annotated diagram illustrating the standard markings and key areas of a soccer field.}      
     \label{fig:field_line_names}
 \end{figure}
 
 \subsubsection{The goal area}
 \label{sec:goal_area}
+
 Two lines are drawn at right angles to the goal line; the length and distance from the midpoint of the goal line depend on the division.
 
 These lines extend into the field of play and are joined by a line drawn parallel with the goal line.
@@ -54,6 +56,7 @@ The area bounded by these lines and the goal line is the goal area.
 
 \subsubsection{The penalty area}
 \label{sec:penalty_area}
+
 Two lines are drawn at right angles to the goal line; the length and distance from the midpoint of the goal line depend on the division.
 
 These lines extend into the field of play and are joined by a line drawn parallel with the goal line.
@@ -70,82 +73,75 @@ The radius of the arc is 0.5m for the M-Field and 1.0m for the L-Field. The S-Fi
 \subsubsection{Dimensions}
 \label{sec:dimensions}
 
-There are three field sizes that can be used for the proposed divisions, described in Table \ref{tab:field_dim_rule}.
+There are three field sizes that can be used for the proposed divisions, described in \Cref{tab:field_dim_rule}.
 
 \begin{table}[h]
     \centering
-    \begin{tabular}{|c|c|c|}
-    \hline
-        Field & Width (meters) & Lenght (meters)\\
-        \hline
-        \hline
-        S-Field (small field) & 6 & 9 \\
-        \hline
-        M-Field (middle field) & 6 to 9 & 9 to 14\\
-        \hline
-        L-Field (large field) &9 to 14 & 14 to 22 \\
-        \hline
-    \end{tabular}
+    \begin{tblr}{
+        colspec = {X[l] X[c] X[c]},
+        width=\linewidth,
+        hlines,
+        vlines,
+        row{1} = {font=\bfseries}, % header
+    }% begin tblr
+        Field                  & Width (meters) & Length (meters) \\
+        S-Field (small field)  & 6       & 9 \\
+        M-Field (middle field) & 6 to 9  & 9 to 14 \\
+        L-Field (large field)  & 9 to 14 & 14 to 22 \\
+    \end{tblr}
     \caption{Approximate field sizes.}
     \label{tab:field_dim_rule}
 \end{table}
 
-Table \ref{tab:field_dim} shows the dimensions of the S-, M- and L-Fields and Figures \ref{fig:field_small}, \ref{fig:field_medium} and \ref{fig:field_large} show the diagram of the three soccer fields. Note that the Middle Division can be played on the S-Field or the M-Field, while the Large Division can be played on both the M-Field and the L-Field.
-More detailed technical drawings are provided in Appendix \ref{sec:technical_drawings}.
+\Cref{tab:field_dim} shows the dimensions of the S-, M- and L-Fields.
+Diagrams of the three soccer fields are shown in \Cref{fig:field_small,fig:field_medium,fig:field_large}. 
+Note that the Middle Division can be played on the S-Field or the M-Field, while the Large Division can be played on both the M-Field and the L-Field.
+More detailed technical drawings are provided in \Cref{sec:technical_drawings}.
 
 Note that measurements are from the outside of the lines as the lines are part of the area they enclose (as it is in the FIFA Rules).
 
+\begin{table}[h]
+    \centering
+    \begin{tblr}{
+        colspec = {c l X[c] X[c] X[c]},
+        width=\linewidth,
+        hlines,
+        vlines,
+        rows={f}, % align text in the middle 
+        row{1} = {font=\bfseries}, % header
+        row{2} = {font=\itshape}, % comments
+        column{1} = {font=\bfseries}, % ids
+    }% begin tblr
+        ID & Description & S-Field  & M-Field  & L-Field \\
+           & (all values in meters) & (former KidSize and SPL) & (former AdultSize) & (similar to MSL)\\
 
-\begin{center}
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|l|l|c|c|c|}
-            \hline
-            ID & Description & S-Field  & M-Field  & L-Field \\
-            & (all values in meters) & (former KidSize) & (former AdultSize)& (similar to MSL)\\
-            \hline \hline
-            A & Field length        & 9.0  & 14.0 & 22.0 \\ 
-            \hline
-            B & Field width         & 6.0 & 9.0 & 14.0 \\ 
-            \hline
-            C & Goal length (depth) & 0.5 to 1.0  & 0.7 to 1.2  & 1.0 to 2.0  \\ 
-            \hline
-            D & Goal width          & 1.8 to 1.9 & 2.4 to 2.6 & 2.6 to 3.1  \\
-            \hline
-            E & Goal Area length    & 1.0  & 1.0  & 1.0  \\ 
-            \hline
-            F & Goal Area width     & 3.0  & 4.0  & 5.0  \\
-            \hline
-            G & Penalty Area length & 2.0  & 3.0  & 3.5  \\ 
-            \hline
-            H & Penalty Area width  & 4.0  & 6.0 & 7.0  \\
-            \hline
-            I & Penalty Mark distance & 1.5  & 2.0  & 2.5  \\
-            \hline
-            J & Center Circle diameter & 1.5  & 3.0 & 4.0 \\
-            \hline
-            K & Border strip width (min.) & \multicolumn{3}{c|}{ 1.0 } \\ 
-            \hline
-            L & Corner Arc radius & none & 0.5 m & 1.0   \\ 
-            \hline
-            & Line width & \multicolumn{2}{c|}{0.05 }& 0.12\\
-            \hline
-             & Penalty and center mark size & \multicolumn{2}{c|}{0.10 } & 0.15 \\
-            \hline
-        \end{tabular}
-        \caption{Exemplary field dimensions by field type, in meters.}   
-        \label{tab:field_dim}
-    \end{table}
-\end{center}    
+        A & Field length                 & 9.0 & 14.0 & 22.0 \\ 
+        B & Field width                  & 6.0 & 9.0 & 14.0 \\ 
+        C & Goal length (depth)          & 0.5 to 1.0 & 0.7 to 1.2 & 1.0 to 2.0 \\
+        D & Goal width                   & 1.8 to 1.9 & 2.4 to 2.6 & 2.6 to 3.1 \\
+        E & Goal Area length             & 1.0 & 1.0 & 1.0  \\ 
+        F & Goal Area width              & 3.0 & 4.0 & 5.0  \\
+        G & Penalty Area length          & 2.0 & 3.0 & 3.5  \\ 
+        H & Penalty Area width           & 4.0 & 6.0 & 7.0  \\
+        I & Penalty Mark distance        & 1.5 & 2.0 & 2.5  \\
+        J & Center Circle diameter       & 1.5 & 3.0 & 4.0 \\
+        K & Border strip width (min.)    & \SetCell[c=3]{c} 1.0 & & \\ 
+        L & Corner Arc radius            & none & 0.5 & 1.0 \\ 
+          & Line width                   & \SetCell[c=2]{c} 0.05 & & 0.12 \\
+          & Penalty and center mark size & \SetCell[c=2]{c} 0.10 & & 0.15 \\
+    \end{tblr}
+    \caption{Exemplary field dimensions by field type, in meters.}   
+    \label{tab:field_dim}
+\end{table}
 
-\begin{center}
-\end{center}
+
 \begin{figure}[h]
   \centering
   \input{rules/small_field}
   \caption{Schematic diagram of the small soccer field -- S-Field (scale: 1/80)}
   \label{fig:field_small}
 \end{figure}
+
 \begin{figure}[h]
   \centering
   \input{rules/medium_field}
@@ -197,7 +193,7 @@ Off-the-shelf goals may be used if they satisfy these requirements.
 \subsubsection{Definition of Inside and Outside}
 
 \label{sec:inside_outside}
-An object (such as a {\color{red} robot} or the ball) \unsure{TW: are there other objects? if not why mentioned this?} is considered \textit{inside} a region of the field if any part of it overlaps or touches the boundary lines that define that region, or if it is fully contained within the region, in the air or on the ground. It is considered \textit{outside} the region only when no part of it, or its downwards projection, remains within or on the boundary lines of that region. This definition applies to any designated area of the field, except the goal (See Figure~\ref{fig:field_line_names}).
+An object (such as a {\color{red} robot} or the ball) \unsure{TW: are there other objects? if not why mentioned this?} is considered \textit{inside} a region of the field if any part of it overlaps or touches the boundary lines that define that region, or if it is fully contained within the region, in the air or on the ground. It is considered \textit{outside} the region only when no part of it, or its downwards projection, remains within or on the boundary lines of that region. This definition applies to any designated area of the field, except the goal (see \Cref{fig:field_line_names}).
 
 \textbf{Exception for the goal:} The ball is only considered \textit{inside} the goal (and thus a goal is scored) if, and only if, the entire ball has wholly crossed the goal-side edge of the goal line \emph{between the goal posts and below the crossbar}, \ie{} when no part of the ball remains on or above the goal line, and the entire ball is within the volume enclosed by the goal frame and the net.
 \improvement{TW: This needs to be discussed for robots.}
@@ -237,7 +233,7 @@ Teams participating in the \leaguenameabbr are encouraged to design their robots
 
 All balls must be spherical, made of or resembles the weight, form, movement characteristics and appearance of leather or other suitable material.
 
-The balls  for each division\footnote{The TCs will decide on only one ball per division that will be used by all teams during the 2026 competition.} are defined in Table \ref{tab:balls}.
+The balls for each division\footnote{The TC and OC will decide on only one type of the ball per division that will be used by all teams during the 2026 competition.} are defined in \Cref{tab:balls}.
 
 \begin{table}[h]
     \centering
@@ -268,4 +264,4 @@ If the ball becomes defective during a penalty kick or penalties (penalty shoot-
 The ball may not be changed during the match without the referee’s permission.
 
 \subsubsection{Additional balls}
-Additional balls which meet the requirements of \ref{sec:ball-measurements} may be placed around the field of play and their use is under the referee’s control.
+Additional balls which meet the requirements of \Cref{sec:ball-measurements} may be placed around the field of play and their use is under the referee's control.
