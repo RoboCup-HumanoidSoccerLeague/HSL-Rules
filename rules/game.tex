@@ -104,6 +104,32 @@ The allowance for time lost is at the discretion of the head referee. It is anno
 
 In exceptional circumstances, the head referee may decide to add time to the clock immediately after an incident rather than waiting until the final minute of a half.
 
+\subsection{Timeout}
+\label{sec:timeout}
+
+\subsubsection{Team Timeout}
+\label{sec:team_timeout}
+
+Each team can call a \textbf{maximum of 1 timeout per game} with a total time of no more than \textbf{\TeamTimeoutDuration{} minutes}. During this time, both teams may change robots, change programs, or anything else that can be done within the time allotted. During normal game time, a team may call a timeout at any stoppage of play (after a goal, stuck game, before a half, etc.). Alternatively, a team may call a timeout before a penalty shootout if they have not used their timeout yet (\cf~\cref{sec:penalty_shoot_out}).
+
+The timeout ends when the team that called the timeout says they are finished, at which time they must be ready to play. The other team must be ready to play at the time the timeout runs out, or \textbf{\TeamTimeoutReadyTime{} minutes} after a prematurely called end of the timeout, whichever is earlier. If the other team is not ready to play in time, it must call a timeout of its own.
+
+The clock stops during timeouts and is reset to the time when the current stoppage of play began.
+
+After the completion of the timeout, the game resumes with a kick-off for the team which did not call the timeout.
+
+If a team is not ready to play at the assigned time for a game, the referee will call the timeout for that team. After the expiration of such a timeout, if the team is still not ready to play then the referee shall start the game with only one team on the field. The team that was not ready can return its robots to the field as per the rules for ``Request for Pick-up'' (\cf~\cref{sec:request_for_pick_up}). If both teams are not ready, the referee will call timeouts for both teams. This ``double timeout'' expires after \TeamTimeoutDuration{} minutes.
+
+\subsubsection{Referee Timeout}
+\label{sec:referee_timeout}
+
+The head referee may call a timeout at any time if deemed necessary. A referee timeout should only be called in exceptional circumstances—one example might be when the wireless network is down or no robot responds to the GameController.
+
+Referees may call multiple timeouts during a game if needed. Teams may do anything during these timeouts, but they must be ready to play \textbf{\TeamTimeoutReadyTime{} minutes} after the referee ends a timeout. The referee should end the timeout once the circumstance for which the timeout was called has been resolved. In cases where the circumstance is not resolved within 10 minutes, the Technical Committee should be consulted regarding when or if play should continue.
+
+If a team was going to have kick-off at the time the referee timeout was called (e.g., during most stoppages of play), that team shall kick-off when the game resumes. Otherwise, the drop ball rule (\cf~\cref{sec:drop_ball}) applies instead.
+
+
 \subsection{Mercy Rule}
 \label{sec:mercy_rule}
 
@@ -199,6 +225,49 @@ The game is continued at the center mark. A goal can be scored directly from a d
         \end{itemize}
 \end{itemize}
 % End of subsection which was edited by Prof. Azer Babaev
+
+\subsection{Drop Ball}
+\label{sec:drop_ball}
+
+In the event that play needs to resume after a stoppage in which neither team has a particular right to kick off the ball, the drop ball rule shall apply. For example, this may happen if there has been a referee error, a pause in game during the \texttt{playing} state that has been acknowledged by the head referee, or in the case of a global game stuck (\cf~\cref{sec:global_game_stuck}).
+
+A drop ball is conducted like a kick-off variant. As in an ordinary kick-off, it is preceded by a \texttt{ready} phase to allow the robots to reach their positions and a \texttt{set} phase where the referee places the ball in the middle of the field. The main difference is that neither team is given kick-off, and no team is allowed in the center circle until the \texttt{playing} state, as there is no team designated to take the kick-off. The head referee signals the start of play by blowing the whistle, and with the transition into \texttt{playing} the ball is immediately in play.
+
+The head referee calls ``Drop Ball'' before the \texttt{ready} phase begins.
+
+\subsection{Game Stuck}
+\label{sec:game_stuck}
+
+Game stuck situations occur when play has stalled and intervention is required to resume normal game flow.
+
+\subsubsection{Local Game Stuck}
+\label{sec:local_game_stuck}
+
+Local game stuck is called when the ball has not moved significantly for \qty{\LocalGameStuckTime}{\second} while robots are in proximity to the ball. This typically occurs when robots are clustered around the ball but unable to make progress.
+
+When local game stuck is called:
+\begin{itemize}
+  \item The robot nearest to the ball is penalized and removed according to the standard removal penalty.
+  \item The ball remains in its current position.
+  \item Play continues immediately after the robot is removed.
+\end{itemize}
+
+The head referee calls ``Game Stuck \textless robot color\textgreater \textless robot number\textgreater''.
+
+Local game stuck penalties do not count towards the incremental penalty count.
+
+\subsubsection{Global Game Stuck}
+\label{sec:global_game_stuck}
+
+Global game stuck is called when no robot has been within \qty{\GameStuckProximity}{\metre} of the ball for \qty{\GlobalGameStuckTime}{\second}. This typically occurs when all robots have lost track of the ball or are unable to approach it.
+
+When global game stuck is called:
+\begin{itemize}
+  \item Play is stopped.
+  \item The game is restarted with a drop ball (\cf~\cref{sec:drop_ball}).
+\end{itemize}
+
+The head referee calls ``Global Game Stuck''.
 
 \section{Law 9 – The Ball In and Out of Play}
 \label{sec:ball_in_out_play}
@@ -613,6 +682,112 @@ In this situation:
 
 \textbf{Example:} The blue team is awarded a kick-in (indirect free kick) but does not play the ball within \qty{\FreeKickTime}{\second}. The referee calls ``Ball Free''. A red robot immediately kicks the ball directly into the blue goal. The goal counts, as the failed-free-kick exception allows the defending team to score directly.
 
+\section{Law 14 -- Penalty Kick and Penalty Shoot-Out}
+
+\subsection{Penalty Kick}
+\label{sec:penalty_kick}
+
+A penalty kick is awarded against a team that commits an offence for which a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) is awarded, inside its own penalty area and while the ball is in play. A goal may be scored directly from a penalty kick.
+
+\subsubsection{Position of the Ball and the Players}
+
+The ball must be placed on the penalty mark.
+
+The defending goalkeeper:
+\begin{itemize}
+  \item Must remain on the goal line, facing the kicker, and positioned between the goalposts until the ball has been kicked.
+  \item Must remain on their feet until the attacking robot has touched the ball (the goalkeeper may ``dive'' only after the striker has made contact with the ball).
+\end{itemize}
+
+The kicker:
+\begin{itemize}
+  \item Must be placed inside the field of play.
+  \item Must be placed behind the penalty mark.
+\end{itemize}
+
+The players other than the kicker and goalkeeper must be:
+\begin{itemize}
+  \item Inside the field of play.
+  \item Behind the penalty mark.
+  \item Outside the penalty area.
+  \item At least the center circle radius (see Table~\ref{tab:field_dim}) from the penalty mark.
+\end{itemize}
+
+\subsubsection{Procedure}
+
+During normal play, if a penalty kick is awarded, the head referee calls ``Penalty Kick \textless color\textgreater'' for the attacking team --- the team with the kick. The GameController activates the penalty kick state. Referees place the ball on the penalty mark. The striker robot is positioned at the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal.
+
+Neither robot is permitted to locomote during the \texttt{set} state. Movement of the robot's head is allowed.
+
+The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay (\cf~\cref{sec:state_set}).
+
+The time limit for the penalty kick is \qty{\PenaltyKickTime}{\second} after play begins. The penalty kick ends when:
+\begin{itemize}
+  \item The ball comes to a complete stop after the first contact by the striker robot.
+  \item The striker robot touches the ball a second time after the ball has clearly moved.
+  \item The ball leaves the field of play.
+  \item The time limit expires.
+  \item A goal is scored.
+\end{itemize}
+
+A goal is awarded to the attacking team if the ball completely crosses the goal line between the goalposts and under the crossbar before the penalty kick ends, provided no infringement has occurred.
+
+\subsubsection{Infringements and Sanctions}
+
+If the goalkeeper violates the positioning rules (leaves the goal line early or dives before the striker touches the ball), the penalty kick ends immediately and a goal is awarded to the attacking team.
+
+If the striker violates the rules (touches the ball a second time after it has moved), the penalty kick ends immediately with no goal awarded.
+
+All standard rules such as Ball Holding and Pushing are applied during the penalty kick. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend the goal.
+
+
+\subsection{Penalty Kick Shoot-Out}
+\label{sec:penalty_shoot_out}
+
+A penalty kick shoot-out is used to determine the outcome of a tied game when an outcome is required (for example, during knockout rounds, quarterfinals, semifinals, third place match, or final).
+
+All penalty kicks are taken against the same goal.\footnote{Which goal to use for the shoot-out is decided in agreement with the teams, or otherwise by a coin toss.}
+
+The team listed first on the competition schedule will have the striker robot for the first penalty kick. Subsequently, both teams take kicks alternately. The penalty kick shoot-out will consist of three penalty kicks per team. A team that has scored the most goals at the conclusion of these will be declared the winner. A winner can also be declared before the conclusion of the penalty shoot-out if a team can no longer win mathematically. If the two teams remain tied after three penalty kicks, then a sudden death shoot-out will follow until a definite winner is found.
+
+The penalty kick shoot-out starts immediately without changing any code after the second half ended. No timeouts may be called during the penalty shoot-out. However, a team may request a timeout before the penalty shoot-out starts if they have a timeout remaining for this game. During the timeout, code changes are allowed.
+
+Before the penalty shoot-out begins, each team must hand over to referees up to 6 prepared robots that may participate in the penalty shoot-out. No robots may be added once the penalty shoot-out starts. Robots that will not participate in the shoot-out must not be on the wireless network and must stay outside of the field. All participating robots must be wearing the correct jersey for their player number and no duplicate numbers are permitted.
+
+During the entire penalty kick shoot-out, the robots are controlled by the GameController and the referee's whistle. A team cannot request the referees to press buttons on their robots, except for initially leaving the \texttt{initial} state.
+
+\subsubsection{Penalty Kick Procedure}
+\label{sec:pso_kick}
+
+A penalty kick is carried out with one striker robot and one opposing goalkeeper. Before each penalty kick, both teams must select the robot to participate (as goalkeeper or striker). The team leader communicates the selection to the head referee by privately handing the referee a card with their chosen number. After both teams have selected their player, the GameController operator selects the requested striker and goalkeeper robots and the GameController communicates that all non-selected robots are substitutes and should remain inactive. The GameController indicates which team has the striker robot in the current penalty kick.
+
+Referees place the ball, the striker, and goalkeeper robots. The ball is placed on the penalty mark closest to the goal being defended. The striker robot is positioned on the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal. Neither robot is permitted to locomote during the \texttt{set} state.
+
+The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay.
+
+The time limit for the striker is \qty{\PenaltyShootoutKickTime}{\second} after the penalty kick starts. A penalty kick is over when the ball has come to a full stop after the first contact by the striker robot. The striker robot is not allowed to play the ball a second time after the ball has clearly moved, otherwise the penalty kick ends immediately. A goal is awarded to the attacking team if a goal has been scored (the ball has completely crossed the goal line) before the penalty kick is over. Otherwise, the score is unchanged.
+
+The goalkeeper robot must always be in contact with the goal line and must remain on its feet until the striker robot touches the ball. The goalkeeper is only permitted to ``dive'' and be off its feet after the attacking robot has touched the ball. If the goalkeeper violates these rules, the penalty kick ends immediately and a goal is awarded to the attacking team.
+
+All rules such as Ball Holding and Pushing are applied during the penalty kick. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend.
+
+\subsubsection{Sudden Death Shoot-Out}
+\label{sec:sudden_death_shoot_out}
+
+If teams remain tied after the initial three penalty kicks each, sudden death begins. Teams take one additional penalty kick each, and the game decision is made as follows:
+
+Each kick is ranked in one of the following categories (from best to worst):
+\begin{enumerate}
+  \item Goal scored
+  \item Kick at the goal that is blocked by the goalkeeper
+  \item Kick that hits a goalpost
+  \item Kick that crosses the goal line next to the goalposts
+  \item Any other kick
+  \item No kick
+\end{enumerate}
+
+If both teams' kicks rank in different categories, the team with the higher ranked kick wins. Otherwise, the sudden death is repeated. If after 3 sudden death penalty kicks there is still no winner, the referee will toss a coin to decide the game.
+
 \section{Kick-in / Throw-in}
 \label{sec:kick_in}
 
@@ -730,174 +905,3 @@ If, after the ball is in play, the kicker deliberately handles the ball before i
 \end{itemize}
 
 In the event of any other infringement, the kick is retaken.
-
-\section{Penalty Kick}
-\label{sec:penalty_kick}
-
-A penalty kick is awarded against a team that commits an offence for which a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) is awarded, inside its own penalty area and while the ball is in play. A goal may be scored directly from a penalty kick.
-
-\subsection{Position of the Ball and the Players}
-
-The ball must be placed on the penalty mark.
-
-The defending goalkeeper:
-\begin{itemize}
-  \item Must remain on the goal line, facing the kicker, and positioned between the goalposts until the ball has been kicked.
-  \item Must remain on their feet until the attacking robot has touched the ball (the goalkeeper may ``dive'' only after the striker has made contact with the ball).
-\end{itemize}
-
-The kicker:
-\begin{itemize}
-  \item Must be placed inside the field of play.
-  \item Must be placed behind the penalty mark.
-\end{itemize}
-
-The players other than the kicker and goalkeeper must be:
-\begin{itemize}
-  \item Inside the field of play.
-  \item Behind the penalty mark.
-  \item Outside the penalty area.
-  \item At least the center circle radius (see Table~\ref{tab:field_dim}) from the penalty mark.
-\end{itemize}
-
-\subsection{Procedure}
-
-During normal play, if a penalty kick is awarded, the head referee calls ``Penalty Kick \textless color\textgreater'' for the attacking team --- the team with the kick. The GameController activates the penalty kick state. Referees place the ball on the penalty mark. The striker robot is positioned at the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal.
-
-Neither robot is permitted to locomote during the \texttt{set} state. Movement of the robot's head is allowed.
-
-The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay (\cf~\cref{sec:state_set}).
-
-The time limit for the penalty kick is \qty{\PenaltyKickTime}{\second} after play begins. The penalty kick ends when:
-\begin{itemize}
-  \item The ball comes to a complete stop after the first contact by the striker robot.
-  \item The striker robot touches the ball a second time after the ball has clearly moved.
-  \item The ball leaves the field of play.
-  \item The time limit expires.
-  \item A goal is scored.
-\end{itemize}
-
-A goal is awarded to the attacking team if the ball completely crosses the goal line between the goalposts and under the crossbar before the penalty kick ends, provided no infringement has occurred.
-
-\subsection{Infringements and Sanctions}
-
-If the goalkeeper violates the positioning rules (leaves the goal line early or dives before the striker touches the ball), the penalty kick ends immediately and a goal is awarded to the attacking team.
-
-If the striker violates the rules (touches the ball a second time after it has moved), the penalty kick ends immediately with no goal awarded.
-
-All standard rules such as Ball Holding and Pushing are applied during the penalty kick. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend the goal.
-
-\section{Game Stuck}
-\label{sec:game_stuck}
-
-Game stuck situations occur when play has stalled and intervention is required to resume normal game flow.
-
-\subsection{Local Game Stuck}
-\label{sec:local_game_stuck}
-
-Local game stuck is called when the ball has not moved significantly for \qty{\LocalGameStuckTime}{\second} while robots are in proximity to the ball. This typically occurs when robots are clustered around the ball but unable to make progress.
-
-When local game stuck is called:
-\begin{itemize}
-  \item The robot nearest to the ball is penalized and removed according to the standard removal penalty.
-  \item The ball remains in its current position.
-  \item Play continues immediately after the robot is removed.
-\end{itemize}
-
-The head referee calls ``Game Stuck \textless robot color\textgreater \textless robot number\textgreater''.
-
-Local game stuck penalties do not count towards the incremental penalty count.
-
-\subsection{Global Game Stuck}
-\label{sec:global_game_stuck}
-
-Global game stuck is called when no robot has been within \qty{\GameStuckProximity}{\metre} of the ball for \qty{\GlobalGameStuckTime}{\second}. This typically occurs when all robots have lost track of the ball or are unable to approach it.
-
-When global game stuck is called:
-\begin{itemize}
-  \item Play is stopped.
-  \item The game is restarted with a drop ball (\cf~\cref{sec:drop_ball}).
-\end{itemize}
-
-The head referee calls ``Global Game Stuck''.
-
-\section{Timeout}
-\label{sec:timeout}
-
-\subsection{Team Timeout}
-\label{sec:team_timeout}
-
-Each team can call a \textbf{maximum of 1 timeout per game} with a total time of no more than \textbf{\TeamTimeoutDuration{} minutes}. During this time, both teams may change robots, change programs, or anything else that can be done within the time allotted. During normal game time, a team may call a timeout at any stoppage of play (after a goal, stuck game, before a half, etc.). Alternatively, a team may call a timeout before a penalty shootout if they have not used their timeout yet (\cf~\cref{sec:penalty_shoot_out}).
-
-The timeout ends when the team that called the timeout says they are finished, at which time they must be ready to play. The other team must be ready to play at the time the timeout runs out, or \textbf{\TeamTimeoutReadyTime{} minutes} after a prematurely called end of the timeout, whichever is earlier. If the other team is not ready to play in time, it must call a timeout of its own.
-
-The clock stops during timeouts and is reset to the time when the current stoppage of play began.
-
-After the completion of the timeout, the game resumes with a kick-off for the team which did not call the timeout.
-
-If a team is not ready to play at the assigned time for a game, the referee will call the timeout for that team. After the expiration of such a timeout, if the team is still not ready to play then the referee shall start the game with only one team on the field. The team that was not ready can return its robots to the field as per the rules for ``Request for Pick-up'' (\cf~\cref{sec:request_for_pick_up}). If both teams are not ready, the referee will call timeouts for both teams. This ``double timeout'' expires after \TeamTimeoutDuration{} minutes.
-
-\subsection{Referee Timeout}
-\label{sec:referee_timeout}
-
-The head referee may call a timeout at any time if deemed necessary. A referee timeout should only be called in exceptional circumstances—one example might be when the wireless network is down or no robot responds to the GameController.
-
-Referees may call multiple timeouts during a game if needed. Teams may do anything during these timeouts, but they must be ready to play \textbf{\TeamTimeoutReadyTime{} minutes} after the referee ends a timeout. The referee should end the timeout once the circumstance for which the timeout was called has been resolved. In cases where the circumstance is not resolved within 10 minutes, the Technical Committee should be consulted regarding when or if play should continue.
-
-If a team was going to have kick-off at the time the referee timeout was called (e.g., during most stoppages of play), that team shall kick-off when the game resumes. Otherwise, the drop ball rule (\cf~\cref{sec:drop_ball}) applies instead.
-
-\section{Drop Ball}
-\label{sec:drop_ball}
-
-In the event that play needs to resume after a stoppage in which neither team has a particular right to kick off the ball, the drop ball rule shall apply. For example, this may happen if there has been a referee error, a pause in game during the \texttt{playing} state that has been acknowledged by the head referee, or in the case of a global game stuck (\cf~\cref{sec:global_game_stuck}).
-
-A drop ball is conducted like a kick-off variant. As in an ordinary kick-off, it is preceded by a \texttt{ready} phase to allow the robots to reach their positions and a \texttt{set} phase where the referee places the ball in the middle of the field. The main difference is that neither team is given kick-off, and no team is allowed in the center circle until the \texttt{playing} state, as there is no team designated to take the kick-off. The head referee signals the start of play by blowing the whistle, and with the transition into \texttt{playing} the ball is immediately in play.
-
-The head referee calls ``Drop Ball'' before the \texttt{ready} phase begins.
-
-\section{Penalty Kick Shoot-Out}
-\label{sec:penalty_shoot_out}
-
-A penalty kick shoot-out is used to determine the outcome of a tied game when an outcome is required (for example, during knockout rounds, quarterfinals, semifinals, third place match, or final).
-
-All penalty kicks are taken against the same goal.\footnote{Which goal to use for the shoot-out is decided in agreement with the teams, or otherwise by a coin toss.}
-
-The team listed first on the competition schedule will have the striker robot for the first penalty kick. Subsequently, both teams take kicks alternately. The penalty kick shoot-out will consist of three penalty kicks per team. A team that has scored the most goals at the conclusion of these will be declared the winner. A winner can also be declared before the conclusion of the penalty shoot-out if a team can no longer win mathematically. If the two teams remain tied after three penalty kicks, then a sudden death shoot-out will follow until a definite winner is found.
-
-The penalty kick shoot-out starts immediately without changing any code after the second half ended. No timeouts may be called during the penalty shoot-out. However, a team may request a timeout before the penalty shoot-out starts if they have a timeout remaining for this game. During the timeout, code changes are allowed.
-
-Before the penalty shoot-out begins, each team must hand over to referees up to 6 prepared robots that may participate in the penalty shoot-out. No robots may be added once the penalty shoot-out starts. Robots that will not participate in the shoot-out must not be on the wireless network and must stay outside of the field. All participating robots must be wearing the correct jersey for their player number and no duplicate numbers are permitted.
-
-During the entire penalty kick shoot-out, the robots are controlled by the GameController and the referee's whistle. A team cannot request the referees to press buttons on their robots, except for initially leaving the \texttt{initial} state.
-
-\subsection{Penalty Kick Procedure}
-\label{sec:pso_kick}
-
-A penalty kick is carried out with one striker robot and one opposing goalkeeper. Before each penalty kick, both teams must select the robot to participate (as goalkeeper or striker). The team leader communicates the selection to the head referee by privately handing the referee a card with their chosen number. After both teams have selected their player, the GameController operator selects the requested striker and goalkeeper robots and the GameController communicates that all non-selected robots are substitutes and should remain inactive. The GameController indicates which team has the striker robot in the current penalty kick.
-
-Referees place the ball, the striker, and goalkeeper robots. The ball is placed on the penalty mark closest to the goal being defended. The striker robot is positioned on the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal. Neither robot is permitted to locomote during the \texttt{set} state.
-
-The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay.
-
-The time limit for the striker is \qty{\PenaltyShootoutKickTime}{\second} after the penalty kick starts. A penalty kick is over when the ball has come to a full stop after the first contact by the striker robot. The striker robot is not allowed to play the ball a second time after the ball has clearly moved, otherwise the penalty kick ends immediately. A goal is awarded to the attacking team if a goal has been scored (the ball has completely crossed the goal line) before the penalty kick is over. Otherwise, the score is unchanged.
-
-The goalkeeper robot must always be in contact with the goal line and must remain on its feet until the striker robot touches the ball. The goalkeeper is only permitted to ``dive'' and be off its feet after the attacking robot has touched the ball. If the goalkeeper violates these rules, the penalty kick ends immediately and a goal is awarded to the attacking team.
-
-All rules such as Ball Holding and Pushing are applied during the penalty kick. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend.
-
-\subsection{Sudden Death Shoot-Out}
-\label{sec:sudden_death_shoot_out}
-
-If teams remain tied after the initial three penalty kicks each, sudden death begins. Teams take one additional penalty kick each, and the game decision is made as follows:
-
-Each kick is ranked in one of the following categories (from best to worst):
-\begin{enumerate}
-  \item Goal scored
-  \item Kick at the goal that is blocked by the goalkeeper
-  \item Kick that hits a goalpost
-  \item Kick that crosses the goal line next to the goalposts
-  \item Any other kick
-  \item No kick
-\end{enumerate}
-
-If both teams' kicks rank in different categories, the team with the higher ranked kick wins. Otherwise, the sudden death is repeated. If after 3 sudden death penalty kicks there is still no winner, the referee will toss a coin to decide the game.
