@@ -1,7 +1,7 @@
 % !TeX root = ../Rules.tex
 % !TeX spellcheck = en_US
 
-\subsubsection{Robot States}
+\sublaw{Robot States}
 \label{sec:robot_states}
 
 Throughout a match, robots transition through several defined states controlled by the GameController. Robots must respond appropriately to each state transition.
@@ -61,32 +61,32 @@ Play resumes when the head referee determines it is safe to continue. The proced
   \item The game resumes in the same state as it was when it was stopped.
 \end{itemize}
 
-\subsection{Law 7 -- The Duration of the Match}
+\law{7}{The Duration of the Match}
 \label{sec:duration_of_match}
 
 The match consists of three parts: the first play period (first half), a half-time break, and a second play period (second half).
 
-\subsubsection{Periods of Play}
+\sublaw{Periods of Play}
 
 Each game period has a duration of 10 minutes, starting from the beginning of the Playing state of the initial whistle.
 
-\subsubsection{Half-Time Break}
+\sublaw{Half-Time Break}
 
 The half-time break must be at least 10 minutes, unless otherwise agreed by the teams. When multiple games are played on adjacent fields, the half-time break can extend to allow the referees to move between fields, and any other time taken for such logistical considerations.
 
 During the half-time break both teams may perform any modifications on the hardware or software of the robots, change robots, or do anything else that can be done within the time allotted.
 
-\subsubsection{Signals}
+\sublaw{Signals}
 The head referee signals the beginning of each half with a single whistle blow.
 The head referee signals the end of the first half with two short whistle blows, and the end of the second half with two short plus one long whistle blow. 
 The head referee should make all whistle sounds from the T-junction of the halfway line.
 
-\subsubsection{Ready and Set States}
+\sublaw{Ready and Set States}
 \label{sec:ready_set_clock}
 
 In both knock-out and round-robin games, the game clock is not stopped during the Ready and Set states other than the initial kickoff of a period.
 
-\subsubsection{Allowance for Time Lost}
+\sublaw{Allowance for Time Lost}
 \label{sec:allowance_time_lost}
 
 Allowance is made in either period for all time lost through:
@@ -104,7 +104,7 @@ The allowance for time lost is at the discretion of the head referee. It is anno
 
 In exceptional circumstances, the head referee may decide to add time to the clock immediately after an incident rather than waiting until the final minute of a half.
 
-\subsubsection{Timeout}
+\sublaw{Timeout}
 \label{sec:timeout}
 
 \paragraph{Team Timeout}
@@ -130,12 +130,12 @@ Referees may call multiple timeouts during a game if needed. Teams may do anythi
 If a team was going to have kick-off at the time the referee timeout was called (e.g., during most stoppages of play), that team shall kick-off when the game resumes. Otherwise, the drop ball rule (\cf~\cref{sec:drop_ball}) applies instead.
 
 
-\subsubsection{Mercy Rule}
+\sublaw{Mercy Rule}
 \label{sec:mercy_rule}
 
 A game will conclude once the game score shows a goal difference of 10. Ending the game is mandatory once a goal difference of 10 is reached.
 
-\subsubsection{Ball Stop Rule}
+\sublaw{Ball Stop Rule}
 \label{sec:ball_stop_rule}
 
 If the time for a period would end while the ball is still in motion, the period is extended instead until any of the following events happens:
@@ -146,13 +146,13 @@ If the time for a period would end while the ball is still in motion, the period
 
 This extension should last a few seconds at most.
 
-\subsubsection{Penalty Kick Extension Rule}
+\sublaw{Penalty Kick Extension Rule}
 \label{sec:penalty_kick_extension}
 
 If the time for a period would end while a penalty kick is taking place, the period is extended instead until the penalty kick is completed (\cf~\cref{sec:penalty_kick}). Note that this rule applies to any game state as long as the penalty kick substate is active, including the Ready and Set preceding the actual kick.
 
 % Following subsection was edited by Prof. Azer Babaev 
-\subsection{Law 8 -- The Start and Restart of Play}
+\law{8}{The Start and Restart of Play}
 \label{sec:start_restart_play}
 
 A kick-off starts both halves of a match, both halves of extra time and restarts play after a goal has been scored. Free kicks (direct or indirect), penalty kicks,
@@ -163,7 +163,7 @@ require one of the above restarts.
 If an offence occurs when the ball is not in play, this does not change how
 play is restarted.
 
-\subsubsection{Kick-off}
+\sublaw{Kick-off}
 \label{sec:kick_off}
 
 \paragraph{Procedure}
@@ -202,7 +202,7 @@ For every kick-off:
 
 In the event of any kick-off procedure offence, the kick-off is retaken.
 
-\subsubsection{Dropped Ball}
+\sublaw{Dropped Ball}
 \label{sec:dropped_ball}
 
 \paragraph{Definition of Dropped Ball}
@@ -227,7 +227,7 @@ The game is continued at the center mark. A goal can be scored directly from a d
 % End of subsection which was edited by Prof. Azer Babaev
 
 %moved up from below - maybe a duplicate of the section 'Dropped Ball' from above?
-\subsubsection{Drop Ball}
+\sublaw{Drop Ball}
 \label{sec:drop_ball}
 
 In the event that play needs to resume after a stoppage in which neither team has a particular right to kick off the ball, the drop ball rule shall apply. For example, this may happen if there has been a referee error, a pause in game during the \texttt{playing} state that has been acknowledged by the head referee, or in the case of a global game stuck (\cf~\cref{sec:global_game_stuck}).
@@ -237,7 +237,7 @@ A drop ball is conducted like a kick-off variant. As in an ordinary kick-off, it
 The head referee calls ``Drop Ball'' before the \texttt{ready} phase begins.
 
 %moved up from below
-\subsubsection{Game Stuck}
+\sublaw{Game Stuck}
 \label{sec:game_stuck}
 
 Game stuck situations occur when play has stalled and intervention is required to resume normal game flow.
@@ -271,7 +271,7 @@ When global game stuck is called:
 
 The head referee calls ``Global Game Stuck''.
 
-\subsection{Law 9 -- The Ball In and Out of Play}
+\law{9}{The Ball In and Out of Play}
 \label{sec:ball_in_out_play}
 
 \improvement{TW: This should reference Section \ref{sec:inside_outside} (Definition of Inside and Outside), not redefine these terms.}
@@ -294,7 +294,7 @@ The head referee calls ``Global Game Stuck''.
 The definition of the ball in/out of play refers to the definition of \textit{inside} and \textit{outside} in Section \ref{sec:inside_outside} (Definition of Inside and Outside).
 
 \change{TW: Revised wording to be consistent with Section \ref{sec:inside_outside} (Definition of Inside and Outside)}
-\subsubsection{Ball Out of Play}
+\sublaw{Ball Out of Play}
 The ball is out of play when:
 \begin{itemize}
 	\item the ball is outside the field of play (outside of the region of the touch and goal lines)
@@ -305,7 +305,7 @@ The ball is out of play when:
 
 \change{TW: added referee ball handling for ball replacement during live play}
 
-\subsubsection{Ball In Play}
+\sublaw{Ball In Play}
 The ball is in play at all other times, including (but not limited to) when:
 \begin{itemize}
 	\item the ball rebounds off a match official (head referee, assistant referee), goalpost or crossbar, and the remains inside in the field of play (inside the region of the touch and goal lines)
@@ -321,10 +321,10 @@ The ball is in play at all other times, including (but not limited to) when:
 
 \change{TW: References to corner flagpost removed as this is NOT in our ruleset}
 
-\subsection{Law 10 – The Method of Scoring}
+\law{10}{The Method of Scoring}
 \label{sec:method_of_scoring}
 
-\subsubsection{Goal Scored}
+\sublaw{Goal Scored}
 \label{sec:goal_scored}
 
 A goal is scored when the entire ball (not only the center of the ball) passes over the goal line, between the goalposts and under the crossbar, 
@@ -333,13 +333,13 @@ provided that no infringement of the Laws of the Game has been committed previou
 
 The restart of the play will be a kick-off for the opponents team.
 
-\subsubsection{Winning Team}
+\sublaw{Winning Team}
 \label{sec:winning_team}
 
 The team scoring the greater number of goals during a match is the winner. 
 If both teams score an equal number of goals, or if no goals are scored, the match is drawn.
 
-\subsubsection{Competition Rules}
+\sublaw{Competition Rules}
 \label{sec:competition_rules}
 
 When competition rules require there to be a winning team after a match or home-and-away tie, the only permitted procedures for determining the winning team are:
@@ -348,16 +348,16 @@ When competition rules require there to be a winning team after a match or home-
 \item Kicks from the penalty mark (\cf\ref{sec:penalty_shoot_out})
 \end{itemize}
 
-\subsection{Law 11 -- Offsides}
+\law{11}{Offsides}
 
 Offsides are not used in the RoboCup Humanoid Soccer League.
 
-\subsection{Law 12 -- Fouls and Misconduct}
+\law{12}{Fouls and Misconduct}
 \label{sec:fouls_misconduct}
 
 The following actions are forbidden. In general, when a penalty applies, the robot shall be removed, not the ball.
 
-\subsubsection{Penalty Procedure}
+\sublaw{Penalty Procedure}
 \label{sec:penalty_procedure}
 
 When a robot commits an infraction, the head referee shall call out the \textbf{infraction} committed, the \textbf{team color} of the robot, and the \textbf{jersey number} of the robot. The penalty for the infraction will be applied immediately. The robot handlers should perform the actual movement of the robots for the penalty so that the head referee can continue focusing on the game. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
@@ -367,7 +367,7 @@ If a robot commits an offense in the vicinity of the ball (within the free kick 
 
 For penalties that are timed, the penalty time is considered to be over at the end of each half.
 
-\subsubsection{Standard Removal Penalty}
+\sublaw{Standard Removal Penalty}
 \label{sec:removal_penalty}
 
 Unless otherwise stated, all infractions result in the removal of the infringing robot from the field of play for a particular amount of time, after which it will be returned to the field of play. This process is called the \textit{standard removal penalty}.
@@ -470,7 +470,7 @@ Additionally, a robot will also be subject to the standard removal penalty when:
 	\item The robot's fingers or other appendages become entangled in the net (without any time constraint).
 \end{itemize}
 
-\subsubsection{Cautionable offenses}
+\sublaw{Cautionable offenses}
 
 The referee applies disciplinary sanctions through warnings, cautions (yellow cards), and sending-off offenses (red cards). A warning is an official verbal admonishment. The issuance of two warnings to the same player during a match results in a caution (yellow card). A yellow card constitutes a formal caution. The issuance of two yellow cards to the same player in the same match results in a sending-off (red card).
 A red card requires the player to be sent off. The player must immediately leave the field of play and the technical area and may not participate further in the match.
@@ -531,19 +531,19 @@ Pushing is any direct or indirect contact with an opponent robot that is either 
 
 If a pushing offense is committed, the head referee will call ``Pushing \textless robot color\textgreater \textless robot number\textgreater'' and the offending player will be cautioned and removed from play according to a standard penalty. If the ball moves significantly as a result of pushing, then it should be replaced to where it was at the time of the infraction.
 
-\subsubsection{Aborting a Penalty}
+\sublaw{Aborting a Penalty}
 \label{sec:aborting_penalty}
 
 If a penalty was incorrectly applied to a robot and acknowledged by the referee to be incorrect, the robot should first be removed and placed outside the field, following the same process as for the Standard Removal Penalty (\cf~\cref{sec:removal_penalty}). Once placed, the robot should then be allowed to continue play immediately after being placed and the GameController removes its penalty.
 
 The aborted penalty will not be added to the total team penalty count and will not contribute to the incremental penalty increase.
 
-\subsubsection{Untangling}
+\sublaw{Untangling}
 \label{sec:untangling}
 
 If entangled robots fail to untangle themselves, the referee may ask designated robot handlers of both teams to untangle the robots. Untangling must not make significant changes to robot positions or heading directions. Untangled robots must be placed on the ground no closer than \qty{50}{\centi\metre} to the ball and in a way that does not give either team an advantage. Being entangled does not incur a penalty.
 
-\subsubsection{Jamming}
+\sublaw{Jamming}
 \label{sec:jamming}
 
 During a match, robots shall not jam the communication and sensor systems of the opponents:
@@ -557,7 +557,7 @@ During a match, robots shall not jam the communication and sensor systems of the
 \end{description}
 
 
-\subsubsection{Penalties against Teams or Humans}
+\sublaw{Penalties against Teams or Humans}
 \label{sec:penalties_against_humans}
 
 The referee can issue warnings, yellow and red cards against humans or teams at their discretion. Cards can be issued for offenses such as:
@@ -571,7 +571,7 @@ The referee can issue warnings, yellow and red cards against humans or teams at 
 
 Cards that are issued against humans or teams must be reported to the Technical Committee immediately after the game. Cards against humans or teams persist between games. A human who receives a red card will be prohibited from entering the field or team area during games for the remainder of the competition. A team that commits serious or repeated violations may be disqualified from the competition. 
 
-\subsection{Law 13 -- Free Kicks}
+\law{13}{Free Kicks}
 \label{sec:free_kick}
 
 A free kick is a method of restarting play after various stoppages.
@@ -596,7 +596,7 @@ The GameController will then activate the sub-state for the respective free kick
 The team awarded the free kick (termed the \emph{attacking team}) has \qty{\FreeKickTime}{\second} to complete the kick.
 Free kicks are classified as either \textbf{direct} or \textbf{indirect} (see~\cref{sec:direct_free_kick,sec:indirect_free_kick}).
 
-\subsubsection{Direct Free Kick}
+\sublaw{Direct Free Kick}
 \label{sec:direct_free_kick}
 
 A direct free kick allows the attacking team to score a goal directly from the kick:
@@ -609,7 +609,7 @@ The following set plays are direct free kicks: \emph{Corner Kick}, \emph{Goal Ki
 
 Note: If the attacking team fails to execute the free kick within the time limit, the defending team may also score directly (see Failed Free Kick in~\cref{sec:free_kick_execution}).
 
-\subsubsection{Indirect Free Kick}
+\sublaw{Indirect Free Kick}
 \label{sec:indirect_free_kick}
 
 An indirect free kick requires the ball to be touched by another player before the attacking team can score a goal:
@@ -623,7 +623,7 @@ The following set plays are indirect free kicks: \emph{Kick-in} / \emph{Throw-in
 
 Note: If the attacking team fails to execute the free kick within the time limit, the defending team may score directly without the indirect requirement (see Failed Free Kick in~\cref{sec:free_kick_execution}).
 
-% \subsubsection{Visual Gesture}
+% \sublaw{Visual Gesture}
 % \label{sec:free_kick_gesture}
 
 % \todo{Define visual gesture requirements for different divisions}
@@ -635,7 +635,7 @@ Note: If the attacking team fails to execute the free kick within the time limit
 % This gesture must be held for at least 5 seconds after the GameController signal is sent.
 % The referee should stand as close as possible to the T-junction joining the halfway line to the touchline opposite to the technical area.
 
-\subsubsection{Execution}
+\sublaw{Execution}
 \label{sec:free_kick_execution}
 
 The referee places the ball according to the type of free kick (see~\cref{sec:kick_in,sec:goal_kick,sec:corner_kick} for specific ball placement rules).
@@ -685,10 +685,10 @@ In this situation:
 \textbf{Example:} The blue team is awarded a kick-in (indirect free kick) but does not play the ball within \qty{\FreeKickTime}{\second}. The referee calls ``Ball Free''. A red robot immediately kicks the ball directly into the blue goal. The goal counts, as the failed-free-kick exception allows the defending team to score directly.
 
 %moved up from below
-\subsection{Law 14 -- Penalty Kick and Penalty Shoot-Out}
+\law{14}{Penalty Kick and Penalty Shoot-Out}
 \label{sec:penalty_kick}
 
-\subsubsection{Penalty Kick}
+\sublaw{Penalty Kick}
 \label{sec:penalty_kick}
 
 A penalty kick is awarded against a team that commits an offence for which a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) is awarded, inside its own penalty area and while the ball is in play. A goal may be scored directly from a penalty kick.
@@ -745,7 +745,7 @@ If the striker violates the rules (touches the ball a second time after it has m
 All standard rules such as Ball Holding and Pushing are applied during the penalty kick. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend the goal.
 
 %moved up from below
-\subsubsection{Penalty Kick Shoot-Out}
+\sublaw{Penalty Kick Shoot-Out}
 \label{sec:penalty_shoot_out}
 
 A penalty kick shoot-out is used to determine the outcome of a tied game when an outcome is required (for example, during knockout rounds, quarterfinals, semifinals, third place match, or final).
@@ -792,16 +792,16 @@ Each kick is ranked in one of the following categories (from best to worst):
 
 If both teams' kicks rank in different categories, the team with the higher ranked kick wins. Otherwise, the sudden death is repeated. If after 3 sudden death penalty kicks there is still no winner, the referee will toss a coin to decide the game.
 
-\subsection{Law 15 -- Kick-in / Throw-in}
+\law{15}{Kick-in / Throw-in}
 \label{sec:kick_in}
 
 A kick-in (or throw-in) is an \textbf{indirect free kick} (\cf~\cref{sec:indirect_free_kick}). A kick-in is awarded to the opponents of the player who last touched the ball when the whole of the ball leaves the field of play by crossing the touchline, either on the ground or in the air. Balls are deemed to be out based on the team that last touched the ball, irrespective of who actually kicked the ball.
 
-\subsubsection{Ball Placement}
+\sublaw{Ball Placement}
 
 The ball is placed on the touchline at the point where it left the field.
 
-\subsubsection{Throw-in Option}
+\sublaw{Throw-in Option}
 
 Robots may also perform a throw-in with their hands instead of kicking. When performing a throw-in with hands, the robot must:
 \begin{itemize}
@@ -814,7 +814,7 @@ Robots may also perform a throw-in with their hands instead of kicking. When per
 
 If a robot attempts to perform a throw-in with hands and fails to respect these rules, a free kick is awarded to the opposing team.
 
-\subsubsection{Examples}
+\sublaw{Examples}
 
 \textbf{Example 1:} A blue robot at midfield kicks the ball over the left touchline \qty{2}{\metre} into the red half of the field.
 The referee calls ``Kick-in red'' and the ball is replaced on the left touchline where it went out.
@@ -822,13 +822,13 @@ The referee calls ``Kick-in red'' and the ball is replaced on the left touchline
 \textbf{Example 2:} A blue robot kicks the ball but the ball touches a red robot at midfield before leaving the field near the halfway line.
 The ball is regarded as out by red; the referee calls ``Kick-in blue'' and the ball is replaced on the touchline where it went out.
 
-\subsubsection{Procedural Requirements}
+\sublaw{Procedural Requirements}
 
 All opponents must stand at least the center circle radius (see Table~\ref{tab:field_dim}) from the point at which the kick-in is taken.
 The ball is in play when it enters the field of play.
 After delivering the ball, the kicking robot must not touch the ball again until it has touched another player.
 
-\subsubsection{Offences and Sanctions}
+\sublaw{Offences and Sanctions}
 
 If, after the ball is in play, the kicker touches the ball again before it has touched another player:
 \begin{itemize}
@@ -845,28 +845,28 @@ If an opponent unfairly distracts or impedes the kicker, they are cautioned for 
 
 For any other infringement of this rule, the kick-in is taken by a player of the opposing team.
 
-\subsection{Law 16 -- Goal Kick}
+\law{16}{Goal Kick}
 \label{sec:goal_kick}
 
 A goal kick is a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) awarded when the whole of the ball passes over the goal line, either on the ground or in the air, having last touched a player of the attacking team, and a goal is not scored.
 
-\subsubsection{Ball Placement}
+\sublaw{Ball Placement}
 The ball is placed on the corner of the goal area on the same side of the field that the ball went out.
 That is, the corner inside the field where the goal area line meets the goal line (not the T-junction on the goal line itself).
 
-\subsubsection{Avoidance Region}
+\sublaw{Avoidance Region}
 For a goal kick, the avoidance region is the entire penalty area.
 All robots of the opposing team must remain outside the penalty area until the ball is in play (\cf~\cref{sec:free_kick_execution}).
 
-\subsubsection{Example}
+\sublaw{Example}
 \textbf{Example:} A blue robot kicks the ball out the end of the field to the right of the goal the red team is defending.
 The referee calls ``Goal Kick red'' and the ball is placed on the right corner of the goal area.
 
-\subsubsection{Procedural Requirements}
+\sublaw{Procedural Requirements}
 
 The ball must be kicked directly out of the penalty area to be considered in play. If the ball is not kicked directly out of the penalty area from a goal kick, the kick is retaken.
 
-\subsubsection{Offences and Sanctions}
+\sublaw{Offences and Sanctions}
 
 If, after the ball is in play, the kicker touches the ball again before it has touched another player:
 \begin{itemize}
@@ -881,21 +881,21 @@ If, after the ball is in play, the kicker deliberately handles the ball before i
 
 In the event of any other infringement, the kick is retaken.
 
-\subsection{Law 17 -- Corner Kick}
+\law{17}{Corner Kick}
 \label{sec:corner_kick}
 
 A corner kick is a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) awarded when the whole of the ball passes over the goal line, either on the ground or in the air, having last touched a player of the defending team, and a goal is not scored.
 
-\subsubsection{Ball Placement}
+\sublaw{Ball Placement}
 
 The ball is placed on the corner of the field on the same side that the ball went out.
 
-\subsubsection{Example}
+\sublaw{Example}
 
 \textbf{Example:} The red goalkeeper kicks the ball out the end of the field to the right of the goal.
 The referee calls ``Corner Kick blue'', the ball is placed on the corner to the right of the goal, and a free kick is started.
 
-\subsubsection{Offences and Sanctions}
+\sublaw{Offences and Sanctions}
 
 If, after the ball is in play, the kicker touches the ball again before it has touched another player:
 \begin{itemize}
