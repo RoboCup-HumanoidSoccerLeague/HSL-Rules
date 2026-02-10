@@ -1,0 +1,34 @@
+name: Build LaTeX and Commit PDF
+
+on:
+  push:
+    branches: [ build-test ]
+    paths-ignore:
+      - 'Rules.pdf'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Rules.tex
+
+      - name: Commit PDF
+        run: |
+          if git diff --quiet Rules.pdf; then
+            echo "No PDF changes"
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add Rules.pdf
+            git commit -m "Auto-build PDF"
+            git push
+          fi
