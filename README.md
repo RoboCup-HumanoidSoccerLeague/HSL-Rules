@@ -31,6 +31,10 @@ Pull requests should follow the following guidelines:
 1. Changes should focus on a single particular issue such as adjusting a rule or improving the structure.
 2. It should introduce only the changes necessary to adress this specific issue and if possible only affect an isolated block of text.
 3. If a refactoring of the structure is needed that touches several sections, then the changes should not change the meaning of the text being restructured.
-4. **DO NOT** include a new `Rules.pdf` in your Pull Request (because it is likely result in a conflict). The `Rules.pdf` will be generated after the Pull Request is merged.
+
+> [!WARNING]
+> **DO NOT** include a new `Rules.pdf` in your Pull Request (because it is likely result in a conflict). 
+> The `Rules.pdf` will be **automatically** generated and committed to the main branch after the Pull Request is merged.
+
 
 
