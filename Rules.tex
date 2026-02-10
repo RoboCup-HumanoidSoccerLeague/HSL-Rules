@@ -39,7 +39,6 @@
 
 % modern and easy to use tables tblr
 \usepackage{tabularray}
-\usepackage{cleveref}
 
 \newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
 \newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
@@ -82,15 +81,104 @@
 \definecolor{green}{rgb}{0,1,0}
 
 
-\title{Rule Book\\\leaguename (\leaguenameabbr)}
+%%%%%%%%%%%%%%%%%%% GENERAL SECTION NUMBERING %%%%%%%%%%%%%%%%%%%%%%%
 
-\author{\leaguename Technical Committee\\\url{https://hsl.robocup.org/}}
-\date{(DRAFT \RCYear Working Rules Document, as of \today)}
+% Section numbering formats
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsection}.\arabic{subsubsection}}
+
+% Counter hierarchy (important!)
+\makeatletter
+\@addtoreset{subsection}{section}
+\@addtoreset{subsubsection}{subsection}
+\makeatother
+
+% unnumbered subsection that is still listed in toc
+\makeatletter
+\newcommand{\subsectionNoNumber}[1]{%
+  \subsection*{#1}%
+  \phantomsection%
+  \addcontentsline{toc}{subsection}{\protect\numberline{}#1}%
+}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%%%% SPECIFIC SECTION FORMAT %%%%%%%%%%%%%%%%%%%%%%%
+% 
+% Subdivision for the laws of the game:
+%
+%   \law{<N>}{<Title>}
+%   \sublaw{<Title>}
+%   \paragraph{<Title>}
+%
+% NOTE: the number <N> mus be fixed, e.g.,
+%   \law{3}{My Big Law}
+%
+
+% width reserved for the law number in the TOC, adjust if necessary
+\newlength{\lawnumwidth}
+\setlength{\lawnumwidth}{2em}
+
+% only for unique hyperlink targets; does not affect sectioning
+\newcounter{lawtmp} 
+
+\newcommand{\law}[2]{%
+  \par\refstepcounter{lawtmp}% creates a unique anchor each time (for hyperlinks)
+  \setcounter{subsection}{#1}%
+  \setcounter{subsubsection}{1}%
+  \renewcommand{\thelawtmp}{\thesubsection}
+  \subsection*{§ #1\quad #2}% printed heading
+  %\addcontentsline{toc}{subsection}{\protect\numberline{}§ #1\quad #2}
+  \addcontentsline{toc}{subsection}{%
+    \protect\numberline{}\makebox[2.5em][l]{§ #1} #2%
+  }%
+}
+
+\newcommand{\sublaw}[1]{%
+  \par\refstepcounter{lawtmp}% creates a unique anchor each time (for hyperlinks)
+  \begingroup
+    \renewcommand{\thelawtmp}{\thesubsubsection}%
+    \renewcommand{\thesubsubsection}{§~\thesubsection.\arabic{subsubsection}}%
+    \subsubsection{#1}%
+  \endgroup
+}
+
+\renewcommand{\theparagraph}{§~\thesubsubsection.\arabic{paragraph}}%
+
+
+% proper names for the \Cref and \cref
+
+%\crefname{lawtmp}{Law}{Laws}
+%\Crefname{lawtmp}{Law}{Laws}
+
+% simply use Paragraph numbers
+\crefname{lawtmp}{§}{§}
+\Crefname{lawtmp}{§}{§}
+\Crefname{paragraph}{}{}
+
+%%%%%%%%%%%%%%%%%%% TEXT FORMAT %%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{12pt plus 6pt minus 3 pt}
 \widowpenalty=10000
 \clubpenalty=10000
+
+% needed to align an image and text correctly side by side
+%\newcommand{\imagebox}[1]{\raisebox{2ex}{\raisebox{-\height}{#1}}}
+
+
+%%%%%%%%%%%%%%%%%%% TITLE %%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Rule Book\\\leaguename (\leaguenameabbr)}
+
+\author{\leaguename Technical Committee\\\url{https://hsl.robocup.org/}}
+\date{(DRAFT \RCYear Working Rules Document, as of \today)}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+%%%%%%%%%%%%%%%%%%% PAGE HEADER FORMAT %%%%%%%%%%%%%%%%%%%%%%%
 
 \pagestyle{fancy}
 \lhead{}
@@ -101,11 +189,6 @@
 %\cfoot{\thepage}
 \rfoot{}
 
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
-% needed to align an image and text correctly side by side
-\newcommand{\imagebox}[1]{\raisebox{2ex}{\raisebox{-\height}{#1}}}
 
 \begin{document}
 
