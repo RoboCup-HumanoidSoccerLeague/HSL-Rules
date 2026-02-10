@@ -77,9 +77,19 @@ The half-time break must be at least 10 minutes, unless otherwise agreed by the 
 During the half-time break both teams may perform any modifications on the hardware or software of the robots, change robots, or do anything else that can be done within the time allotted.
 
 \sublaw{Signals}
-The head referee signals the beginning of each half with a single whistle blow.
-The head referee signals the end of the first half with two short whistle blows, and the end of the second half with two short plus one long whistle blow. 
+\label{sec:signals}
+
+The head referee uses a \emph{whistle} to signal certain changes in the game phases (\cf~\Cref{sec:robot_states}).
 The head referee should make all whistle sounds from the T-junction of the halfway line.
+The following game phases are signaled by a whistle:
+\begin{enumerate}
+\item \texttt{playing} -- one short whistle blows;
+\item \texttt{finished} at the end of the first half -- two short whistle blows;
+\item \texttt{finished} at the end of the second half -- two short plus one long whistle blow;
+\end{enumerate}
+
+%The head referee signals the beginning of each half with a single whistle blow.
+%The head referee signals the end of the first half with two short whistle blows, and the end of the second half with two short plus one long whistle blow. 
 
 \sublaw{Ready and Set States}
 \label{sec:ready_set_clock}
@@ -96,7 +106,7 @@ Allowance is made in either period for all time lost through:
 \item assessment of injury to players
 \item removal of injured players from the field of play for treatment
 \item wasting time
-\item external circumstances (e.g. network issues)
+\item external circumstances (e.g., network issues)
 \item any other cause
 \end{itemize}
 
@@ -127,7 +137,7 @@ The head referee may call a timeout at any time if deemed necessary. A referee t
 
 Referees may call multiple timeouts during a game if needed. Teams may do anything during these timeouts, but they must be ready to play \textbf{\TeamTimeoutReadyTime{} minutes} after the referee ends a timeout. The referee should end the timeout once the circumstance for which the timeout was called has been resolved. In cases where the circumstance is not resolved within 10 minutes, the Technical Committee should be consulted regarding when or if play should continue.
 
-If a team was going to have kick-off at the time the referee timeout was called (e.g., during most stoppages of play), that team shall kick-off when the game resumes. Otherwise, the drop ball rule (\cf~\Cref{sec:drop_ball}) applies instead.
+If a team was going to have kick-off at the time the referee timeout was called (e.g., during most stoppages of play), that team shall kick-off when the game resumes. Otherwise, the drop ball rule (\cf~\Cref{sec:dropped_ball}) applies instead.
 
 
 \sublaw{Mercy Rule}
@@ -200,41 +210,65 @@ For every kick-off:
 
 \paragraph{Offenses and Sanctions}
 
-In the event of any kick-off procedure offense, the kick-off is retaken.
+\begin{enumerate}
+    \item The regulations defined in the section \Cref{sec:fouls_misconduct} apply (this includes in particular \Cref{sec:motion_in_set} and \Cref{sec:illegal_positioning}).
+    \item In the event of any offense during the kick-off procedure, the kick-off is retaken.
+\end{enumerate}
+
+
 
 \sublaw{Dropped Ball}
 \label{sec:dropped_ball}
 
-\paragraph{Definition of Dropped Ball}
+\paragraph{Definition}
 
-A dropped ball is a method of restarting play when, while the ball is still in play, the referee is required to stop play
-temporarily for any reason not mentioned elsewhere in the Laws of the Game. In the virtual competition, the only reason for a dropped ball to be called is that the ball has moved less than 5 centimeters in the last 2 minutes of play.
+A \emph{dropped ball} is a method of restarting play when the referee stops the game while the ball is in play, and no team is entitled to a kick-off, free kick, or any other specific restart under these Laws.
+%stop temporarily for any reason not mentioned elsewhere in the Laws of the Game. 
+
+Typical situations include, but are not limited to:
+\begin{enumerate}
+    \item referee or system error,
+    \item a pause in game during the \texttt{playing} state that has been acknowledged by the head referee,
+    \item a global game stuck (\cf~\cref{sec:global_game_stuck}).
+\end{enumerate}
 
 \paragraph{Procedure}
 
-The game is continued at the center mark. A goal can be scored directly from a dropped ball. The procedure for dropped ball is the same as for kick-off, except that the players of both teams must be outside the center circle. The ball is in play immediately after the referee gives the signal.
+\begin{enumerate}
+    \item \textbf{Announcement and Preparation:} 
+    	The head referee announces ``Dropped Ball''. 
+    	The game state switches to \texttt{ready} phase.
+    	No team is designated to take kick-off.
+
+	\item \textbf{Ready:}
+    	Robots assume their positions inside their own half.
+    	
+    \item \textbf{Set:}
+    	The robots must stop moving.
+    	No robot of either team is allowed inside the center circle.
+		The referee places the ball on the center mark.
+
+    \item \textbf{Playing:} 
+    	The referee signals the start and the game switches to \texttt{playing} phase (see \Cref{sec:signals}). 
+    	The ball is immediately in play.
+		A goal may be scored directly from a dropped ball.
+\end{enumerate}
 
 \paragraph{Offenses and Sanctions}
-\begin{itemize}
-    \item If a player moves too close to the ball before the referee gives the signal, a kick-off is awarded to the opponent team.
 
-    \item The ball is dropped again:
-        \begin{itemize}
-            \item if it is touched by a player before it makes contact with the ground,
-            \item if the ball leaves the field of play after it makes contact with the ground, without a player touching it.
-        \end{itemize}
-\end{itemize}
-% End of subsection which was edited by Prof. Azer Babaev
+\begin{enumerate}
+    \item The regulations defined in the section \Cref{sec:fouls_misconduct} apply (this includes in particular \Cref{sec:motion_in_set} and \Cref{sec:illegal_positioning}).
+    \item In the event of any offense during the dropped ball procedure, the dropped ball is retaken.
+\end{enumerate}
 
-%moved up from below - maybe a duplicate of the section 'Dropped Ball' from above?
-\sublaw{Drop Ball}
-\label{sec:drop_ball}
+\paragraph{Notes}
 
-In the event that play needs to resume after a stoppage in which neither team has a particular right to kick off the ball, the drop ball rule shall apply. For example, this may happen if there has been a referee error, a pause in game during the \texttt{playing} state that has been acknowledged by the head referee, or in the case of a global game stuck (\cf~\cref{sec:global_game_stuck}).
+A dropped ball follows the standard kick-off procedure \Cref{sec:kick_off} (including \texttt{ready} and \texttt{set}), with the following exceptions: 
+(1) no team has kick-off rights;
+(2) no robot is allowed inside the center circle before the \texttt{playing} state;
+(3) the ball is immediately in play;
+(4) a goal may be scored directly from a dropped ball.
 
-A drop ball is conducted like a kick-off variant. As in an ordinary kick-off, it is preceded by a \texttt{ready} phase to allow the robots to reach their positions and a \texttt{set} phase where the referee places the ball in the middle of the field. The main difference is that neither team is given kick-off, and no team is allowed in the center circle until the \texttt{playing} state, as there is no team designated to take the kick-off. The head referee signals the start of play by blowing the whistle, and with the transition into \texttt{playing} the ball is immediately in play.
-
-The head referee calls ``Drop Ball'' before the \texttt{ready} phase begins.
 
 %moved up from below
 \sublaw{Game Stuck}
@@ -266,7 +300,7 @@ Global game stuck is called when no robot has been within \qty{\GameStuckProximi
 When global game stuck is called:
 \begin{itemize}
   \item Play is stopped.
-  \item The game is restarted with a drop ball (\cf~\cref{sec:drop_ball}).
+  \item The game is restarted with a drop ball (\cf~\cref{sec:dropped_ball}).
 \end{itemize}
 
 The head referee calls ``Global Game Stuck''.
