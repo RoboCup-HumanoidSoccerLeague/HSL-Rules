@@ -299,6 +299,7 @@ Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
 \end{tblr}
 
 \sublaw{Communication}
+\label{sec:communication}
 
 Robots participating in the \leaguenameabbr competitions must act autonomously during a game. 
 
@@ -316,7 +317,7 @@ The robots are permitted to communicate through visual signaling (\eg, gestures)
 Communication that causes excessive discomfort to an audience, affects the safety of an audience, or violates normal playing rules is not permitted.
 
 
-\paragraph{Wireless Communications}
+\paragraph{Wireless Communications:}
 \label{sec:wireless}
 
 The robots are permitted to communicate through WiFi using builtin wireless adapters. 
@@ -328,8 +329,12 @@ Only the teams involved in the game are permitted to use the access point during
 Each team will be assigned a range of IP addresses that can be used both for their robots and their computers.
 The network configuration (\eg IP addresses, channels, SSIDs, and required encryption) of the fields will be announced at the competition site.
 
+Wireless equipment and access points will be provided by the organizers of the competition.
+No other \qty{2.4}{\giga\hertz} or \qty{5}{\giga\hertz} radio equipment (including cellular phones and/or Bluetooth devices) is allowed to be used close to the field.
 
-\paragraph{Robot-To-Robot Communication:}
+
+\paragraph{Wireless Robot-To-Robot Communication:}
+\label{sec:robot-to-robot}
 
 % AP
 Wireless robot-to-robot communication between the robot players is allowed and must use the access points provided by the event organizers. 
@@ -337,7 +342,7 @@ Direct wireless communication between the robots (using the so-called ad-hoc mod
 
 % protocol
 Messages must be sent via UDP broadcast. 
-Each message's payload size must not exceed 512 Bytes. 
+Each message's payload size must not exceed \qty{\UDPPacketSize}{\byte}. 
  
 Each team will be allocated a single UDP port on which to send/receive their team messages.
 Specifically, a team's port will be 10000 plus that team's GameController number.
@@ -345,7 +350,11 @@ Specifically, a team's port will be 10000 plus that team's GameController number
 Unicast communication between robots is prohibited.
 
 % event based
-Each team is allowed to send in total a maximum of 12000 messages during a complete game.
+%Each team is allowed to send a maximum of \UDPPacketLimit{} UDP packets of up to \qty{\UDPPacketSize}{\byte} per game, 
+%in addition to \UDPDebugPacketRate{} packet per second per robot to a single team device on the wired network for debugging purposes 
+%(no size constraint for debug packets, but must be within the maximum single UDP packet size).
+
+Each team is allowed to send in total a maximum of \UDPPacketLimit{} messages during a complete game.
 
 For each minute of additional time added by the \emph{Allowance for time lost} rule (see Section \ref{sec:allowance_time_lost}), the limit is increased by 600 packets.
 
@@ -363,16 +372,21 @@ The limit of allowed packets will be lowered in future competitions to encourage
 
 \paragraph{GameController Communication:}
 
-Robots are permitted to send status update packets to the GameController.
+The GameController will communicate at \GameControllerPacketRate{} packet(s) per second.
 
-\todo[inline]{describe GC communication - Heinrich will provide a section}
+Robots are required to respond to GameController messages and send status update packets to the GameController.
+
+The format for the GameController messages and for the responses is defined in the official GameController\footnote{\url{https://github.com/RoboCup-HumanoidSoccerLeague/GameController/blob/master/game_controller_msgs/headers/RoboCupGameControlData.h}}
 
 
 \paragraph{Debug Communication:}
 
+%in addition to \UDPDebugPacketRate{} packet per second per robot to a single team device on the wired network for debugging purposes 
+%
 Team specific debug information may be sent to an external computer owned by the team. 
-A robot may send debug information at most once every second in a single UDP packet with the size of at most 64kB.
-
+Each robot may send debug information in a single UDP packet to a single team device on the wired network.
+The robot may sent at most \UDPDebugPacketRate{} packets per second.
+The size of a single packet is not explicitly restricted, but must be within the maximum single UDP packet size (typically 64kB).
 
 \law{4}{The Players' Equipment}
 
