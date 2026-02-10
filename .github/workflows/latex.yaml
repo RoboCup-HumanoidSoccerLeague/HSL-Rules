@@ -6,6 +6,9 @@ on:
     paths-ignore:
       - 'Rules.pdf'
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,8 +24,19 @@ jobs:
         with:
           root_file: Rules.tex
 
-      - name: Upload PDF
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdf
-          path: Rules.pdf
+      - name: Commit PDF
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- Rules.pdf; then
+            echo "No PDF changes"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Rules.pdf
+          git commit -m "Auto-build PDF"
+
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push origin HEAD:build-test
