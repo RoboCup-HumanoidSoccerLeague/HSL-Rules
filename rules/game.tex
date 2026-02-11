@@ -4,7 +4,22 @@
 \sublaw{Robot States}
 \label{sec:robot_states}
 
-Throughout a match, robots transition through several defined states controlled by the GameController. Robots must respond appropriately to each state transition.
+Throughout a match, robots transition through several defined states controlled by the GameController. 
+Robots must respond appropriately to each state transition.
+\Cref{fig:game_states} illustrates the game states and transition between them.
+
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=1.0\linewidth]{figs/game_states/game_states.pdf}
+	\caption{%
+	Diagram of the game states.
+	Dashed lines denote technical state \texttt{safe}. Dashed transitions are activated through dedicated buttons or switches on the robot.
+	Solid lines denote game states. Transitions between game states are activated by the GameController.
+	The transition from \texttt{set} to \texttt{playing} (denoted by a double line) is additionally activated by a whistle.
+	Final state \texttt{finished} is denoted by double circle.
+	}
+	\label{fig:game_states}
+\end{figure}
 
 \paragraph{Initial}
 \label{sec:state_initial}
@@ -40,7 +55,7 @@ A robot in the \texttt{penalized} state has been removed from play due to an inf
 
 The \texttt{finished} state indicates the end of a game half or the match. Robots should cease all game-related activity.
 
-\paragraph{Emergency Stop}
+\paragraph{Safe (Emergency Stop)}
 \label{sec:state_emergency_stop}
 
 The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
