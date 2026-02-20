@@ -1,8 +1,10 @@
 % !TeX root = ../Rules.tex
 % !TeX spellcheck = en_US
 
-\sublaw{Robot States}
+\law{99}{Robot States}
 \label{sec:robot_states}
+
+\textit{The 99 heading is a temporary ``hot fix" due to incorrect tex formatting (file would start with a sublaw heading). The proper positioning of the robot states rules will be discussed shortly.}
 
 Throughout a match, robots transition through several defined states controlled by the GameController. 
 Robots must respond appropriately to each state transition.
@@ -87,6 +89,8 @@ The match consists of three parts: the first play period (first half), a half-ti
 \sublaw{Periods of Play}
 
 Each game period has a duration of 10 minutes, starting from the beginning of the Playing state of the initial whistle.
+
+For the second half, the teams change sides of the field, thus attacking the goal they used to defend in the first half.
 
 \sublaw{Half-Time Break}
 
@@ -195,33 +199,33 @@ play is restarted.
 \label{sec:kick_off}
 
 \paragraph{Procedure}
+
+The team taking a kick-off is determined as follows:
 \begin{itemize}
-    \item The referee tosses a coin and the team that wins the toss decides which goal to attack in the first half or to take the kick-off.
-
-    \item Depending on the above, their opponents take the kick-off or decide which goal to attack in the first half.
-
-    \item The team that decided which goal to attack in the first half takes the kick-off to start the second half.
-
-    \item For the second half, the teams change ends and attack the opposite goals. The kick-off at the beginning of the second half has to be taken by the team which did not take the kick-off in the beginning of the first half. 
-
+    \item The initial kick-off of the first half is taken by the team who got this benefit during the pre-game meeting (\cf \ref{sec:pre_game_meeting}).
+    \item The initial kick-off of the second half is taken by the team who did not take the initial kick-off of the first half.
     \item After a team scores a goal, a kick-off has to be taken by their opponents.
+    \item Other situations, such as timeouts, have their own rules for determining the kick-off team.
 \end{itemize}
 
-For every kick-off:
+For every kick-off, during the \textbf{set} state, the ball is positioned on the center mark and is stationary. The players must follow these positioning rules:
 \begin{itemize}
-    \item all players must be in their own half of the field of play,
+    \item all players of the team \textit{not} taking the kickoff must be in their own half of the field of play and outside of the center circle,
 
-    \item the opponents of the team taking the kick-off must be outside from the center circle until ball is in play,
+    \item all players of the team taking the kickoff must be in their own half of the field or inside the center circle,
 
-    \item the ball must be stationary on the center mark,
+    \item at most one player of the kicking team may be outside its own half (it must still be inside the center circle). That player is designated as the kicking player for this kickoff.
+\end{itemize}
 
-    \item the referee gives a signal,
+Robots that do not follow these rules are penalized for illegal position. Then, when the referee gives the signal to start play:
+\begin{itemize}
+    \item the positioning rules above still apply until the ball is in play,
+    
+    \item if a kicking player was designated during the \textbf{set} state, that player \textit{must} take the kickoff. If a different player kicks the ball before the ball is in play, this is an offense and the kick-off is retaken,
 
-    \item the ball is in play when it is kicked and clearly moves,
+    \item the ball is in play when it is kicked and clearly moves, or \qty{\KickOffBallFreeTime}{\second} after the referee has given the signal, whichever happens first. In either case, the GameController and head referee will indicate this by the call ``Ball Free'',
 
-    \item if the ball does not move \qty{\KickOffBallFreeTime}{\second} after the referee has given the signal then the ball is in play and the opponents of the team taking the kick-off may enter into the center circle. The GameController and head referee will indicate this by the call ``Ball Free'',
-
-    \item a goal may not be scored directly against the opponents from the kick-off,
+    \item a goal may \textbf{not} be scored directly against the opponents from the kick-off,
 
     \item if the team taking the kick-off has three or more robots on the field then two different robots need to touch the ball before scoring a goal. If a team taking the kick-off has only two or less robots on the field, the robot taking the kick-off has to touch the ball at least one time outside the center circle before scoring a goal. 
 \end{itemize}
@@ -396,8 +400,8 @@ If both teams score an equal number of goals, or if no goals are scored, the mat
 
 When competition rules require there to be a winning team after a match or home-and-away tie, the only permitted procedures for determining the winning team are:
 \begin{itemize}
-\item Extra time (2 additional equal periods of no more than 5 minutes each.)\todo{Is there a half-time break in between the two halves of extra time? (And if so, how long?)}
-\item Kicks from the penalty mark (\cf\ref{sec:penalty_shoot_out})
+\item Extra time (2 additional equal periods of no more than 5 minutes each)\todo{Is there a half-time break in between the two halves of extra time? (And if so, how long?)}
+\item Penalty shoot-out (\cf\cref{sec:penalty_shoot_out})
 \end{itemize}
 
 \law{11}{Offsides}
@@ -445,7 +449,6 @@ Standard Removal Penalties are issued for the following offenses:
 	\item Incapable robot*
 	\item Request for pick-up
 	\item Ball holding
-	\item Illegal player stance
 	\item Leaving the field
 \end{itemize}
 
@@ -489,6 +492,11 @@ An incapable robot must be removed from the field of play and awarded a standard
 
 \textbf{Note:} This rule is not intended to penalize robots solely for remaining stationary, provided they are responsive and have not crashed.
 
+\paragraph*{Player Stance.}
+\label{sec:player_stance}
+
+Robots must not maintain a stance wider than a reasonable proportion of their body width for longer than \qty{10}{\second}. As a guideline, the stance should not exceed approximately 1.5 times the robot's shoulder width. A robot staying in an excessively wide stance for longer than \qty{10}{\second} is considered to be incapable of playing, resulting in a standard removal penalty (see above).
+
 \paragraph{Request for Pick-up}
 \label{sec:request_for_pick_up}
 
@@ -504,13 +512,6 @@ Ball holding may not be called when a robot falls on a ball. The robot will eith
 If a ball holding offense was committed, the head referee will call ``Ball Holding \textless robot color\textgreater \textless robot number\textgreater'', and the robot is removed under the standard removal penalty. The ball should be removed from the possession of the robot and placed where the penalty occurred. If the robot that held the ball has moved the ball before the robot can be removed, the ball shall be replaced where the penalty occurred. This also applies to accidental goals.
 
 \textbf{Example:} A robot holds the ball, and before the referees can remove the robot, it shoots the ball into the goal. The goal will not be counted, and the ball will be replaced where the penalty occurred.
-
-\paragraph{Player Stance}
-\label{sec:player_stance}
-
-Robots must not maintain a stance wider than a reasonable proportion of their body width for longer than \qty{10}{\second}. As a guideline, the stance should not exceed approximately 1.5 times the robot's shoulder width. Staying in an excessively wide stance for longer than \qty{10}{\second} will result in the standard removal penalty. \unsure{Review call phrase here, should this be an existing call in GC for simplicity?}
-
-This rule applies to upright robots only, i.e., robots that are supported by their feet. Other cases are handled by the Incapable Robot rule (\cf~\cref{sec:incapable_robot}).
 
 \paragraph{Leaving the Field}
 \label{sec:leaving_the_field}
