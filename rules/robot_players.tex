@@ -252,51 +252,56 @@ The number of such distance sensors is limited to 4.
 The use of distance sensors is discouraged and might be prohibited in the future.
 
 \paragraph{Summary}
-The following table briefly summarizes pre-approved sensors.
+The \Cref{tab:sensors} summarizes the approved sensors.
 The use of listed sensors that are considered human-like is encouraged.
 The use of listed sensors that are not considered human-like is accepted, but discouraged and might be prohibited or limited in the future.
 
-\begin{tblr}{
-  width=1.0\linewidth,
-  colspec = {Q[l]Q[l]X[l]},
-  row{1}={fg=black, font=\bfseries}, %, 
-  hline{2} = {solid},
-  hline{3-Y} = {dashed},
-  vline{2,3} = {abovepos = -1, belowpos = -1},
-}
-Sensor Type & Human-Like & Comments \\
-
-%Visual Perception
-RGB camera & yes & opening angle limit: horizontal $\leq$ \SI{180}{\degree}, vertical $\leq$ \SI{140}{\degree}\\
-Stereo camera & yes & \\
-Event camera & yes & \\
-
-Active RGB-D based on infrared projection & no & discouraged\\
-Active RGB-D based on time of flight (TOF) & no & discouraged\\
-
-% sound perception
-Microphone array & yes & \\
-
-% Orientation
-Gyro & yes & \\
-Accelerometer & yes & \\
-Compass & no & magnetic measurement sensors are not allowed\\ 
-Integrated inertial measurement units (IMU) & yes & no compass or must be disabled and not used\\
-
-% Haptic sensing
-Force sensors & yes & \\
-Touch sensors & yes & \\
-Buttons / Bumpers & yes & \\
-Capacitive touch sensors & yes & \\
-
-% Distance sensing
-Near range infrared sensor & no & \\
-Sonar / ultrasound sensors & no & \\
-1D LIDAR and laser range sensor & no & with limited range \\
-
-% Intrinsic sensors
-Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
-\end{tblr}
+\begin{table}[ht]
+	\centering
+	\begin{tblr}{
+	  width=1.0\linewidth,
+	  colspec = {Q[l]Q[l]X[l]},
+	  row{1}={fg=black, font=\bfseries}, %, 
+	  hline{2} = {solid},
+	  hline{3-Y} = {dashed},
+	  vline{2,3} = {abovepos = -1, belowpos = -1},
+	}
+	Sensor Type & Human-Like & Comments \\
+	
+	%Visual Perception
+	RGB camera & yes & opening angle limit: horizontal $\leq$ \SI{180}{\degree}, vertical $\leq$ \SI{140}{\degree}\\
+	Stereo camera & yes & \\
+	Event camera & yes & \\
+	
+	Active RGB-D based on infrared projection & no & discouraged\\
+	Active RGB-D based on time of flight (TOF) & no & discouraged\\
+	
+	% sound perception
+	Microphone array & yes & \\
+	
+	% Orientation
+	Gyro & yes & \\
+	Accelerometer & yes & \\
+	Compass & no & magnetic measurement sensors are not allowed\\ 
+	Integrated inertial measurement units (IMU) & yes & no compass or must be disabled and not used\\
+	
+	% Haptic sensing
+	Force sensors & yes & \\
+	Touch sensors & yes & \\
+	Buttons / Bumpers & yes & \\
+	Capacitive touch sensors & yes & \\
+	
+	% Distance sensing
+	Near range infrared sensor & no & \\
+	Sonar / ultrasound sensors & no & \\
+	1D LIDAR and laser range sensor & no & with limited range \\
+	
+	% Intrinsic sensors
+	Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
+	\end{tblr}
+	\caption{Summary of approved sensor types.}
+	\label{tab:sensors}
+\end{table}
 
 \sublaw{Communication}
 \label{sec:communication}
