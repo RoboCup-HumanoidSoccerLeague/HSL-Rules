@@ -30,7 +30,7 @@ The \texttt{initial} state is active before the game begins. Robots should be pl
 \paragraph{Ready}
 \label{sec:state_ready}
 
-The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off or other set plays. Robots must reach legal positions before the \texttt{set} state begins.
+The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off or other set plays. The \texttt{ready} state lasts \qty{\ReadyPhaseDuration}{\second}. Robots must reach legal positions before the \texttt{set} state begins.
 
 \paragraph{Set}
 \label{sec:state_set}
@@ -777,7 +777,7 @@ The players other than the kicker and goalkeeper must be:
 
 \paragraph{Procedure}
 
-During normal play, if a penalty kick is awarded, the head referee calls ``Penalty Kick \textless color\textgreater'' for the attacking team --- the team with the kick. The GameController activates the penalty kick state. Referees place the ball on the penalty mark. The striker robot is positioned at the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal.
+During normal play, if a penalty kick is awarded, the head referee calls ``Penalty Kick \textless color\textgreater'' for the attacking team --- the team with the kick. The GameController activates the penalty kick state. Robots have \qty{\PenaltyKickSetupTime}{\second} to get into position, before the GameController switches to the \texttt{set} state. Referees place the ball on the penalty mark. The striker robot is positioned at the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal.
 
 Neither robot is permitted to locomote during the \texttt{set} state. Movement of the robot's head is allowed.
 
