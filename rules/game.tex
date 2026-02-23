@@ -217,18 +217,20 @@ For every kick-off, during the \textbf{set} state, the ball is positioned on the
     \item at most one player of the kicking team may be outside its own half (it must still be inside the center circle). That player is designated as the kicking player for this kickoff.
 \end{itemize}
 
-Robots that do not follow these rules are penalized for illegal position. Then, when the referee gives the signal to start play:
+Robots that do not follow these rules are penalized for illegal position. Then, the head referee gives the signal to start play with a whistle. At this point, the following rules apply:
 \begin{itemize}
     \item the positioning rules above still apply until the ball is in play,
     
     \item if a kicking player was designated during the \textbf{set} state, that player \textit{must} take the kickoff. If a different player kicks the ball before the ball is in play, this is an offense and the kick-off is retaken,
 
-    \item the ball is in play when it is kicked and clearly moves, or \qty{\KickOffBallFreeTime}{\second} after the referee has given the signal, whichever happens first. In either case, the GameController and head referee will indicate this by the call ``Ball Free'',
+    \item the ball is in play when it is kicked and clearly moves, or \qty{\KickOffBallFreeTime}{\second} after the referee has given the signal, whichever happens first. In either case, the head referee or the GameController operator will verbally announce this by the call ``Ball Free'',
 
     \item a goal may \textbf{not} be scored directly against the opponents from the kick-off,
 
     \item if the team taking the kick-off has three or more robots on the field then two different robots need to touch the ball before scoring a goal. If a team taking the kick-off has only two or less robots on the field, the robot taking the kick-off has to touch the ball at least one time outside the center circle before scoring a goal. 
 \end{itemize}
+
+In order to encourage teams to recognize the signal to start play, the GameController application will delay the \textbf{playing} signal, as specified in \Cref{sec:state_set}. The delay applies regardless of when or how the ball becomes in play.
 
 \paragraph{Offenses and Sanctions}
 
