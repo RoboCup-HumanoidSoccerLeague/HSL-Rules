@@ -754,37 +754,34 @@ In this situation:
 
 A penalty kick is awarded against a team that commits an offense for which a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) is awarded, inside its own penalty area and while the ball is in play. A goal may be scored directly from a penalty kick.
 
-\paragraph{Position of the Ball and the Players}
-
-The ball must be placed on the penalty mark.
-
-The defending goalkeeper:
-\begin{itemize}
-  \item Must remain on the goal line, facing the kicker, and positioned between the goalposts until the ball has been kicked.
-  \item Must remain on their feet until the attacking robot has touched the ball (the goalkeeper may ``dive'' only after the striker has made contact with the ball).
-\end{itemize}
-
-The kicker:
-\begin{itemize}
-  \item Must be placed inside the field of play.
-  \item Must be placed behind the penalty mark.
-\end{itemize}
-
-The players other than the kicker and goalkeeper must be:
-\begin{itemize}
-  \item Inside the field of play.
-  \item Behind the penalty mark.
-  \item Outside the penalty area.
-  \item At least the center circle radius (see Table~\ref{tab:field_dim}) from the penalty mark.
-\end{itemize}
-
 \paragraph{Procedure}
 
-During normal play, if a penalty kick is awarded, the head referee calls ``Penalty Kick \textless color\textgreater'' for the attacking team --- the team with the kick. The GameController activates the penalty kick state. Referees place the ball on the penalty mark. The striker robot is positioned at the edge of the penalty area, facing the ball and the goal. The goalkeeper is placed with its feet on the goal line and in the center of the goal.
+During normal play, if a penalty kick is awarded, the head referee calls ``Penalty Kick \textless color\textgreater'' for the team that will be performing the kick\footnote{This is a change from previous Standard Platform League (SPL) rules.}. The GameController immediately transitions to the \texttt{ready} state, with a specific field in the message informing the robots that a penalty kick is about to take place.
 
-Neither robot is permitted to locomote during the \texttt{set} state. Movement of the robot's head is allowed.
+During the \texttt{ready} state, the robots have \qty{30}{\second} to reach valid positions for the penalty kick, according to the following rules:
 
-The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay (\cf~\cref{sec:state_set}).
+\begin{itemize}
+  \item The defending goalkeeper must have both its feet on the goal line.
+  \item At most one robot of the kicking team may be inside the defending team's penalty area. It may not block the penalty mark during the \texttt{set} state.
+  \item All other robots must be outside the penalty area and at least one center circle radius (see Table~\ref{tab:field_dim}) from the penalty mark.
+  \item If multiple robots of the kicking team violate these rules, the only robot to not be penalized shall be the one that is closest to the penalty mark without blocking it.
+  \item All robots other than the defending goalkeeper must be behind the defending team's penalty mark.
+\end{itemize}
+
+When the \texttt{ready} time ends, the GameController transitions to \texttt{set} with the penalty kick sub-state active. The following actions take place:
+
+\begin{itemize}
+  \item If the defending goalkeeper is not positioned correctly, it is manually placed on the closest point of the goal line that is not blocked by a goal post. The goalkeeper is moved in a direction perpendicular to the goal line, and its orientation is left unchanged.
+  \item The positioning rules above enter into effect. Robots that violate them are penalized for illegal position.
+  \item The referees position the ball on the penalty mark.
+\end{itemize}
+
+The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay (\cf~\cref{sec:state_set}). During this state:
+
+\begin{itemize}
+  \item The defending goalkeeper must remain on its feet (it is not allowed to "dive") until the ball is touched by the kicking team or the penaltty kick is complete.
+  \item The positioning rules remain into effect for the same duration.
+\end{itemize}
 
 The time limit for the penalty kick is \qty{\PenaltyKickTime}{\second} after play begins. The penalty kick ends when:
 \begin{itemize}
@@ -803,7 +800,7 @@ If the goalkeeper violates the positioning rules (leaves the goal line early or 
 
 If the striker violates the rules (touches the ball a second time after it has moved), the penalty kick ends immediately with no goal awarded.
 
-All standard rules such as Ball Holding and Pushing are applied during the penalty kick. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend the goal.
+All standard rules such as Ball Holding and Pushing are applied during the penalty kick, but they do not result in additional free kicks. A goalkeeper will not be penalized for inactivity during a penalty kick, provided it is actively attempting to defend the goal.
 
 %moved up from below
 \sublaw{Penalty Kick Shoot-Out}
