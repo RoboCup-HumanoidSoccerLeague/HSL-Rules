@@ -327,3 +327,4 @@ TSWLatexianTemp*
 
 ## vscode settings
 .vscode/
+figs/FieldGenerator/*.pdf
