@@ -127,27 +127,6 @@ The following weight restrictions apply for each division:
 \item Large:  Weight ${\leq}$ 80 kilograms.
 \end{itemize}
 
-\paragraph{Safety}
-
-A player must not use equipment or wear anything that is dangerous to himself or another player.
-
-Robots are encouraged to be equipped with an emergency stop button that makes the robot immediately desist with all motions, 
-or ideally go limp and/or cut power to the actuators. 
-
-Robot operators must be able to immediately bring a robot to a safe state. 
-The mechanism used to do this (e.g. emergency button on the robot, remote emergency button) is secondary. 
-Most important is that robot operators are able to bring a robot to a safe state in an emergency.
-
-Robot handlers are allowed to carry an additional remote emergency stop button.
-This button must be worn either around the neck or on the belt of the robot handler and must be clearly marked. 
-Each emergency stop button can only be connected to the robot of the robot handler that holds the button.
-The remote emergency button cannot perform any additional functions. 
-Robot handlers must keep their hands clearly away from the button unless the button is actively being pressed. 
-Robot handlers must not use the remote emergency button to intentionally incapacitate their robots.
-
-\improvement[inline]{to be discussed, add additional GameController based mechanism to immediately stop all robots, for example by setting an emergency stop game state}
-
-\label{sec:design_of_robots}
 
 \sublaw{Approved Standard Platforms}
 The following commercially available robotic platforms are approved for participation in the \leaguenameabbr. 
@@ -252,51 +231,56 @@ The number of such distance sensors is limited to 4.
 The use of distance sensors is discouraged and might be prohibited in the future.
 
 \paragraph{Summary}
-The following table briefly summarizes pre-approved sensors.
+The \Cref{tab:sensors} summarizes the approved sensors.
 The use of listed sensors that are considered human-like is encouraged.
 The use of listed sensors that are not considered human-like is accepted, but discouraged and might be prohibited or limited in the future.
 
-\begin{tblr}{
-  width=1.0\linewidth,
-  colspec = {Q[l]Q[l]X[l]},
-  row{1}={fg=black, font=\bfseries}, %, 
-  hline{2} = {solid},
-  hline{3-Y} = {dashed},
-  vline{2,3} = {abovepos = -1, belowpos = -1},
-}
-Sensor Type & Human-Like & Comments \\
-
-%Visual Perception
-RGB camera & yes & opening angle limit: horizontal $\leq$ \SI{180}{\degree}, vertical $\leq$ \SI{140}{\degree}\\
-Stereo camera & yes & \\
-Event camera & yes & \\
-
-Active RGB-D based on infrared projection & no & discouraged\\
-Active RGB-D based on time of flight (TOF) & no & discouraged\\
-
-% sound perception
-Microphone array & yes & \\
-
-% Orientation
-Gyro & yes & \\
-Accelerometer & yes & \\
-Compass & no & magnetic measurement sensors are not allowed\\ 
-Integrated inertial measurement units (IMU) & yes & no compass or must be disabled and not used\\
-
-% Haptic sensing
-Force sensors & yes & \\
-Touch sensors & yes & \\
-Buttons / Bumpers & yes & \\
-Capacitive touch sensors & yes & \\
-
-% Distance sensing
-Near range infrared sensor & no & \\
-Sonar / ultrasound sensors & no & \\
-1D LIDAR and laser range sensor & no & with limited range \\
-
-% Intrinsic sensors
-Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
-\end{tblr}
+\begin{table}[ht]
+	\centering
+	\begin{tblr}{
+	  width=1.0\linewidth,
+	  colspec = {Q[l]Q[l]X[l]},
+	  row{1}={fg=black, font=\bfseries}, %, 
+	  hline{2} = {solid},
+	  hline{3-Y} = {dashed},
+	  vline{2,3} = {abovepos = -1, belowpos = -1},
+	}
+	Sensor Type & Human-Like & Comments \\
+	
+	%Visual Perception
+	RGB camera & yes & opening angle limit: horizontal $\leq$ \SI{180}{\degree}, vertical $\leq$ \SI{140}{\degree}\\
+	Stereo camera & yes & \\
+	Event camera & yes & \\
+	
+	Active RGB-D based on infrared projection & no & discouraged\\
+	Active RGB-D based on time of flight (TOF) & no & discouraged\\
+	
+	% sound perception
+	Microphone array & yes & \\
+	
+	% Orientation
+	Gyro & yes & \\
+	Accelerometer & yes & \\
+	Compass & no & magnetic measurement sensors are not allowed\\ 
+	Integrated inertial measurement units (IMU) & yes & no compass or must be disabled and not used\\
+	
+	% Haptic sensing
+	Force sensors & yes & \\
+	Touch sensors & yes & \\
+	Buttons / Bumpers & yes & \\
+	Capacitive touch sensors & yes & \\
+	
+	% Distance sensing
+	Near range infrared sensor & no & \\
+	Sonar / ultrasound sensors & no & \\
+	1D LIDAR and laser range sensor & no & with limited range \\
+	
+	% Intrinsic sensors
+	Intrinsic sensors  & yes & temperature, current, joint positions, etc. \\
+	\end{tblr}
+	\caption{Summary of approved sensor types.}
+	\label{tab:sensors}
+\end{table}
 
 \sublaw{Communication}
 \label{sec:communication}
@@ -388,6 +372,54 @@ Each robot may send debug information in a single UDP packet to a single team de
 The robot may sent at most \UDPDebugPacketRate{} packets per second.
 The size of a single packet is not explicitly restricted, but must be within the maximum single UDP packet size (typically 64kB).
 
+
+
+\sublaw{Safety}
+\label{sec:robot_safety}
+
+\paragraph{Dangerous Equipment}
+A player must not use equipment or wear anything that is dangerous to himself or another player.
+
+
+\paragraph{Physical Stop}
+
+Robot handlers must be able to immediately and physically bring a robot to a safe state at any point in the game (\cf~\Cref{sec:robot_handlers}). 
+
+It is the responsibility of the teams to ensure that a robot can be physically stopped by their handler in case of emergency.
+
+%Most important is that robot operators are able to bring a robot to a safe state in an emergency.
+%The mechanism used to do this (e.g. emergency button on the robot, remote emergency button) is secondary. 
+
+%Robots are encouraged to be equipped with an emergency stop button that makes the robot immediately desist with all motions, or ideally go limp and/or cut power to the actuators. 
+
+The team must be able to demonstrate their ability to physically stop their robots on request at any time during the competition.
+
+In order to ensure that a robot can be physically stopped a robot at any time, the robots can be equipped with dedicated safety features.
+
+\subparagraph{Passive Features}
+The robot can be equipped with passive components that allow for it to be physically restrained without danger to the human handler.
+Examples of such components are grips or handles on the back of the robot, and design features of the robot's body that allows a human to safely hold the robot.
+
+\subparagraph{Active Features}
+The robot can be equipped with active components that makes the robot to immediately stop all movements and assume a safe posture.
+Examples for such components are a physical button on the robot, emergency switch on the robot, remote emergency button.
+
+\subparagraph{Remote Emergency Button}
+Robots can be equipped with a remote emergency button.
+A remote emergency button is a device that is not physically attached to the robot and can send a remote signal to the robot causing it to stop all movement and assume a safe posture.
+Each emergency stop button can only be connected to one specific robot.
+The remote emergency button cannot perform any additional functions.
+
+
+\paragraph{GameController Stop}
+The robots must comply with the GameController protocol and immediately assume a safe pose when the command is sent by the GameController as formulated in \Cref{sec:state_emergency_stop,sec:wireless}.
+
+
+
+
+
+
+
 \law{4}{The Players' Equipment}
 
 \sublaw{Team Markers}
@@ -409,9 +441,12 @@ The two teams must wear colors that distinguish them from each other and also th
 
 Each team must provide two jersey designs in distinctly different solid colors. The jersey color must clearly contrast with any uncovered parts of the robot to ensure reliable identification.
 
+
 Robots must display clear identification numbers (player number): a large number on the back and a smaller number on the front.
 
-The goal keeper robot must be marked uniquely so that it can be easily distinguished from the other robots of a team by the referees.
+The goalkeeper robot must be uniquely marked so that it can be easily distinguished from the other robots on the same team by the referees (e.g., the player number may serve as a distinguishing element).
+
+The goalkeeper may use a distinct jersey color, either by wearing the team’s second kit or by introducing a third, clearly distinguishable color.
 
 Sponsorship logos are allowed only on the jerseys. Logos must not occupy more than $50\%$ of the jersey surface, ensuring that at least half of the jersey remains in primary color.
 Logos must not interfere with the player numbers, and they must not include distracting patterns and colors that could be confused with other elements of the soccer field, such as the field lines or the ball.

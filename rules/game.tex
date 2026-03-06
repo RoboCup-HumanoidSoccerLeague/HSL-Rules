@@ -36,7 +36,7 @@ The \texttt{initial} state is active before the game begins. Robots should be pl
 \paragraph{Ready}
 \label{sec:state_ready}
 
-The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off or other set plays. Robots must reach legal positions before the \texttt{set} state begins.
+The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off or other set plays. The \texttt{ready} state lasts \qty{\ReadyPhaseDuration}{\second}. Robots must reach legal positions before the \texttt{set} state begins.
 
 \paragraph{Set}
 \label{sec:state_set}
