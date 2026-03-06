@@ -1,10 +1,14 @@
 % !TeX root = ../Rules.tex
 % !TeX spellcheck = en_US
 
-\law{99}{Robot States}
-\label{sec:robot_states}
+\law{7}{The Course of the Game}
+\label{sec:duration_of_match}  % previous title for back-compatibility
+\label{sec:game_process}       % simple/fallback title
+\label{sec:course_of_game}     % new title
+% ^^^ multiple alias labels
 
-\textit{The 99 heading is a temporary ``hot fix" due to incorrect tex formatting (file would start with a sublaw heading). The proper positioning of the robot states rules will be discussed shortly.}
+\sublaw{Robot States}
+\label{sec:robot_states}
 
 Throughout a match, robots transition through several defined states controlled by the GameController. 
 Robots must respond appropriately to each state transition.
@@ -81,12 +85,9 @@ Play resumes when the head referee determines it is safe to continue. The proced
   \item The game resumes in the same state as it was when it was stopped.
 \end{itemize}
 
-\law{7}{The Duration of the Match}
-\label{sec:duration_of_match}
+\sublaw{Periods of Play}
 
 The match consists of three parts: the first play period (first half), a half-time break, and a second play period (second half).
-
-\sublaw{Periods of Play}
 
 Each game period has a duration of 10 minutes, starting from the beginning of the Playing state of the initial whistle.
 
