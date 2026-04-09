@@ -211,16 +211,12 @@ This space is intended for all activities necessary for playing, including (but 
 \sublaw{Definition of Inside and Outside}
 
 \label{sec:inside_outside}
-An object (such as a {\color{red} robot} or the ball) \unsure{TW: are there other objects? if not why mentioned this?} is considered \textit{inside} a region of the field if any part of it overlaps or touches the boundary lines that define that region, or if it is fully contained within the region, in the air or on the ground. It is considered \textit{outside} the region only when no part of it, or its downwards projection, remains within or on the boundary lines of that region. This definition applies to any designated area of the field, except the goal (see \Cref{fig:field_line_names}).
+A robot is considered \textit{inside} a region of the field if any part of its body is touching the ground inside the region or the boundary lines.
+ It is considered \textit{outside} the region only when no part of its body is touching the ground inside the region or the boundary lines.
+ 
+The ball is considered \textit{inside} a region of the field if any part of it overlaps or touches the boundary lines that define that region, or if it is fully contained within the region, in the air or on the ground. It is considered \textit{outside} the region only when no part of it, or its downwards projection, remains within or on the boundary lines of that region. This definition applies to any designated area of the field, except the goal.
 
 \textbf{Exception for the goal:} The ball is only considered \textit{inside} the goal (and thus a goal is scored) if, and only if, the entire ball has wholly crossed the goal-side edge of the goal line \emph{between the goal posts and below the crossbar}, \ie{} when no part of the ball remains on or above the goal line, and the entire ball is within the volume enclosed by the goal frame and the net.
-\improvement{TW: This needs to be discussed for robots.}
-
-\improvement{TW: This definition, \textit{for robots} is inconsistent with former-SPL rules. I am unsure about former-HL. Robots are defined as inside/outside an area based on the feet touching (or body touching). The projection of the body has implications for illegal positioning, etc. This also has implications if a robot is "in the air". We haven't seen jumping robots yet.}
-
-\improvement{TW: The terms inside/outside appear to be repeatedly redefined in various places. All should refer back to this section.}
-
-\textbf{Exception for the Goal:} The ball is only considered \textit{inside} the goal (and thus a goal is scored) when the entire ball has wholly crossed the goal-side edge of the goal line, \ie{}, when no part of the ball remains on or above the goal line and the ball is outside the field of play.
 
 \sublaw{Venue Setup}
 \label{sec:venue_setup}
