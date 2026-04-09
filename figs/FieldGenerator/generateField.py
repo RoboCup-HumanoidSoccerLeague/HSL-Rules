@@ -27,10 +27,17 @@ with open(sys.argv[1]) as f:
 field_length = o['field']['length']
 field_width = o['field']['width']
 line_width = o['field']['lineWidth']
-try:
+has_penalty_mark_size = 'penaltyMarkSize' in o['field']
+has_penalty_mark_diameter = 'penaltyMarkDiameter' in o['field']
+if has_penalty_mark_size == has_penalty_mark_diameter:
+    raise ValueError(
+        "Provide exactly one of 'penaltyMarkSize' (cross) "
+        "or 'penaltyMarkDiameter' (disk)."
+    )
+if has_penalty_mark_size:
     penalty_mark_size = o['field']['penaltyMarkSize']
     marks_are_crosses = True
-except KeyError:
+else:
     penalty_mark_size = o['field']['penaltyMarkDiameter']
     marks_are_crosses = False
 try:
