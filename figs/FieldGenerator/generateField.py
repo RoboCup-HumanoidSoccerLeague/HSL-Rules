@@ -190,7 +190,6 @@ def draw_inner_center_circle(context, sign):
             context.arc(0, 0, penalty_mark_size_2, -pi_2 + mark_angle_offset, pi_2 - mark_angle_offset)
         else:
             context.arc_negative(0, 0, penalty_mark_size_2, -pi_2 - mark_angle_offset, pi_2 + mark_angle_offset)
-        pass # TODO
     context.close_path()
 
 # inner part of the penalty arc
