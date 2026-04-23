@@ -151,7 +151,9 @@ The clock stops during timeouts and is reset to the time when the current stoppa
 
 After the completion of the timeout, the game resumes with a kick-off for the team which did not call the timeout.
 
-If a team is not ready to play at the assigned time for a game, the referee will call the timeout for that team. After the expiration of such a timeout, if the team is still not ready to play then the referee shall start the game with only one team on the field. The team that was not ready can return its robots to the field as per the rules for ``Request for Pick-up'' (\cf~\cref{sec:request_for_pick_up}). If both teams are not ready, the referee will call timeouts for both teams. This ``double timeout'' expires after \TeamTimeoutDuration{} minutes.
+If a team is not ready to play at the assigned time, it must use its timeout. After the timeout has expired, or if the team does not use it, the referee shall start the game with only the ready team on the field if the other team is still not prepared.
+The unready team may return its robots to the field in accordance with the rules for “Request for Pick-up” (\cf~\cref{sec:request_for_pick_up}).
+If both teams are not ready, the same procedure applies.
 
 \paragraph{Referee Timeout}
 \label{sec:referee_timeout}
@@ -167,6 +169,28 @@ If a team was going to have kick-off at the time the referee timeout was called 
 \label{sec:mercy_rule}
 
 A game will conclude once the game score shows a goal difference of 10. Ending the game is mandatory once a goal difference of 10 is reached.
+
+\sublaw{Forfeit Rule}
+Teams who do not make a good faith effort to participate in a scheduled game are considered to forfeit the game.
+
+If a team notifies the technical committee that they wish to forfeit less than two hours before their scheduled game time, simply fails to show up for their game, or decides during their game that they wish to forfeit, then the opposing team will play the match against an empty field.
+However, any own goals will not be scored.
+Hence, after an opponent forfeits, the team playing against an empty field cannot do worse than they were doing at the time the opponent decided to forfeit.
+Teams may choose to forfeit at any stoppage of play.
+However, once a forfeit is announced, they may not reverse this decision.
+
+If a team notifies the technical committee that they wish to forfeit at least two hours before their schedule game time, the following procedure will be followed.
+\begin{itemize}
+  \item If a team chooses to forfeit a match in the round robin games the other team plays the match against an empty field.
+    However, any own goals will not be scored.
+  \item If a team chooses to forfeit in a knock-out game it gets replaced by the next best qualified team, \ie the team it kicked out or left behind in the round robins.
+\end{itemize}
+
+Note that there are a few unlikely cases that are not covered by these rules.
+If a situation is not covered by these rules, the technical committee and the organizing committee will work together to make a decision.
+
+Any forfeit will result in a qualification penalty being recorded but the circumstances of the forfeit will affect the severity of the offense and the impact on future qualification.
+
 
 \sublaw{Ball Stop Rule}
 \label{sec:ball_stop_rule}
