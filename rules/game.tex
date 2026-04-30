@@ -685,7 +685,9 @@ All free kicks are taken from the place where the offense occurred, except:
 \item Free kicks to the defending team in their goal area may be taken from anywhere in that area.
 \end{itemize}
 
-The ball must be stationary and is in play when it is kicked and clearly moves as determined by the referee, except for a free kick to the defending team in their penalty area where the ball is in play when it is kicked directly out of the penalty area. The ball is also considered in play 10 seconds after the referee gave the signal.
+When the referee calls for a free kick, play must also be stopped (see~\cref{sec:state_emergency_stop}). Once the robots become stationary, the referees will place the ball in the appropriate position. Then, the head referee gives the signal to resume play and commence the free kick.
+
+The ball must be stationary as play resumes, and is in play when it is kicked and clearly moves as determined by the referee. The ball is also considered in play \qty{\FreeKickTime}{\second} after the referee gave the signal.
 
 \paragraph{Avoidance Region and Distance Requirements}
 During a free kick, only the attacking team may approach within the avoidance region of the ball. For all free kicks, the avoidance region is the center circle radius for the respective field size (see Table~\ref{tab:field_dim}). This means the same exclusion zone as during kick-off applies to all free kicks, an opponent robot must remain outside this radius from the ball until it is in play.
@@ -895,10 +897,6 @@ All robots of the opposing team must remain outside the penalty area until the b
 \sublaw{Example}
 \textbf{Example:} A blue robot kicks the ball out the end of the field to the right of the goal the red team is defending.
 The referee calls ``Goal Kick red'' and the ball is placed on the right corner of the goal area.
-
-\sublaw{Procedural Requirements}
-
-The ball must be kicked directly out of the penalty area to be considered in play. If the ball is not kicked directly out of the penalty area from a goal kick, the kick is retaken.
 
 \sublaw{Offenses and Sanctions}
 
