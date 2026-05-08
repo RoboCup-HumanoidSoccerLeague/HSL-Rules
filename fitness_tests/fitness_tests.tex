@@ -1,0 +1,120 @@
+% !TeX root = ../HSL-Fitness-Tests.tex
+% !TeX spellcheck = en_US
+
+\section{Fastest Walk Test}
+This fitness test measures the fastest straight autonomous walk from one side of the field to the other.
+
+\subsection{Setup}
+This fitness test takes place on one half of a standard SPL field and requires 1 active robot.
+
+The competing robot is placed 50cm behind the starting touchline in line with the penalty mark.
+The run ends when the robot crosses the opposite touchline.
+
+\begin{figure}[ht]
+    \centering
+    \input{figs/fitness_tests/walk_test_m}
+    \caption{Fastest Walk Fitness Test (M-Field): the start point is shown in blue and the finishing touchline is highlighted.}
+    \label{fig:walk_test_m}
+\end{figure}
+
+\subsection{Challenge Execution}
+In each attempt, the active robot must walk autonomously in a straight run from the starting side of the field to the opposite touchline.
+Code changes are not allowed during an attempt, but are allowed between attempts.
+
+\subsection{Scoring}
+The head referee starts the timer once the robot touches the starting touchline and stops the timer once the target touchline is touched.
+
+The lowest time across all attempts is recorded, rounded to the nearest second.
+
+\section{Kick Accuracy Fitness Test}
+This fitness test measures the accuracy with which a robot can kick an HSL competition soccer ball toward specified targets.
+
+\subsection{Setup}
+This fitness test takes place on a standard SPL field and requires 1 active robot and 1 ball.
+The ball is placed on the center of the edge of the goal area.
+The competing robot is placed in the center of the goal line facing the ball.
+
+\begin{figure}[ht]
+    \centering
+    \input{figs/fitness_tests/kick_accuracy_test_m}
+    \caption{Kick Accuracy Fitness Test (M-Field): robot is shown in blue, targets are shown in green, and ball placement is shown in yellow.}
+    \label{fig:kick_accuracy_test_m}
+\end{figure}
+
+\subsection{Challenge Execution}
+Each attempt consists of kicking toward each of the three targets (illustrated in \cref{fig:kick_accuracy_test_m}; S-Field and L-Field variants are provided in \cref{fig:kick_accuracy_test_s,fig:kick_accuracy_test_l}):
+\begin{itemize}
+    \item The center mark in the center circle
+    \item The left corner on the opposite side of the field
+    \item The right corner on the opposite side of the field
+\end{itemize}
+In each attempt, for each kick, participating teams must start the robot behavior of their competing robot via a single button press. The robot then has \qty{\PenaltyShootoutKickTime}{\second} to kick the ball towards the current target.
+The competing robot must not touch the ball a second time after the ball has clearly moved, otherwise the attempt ends immediately without scoring.
+Once the ball has come to a complete stop, the distance from the ball to the target is measured.
+
+Code changes are allowed when changing targets.
+
+\subsection{Scoring}
+After all attempts, the best distance achieved for each target is recorded. 
+Accuracy is scored inversely based on distance: the closer the ball stops to the target, the higher the score.
+Each target is scored independently, with the lowest distance measurement across attempts recorded for each target.
+Distances are rounded to the closest half-centimetre.
+
+\section{Recovery from Fall Fitness Test}
+This fitness test measures how quickly a robot can recover and resume normal operation after falling forward or backward.
+
+\subsection{Setup}
+This fitness test takes place on a standard SPL field and requires 1 active robot.
+The robot is placed on the ground in the center of the field.
+Each run starts from a defined ground pose: one run from a front-fall pose and one run from a back-fall pose.
+
+\subsection{Challenge Execution}
+Each attempt starts with the robot already on the ground in the assigned pose (flat on the front or back).
+The robot must then autonomously recover and stand up.
+The test is performed with two separate attempts: one forward fall and one backward fall.
+
+For each fall direction, teams start the robot recovery behavior via a single button press.
+Code changes between forward and backward fall attempts are allowed.
+
+\subsection{Scoring}
+The head referee starts timing at the button press, and stops the timer when the robot is standing stably on both feet.
+The fastest recovery time across all attempts for each fall direction is recorded, rounded to the nearest tenth of a second.
+The scores for forward and backward recovery are summed to produce the final fitness test score.
+
+\appendix
+
+\section{Field Size Variants}
+
+\subsection{Fastest Walk Test Variants}
+The S-Field and L-Field variants of the Fastest Walk Test are shown in \cref{fig:walk_test_s,fig:walk_test_l}.
+
+\begin{figure}[ht]
+    \centering
+    \input{figs/fitness_tests/walk_test_s}
+    \caption{Fastest Walk Fitness Test (S-Field): the start point is shown in blue and the finishing touchline is highlighted.}
+    \label{fig:walk_test_s}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \input{figs/fitness_tests/walk_test_l}
+    \caption{Fastest Walk Fitness Test (L-Field): the start point is shown in blue and the finishing touchline is highlighted.}
+    \label{fig:walk_test_l}
+\end{figure}
+
+\subsection{Kick Accuracy Fitness Test Variants}
+The S-Field and L-Field variants of the Kick Accuracy Fitness Test are shown in \cref{fig:kick_accuracy_test_s,fig:kick_accuracy_test_l}.
+
+\begin{figure}[ht]
+    \centering
+    \input{figs/fitness_tests/kick_accuracy_test_s}
+    \caption{Kick Accuracy Fitness Test (S-Field): robot is shown in blue, targets are shown in green, and ball placement is shown in yellow.}
+    \label{fig:kick_accuracy_test_s}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \input{figs/fitness_tests/kick_accuracy_test_l}
+    \caption{Kick Accuracy Fitness Test (L-Field): robot is shown in blue, targets are shown in green, and ball placement is shown in yellow.}
+    \label{fig:kick_accuracy_test_l}
+\end{figure}
