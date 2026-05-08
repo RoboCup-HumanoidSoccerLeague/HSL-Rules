@@ -1,0 +1,41 @@
+% Shared field base comes from the same macros used by the main rules document.
+\input{rules/field_diagram_macros}
+
+\definecolor{leaderactive}{rgb}{0,0,1}
+\definecolor{leadertarget}{rgb}{0,0.75,0}
+\definecolor{leaderpath}{rgb}{1,0,1}
+\definecolor{leaderball}{rgb}{1,0.9,0}
+
+\newcommand{\FitnessTestDot}[2]{\node[circle, fill=#2, draw=black, line width=1.0pt, inner sep=0pt, minimum size=11pt, transform shape=false] at #1 {};}
+\newcommand{\FitnessTestLabel}[3]{\node[font=\Large\bfseries, text=#3, transform shape=false] at #1 {#2};}
+\newcommand{\FitnessTestArrow}[2]{\draw[-{Latex[length=11pt,width=8pt]}, color=leaderpath, line width=2.0pt] #1 -- #2;}
+
+\newcommand{\FitnessTestFieldS}[1]{%
+  \begingroup
+  \ConfigureSmallField
+  \SetFieldDrawingScale{0.01}
+  \SetFieldGeometryScale{2.444444}
+  \SetFieldCanvas{13.6}{10.0}
+  \DrawConfiguredField{#1}%
+  \endgroup
+}
+
+\newcommand{\FitnessTestFieldM}[1]{%
+  \begingroup
+  \ConfigureMediumField
+  \SetFieldDrawingScale{0.01}
+  \SetFieldGeometryScale{1.571429}
+  \SetFieldCanvas{13.6}{10.0}
+  \DrawConfiguredField{#1}%
+  \endgroup
+}
+
+\newcommand{\FitnessTestFieldL}[1]{%
+  \begingroup
+  \ConfigureLargeField
+  \SetFieldDrawingScale{0.01}
+  \SetFieldGeometryScale{1.0}
+  \SetFieldCanvas{13.6}{10.0}
+  \DrawConfiguredField{#1}%
+  \endgroup
+}
