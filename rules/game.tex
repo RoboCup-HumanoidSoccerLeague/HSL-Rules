@@ -436,7 +436,7 @@ When the head referee indicates an infraction has been committed that results in
 
 The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up or sitting down.
 
-The initial duration of the standard removal penalty time is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalyt duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty.
+The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty.
 
 \textbf{Example: } Player red 1 pushes player blue 1. As it is team red's first offense of the game, player red 1 is removed from the game for \qty{\StandardPenaltyTime}{\second} and team red's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}. Player red 2 now commits another offense by leaving the field. Player red 2 is removed from the game for \qty{\the\numexpr\StandardPenaltyTime+\StandardPenaltyIncrease\relax}{\second} and their penalty tracker again increases by \qty{\StandardPenaltyIncrease}{\second}. Finally, player blue 1 pushes player red 3. As team blue has not yet committed an offense, blue 1 is removed from play for  \qty{\StandardPenaltyTime}{\second} and team blue's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}.
 
@@ -468,7 +468,7 @@ Offenses that can result in a caution or send-off include, but aren't limited to
 	\item Repeated deliberate violations of the rules
 \end{itemize}
 
-It is at the discretion of the head referee to decide whether a caution or send-off is required.
+It is at the discretion of the head referee to decide whether a caution or send-off is warranted.
 
 \sublaw{Penalties Against Teams or Humans}
 \label{sec:penalties_against_humans}
@@ -534,7 +534,7 @@ Robots must not maintain a stance wider than a reasonable proportion of their bo
 \paragraph{Request for Pick-up}
 \label{sec:request_for_pick_up}
 
-A robot handler may request to pick up a robot if and only if a robot is in a dangerous situation that is likely to lead to physical injuries. The head referee must approve this request prior to the robot handler touching the robot. If a team member touches a robot without the permission of the referee, the robot receives a standard time penalty and the person touching it receives an official warning.
+A robot handler may request to pick up a robot if and only if a robot is in a dangerous situation that is likely to lead to physical injuries. The head referee must approve this request prior to the robot handler touching the robot. If a team member touches a robot without the permission of the referee, the robot receives a standard removal penalty and the person touching it receives an official warning.
 
 The referee may deny a request for pick-up. A pick-up is not granted for reasons such as being incorrectly configured or being unable to see the ball.
 
