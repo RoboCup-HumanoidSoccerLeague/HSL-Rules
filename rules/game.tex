@@ -62,22 +62,22 @@ A robot in the \texttt{penalized} state has been removed from play due to an inf
 
 The \texttt{finished} state indicates the end of a game half or the match. Robots should cease all game-related activity.
 
-\paragraph{Stop (Emergency Stop)}
+\paragraph{Brief stop}
 \label{sec:state_emergency_stop}
 
-\improvement{This is a temporary stop, does not have to be emergency. A separate state might make problems in the implementation. Needs discussion on how it can be realized.}
+The referee may call a brief stop of play at any time. Common reasons for a brief stop are: a human needing to enter the field or approach the robot players (e.g. positioning the ball for a free kick, removing a penalized robot, ...) or emergency situations (e.g. a robot threatening to cause damage).
 
-The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
+When a brief stop is called, all robots must safely come to a stop as quickly as possible, and then remain still and cease all motion, behaving as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
 
 \improvement{Consequences for not complying are to be discussed in the next TC meeting(s)}
 
-The head referee signals an emergency stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the emergency stop signal.
+The head referee signals a brief stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the stop signal.
 
-The game clock, secondary timers, and penalty timers are paused during an emergency stop. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
+\unsure{A exact decision still needs to be taken, on which timers stop and which don't} The game clock continues to run during a brief stop, while secondary timers and penalty timers are paused. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
 
-During an emergency stop, robots remain in place and must not be moved, except for untangling. If the situation requires the robots to be removed from the field, a different call must be made, such as a referee timeout.
+During a brief stop, robots remain in place and must not be moved, except for untangling. If the situation requires the robots to be removed from the field, a different call must be made, such as a referee timeout.
 
-Play resumes when the head referee determines it is safe to continue. The procedure for resuming the game from an emergency stop is as follows:
+Play resumes when the head referee determines that the event that caused the stop is resolved. The procedure for resuming the game from a brief stop is as follows:
 \begin{itemize}
   \item The ball is placed where it was at the time of the stop (if it was in play)
   \item All humans leave the field
