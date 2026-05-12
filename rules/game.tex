@@ -67,13 +67,13 @@ The \texttt{finished} state indicates the end of a game half or the match. Robot
 
 The referee may call a brief stop of play at any time. Common reasons for a brief stop are: a human needing to enter the field or approach the robot players (e.g. positioning the ball for a free kick, removing a penalized robot, ...) or emergency situations (e.g. a robot threatening to cause damage).
 
-When a brief stop is called, all robots must safely come to a stop as quickly as possible, and then remain still and cease all motion, behaving as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
+When a brief stop is called, all robots must safely come to a stop as quickly as possible, and then remain still and cease all motion, behaving as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately. Moving during a brief stop results in an Illegal Motion penalty (see \cref{sec:motion_in_set}), and possibly in a caution or send-off during an emergency situation.
 
-\improvement{Consequences for not complying are to be discussed in the next TC meeting(s)}
+\unsure{Proposing this outline of possible consequences. Requires GC support and a nomenclature change. Discuss.}
 
 The head referee signals a brief stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the stop signal.
 
-\unsure{A exact decision still needs to be taken, on which timers stop and which don't} The game clock continues to run during a brief stop, while secondary timers and penalty timers are paused. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
+\unsure{A exact decision still needs to be taken on which timers stop and which don't} The game clock continues to run during a brief stop, while secondary timers and penalty timers are paused. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
 
 During a brief stop, robots remain in place and must not be moved, except for untangling. If the situation requires the robots to be removed from the field, a different call must be made, such as a referee timeout.
 
