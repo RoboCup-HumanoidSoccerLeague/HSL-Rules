@@ -415,28 +415,23 @@ Offsides are not used in the RoboCup Humanoid Soccer League.
 
 Actions that break the rules of play are penalized. The referee should use time penalties as the primary method of enforcing routine gameplay infractions and minor fouls (\cf\cref{sec:removal_penalty}). However, cautions and send-offs are available at the referee's discretion for serious, dangerous or repeated misconduct (\cf\cref{sec:caution_sendoff}).
 
-\sublaw{Penalty Procedure}
-\label{sec:penalty_procedure}
-
 When a robot commits an infraction, the head referee shall call out the \textbf{infraction} committed, the \textbf{team color} of the robot, and the \textbf{jersey number} of the robot. If available, the referee also raises the appropriate card to indicate the type of penalty that is applied. A blue card is used for time penalties, a yellow card is used for cautions, and a red card is used for send-offs.
- 
-The penalty for the infraction will be applied immediately. The robot handlers should perform the actual movement of the robots for the penalty so that the head referee can continue focusing on the game. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
 
-Unless otherwise stated, all infractions result in the removal of the infringing robot from the field of play for a particular amount of time, after which it will be returned to the field of play (see Subsection \ref{sec:removal_penalty}).
-If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size - see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is removed according to the standard removal penalty. After the offending robot is removed, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
+The penalty for the infraction will be applied immediately. Only the robot handlers of the penalized team should carry out the movements required to serve the penalty, without involvement from referees or any other member of either team. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
 
-For penalties that are timed, the penalty time is considered to be over at the end of each half.
+If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size - see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is penalized. After the penalty has been applied, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized, but play is not interrupted.
+
 
 \sublaw{Standard Removal Penalty}
 \label{sec:removal_penalty}
 
-Unless otherwise stated, all infractions result in the removal of the infringing robot from the field of play for a particular amount of time, after which it will be returned to the field of play. This process is called the \textit{standard removal penalty}.
+Robots receiving a \textit{standard removal penalty} are removed from the field of play for a specified amount of time, after which they are returned to the field of play.
 
-When the head referee indicates an infraction has been committed that results in the standard removal penalty, the robot handler for that team will remove the robot immediately from the field of play. The robot should be removed in such a way as to minimize the movement of the other robots and the ball. If the ball is inadvertently moved when removing the robot, the ball should be replaced to the position it was in when the robot was removed.
+When the head referee indicates an infraction has been committed that results in the standard removal penalty, the robot handler for that team will remove the robot immediately from the field of play. The robot should be removed in such a way as to minimize the movement of the other robots and the ball. If the ball is inadvertently moved when removing the robot, the ball should be replaced to the position it was in when the robot was removed. 
 
 The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up or sitting down.
 
-The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty.
+The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty. To avoid disproportionately penalizing minor infractions, the infractions \emph{Illegal Positioning}, \emph{Motion in Set}, and \emph{Local Game Stuck} result in a standard removal penalty but do not increase the penalty timer.
 
 \textbf{Example: } Player red 1 pushes player blue 1. As it is team red's first offense of the game, player red 1 is removed from the game for \qty{\StandardPenaltyTime}{\second} and team red's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}. Player red 2 now commits another offense by leaving the field. Player red 2 is removed from the game for \qty{\the\numexpr\StandardPenaltyTime+\StandardPenaltyIncrease\relax}{\second} and their penalty tracker again increases by \qty{\StandardPenaltyIncrease}{\second}. Finally, player blue 1 pushes player red 3. As team blue has not yet committed an offense, blue 1 is removed from play for  \qty{\StandardPenaltyTime}{\second} and team blue's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}.
 
@@ -445,6 +440,8 @@ After a robot is penalized and before it starts serving its penalty, the robot h
 To serve its penalty, the removed robot is placed on the touchline at the height of the penalty mark of its own half and facing the opposite touchline. The robot must be placed fully outside of the field. If the position at the height of the penalty mark is already occupied, a nearby position is chosen. When finding a nearby location, it \textbf{must} still be in the robot's own half, so that the symmetry of the field can be resolved by the robot's localization system. After the robot is placed, the robot handler announces ``\textless robot color\textgreater \textless robot number\textgreater Ready'', after which the GameController operator starts the penalty timer. After the penalty time elapses, the GameController operator will remove the penalty from the penalized robot, enabling it to autonomously re-enter the game without requiring additional intervention from the referees.
 
 If any team member interferes with the robot after it has started serving its penalty time (including button presses or connecting cables), the team member receives a warning, and the penalty timer is reset.
+
+Standard removal penalties are considered to be over at the end of each half.
 
 \sublaw{Cautions and Send-Offs}
 \label{sec:caution_sendoff}
