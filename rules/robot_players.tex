@@ -338,12 +338,17 @@ Unicast communication between robots is prohibited.
 %in addition to \UDPDebugPacketRate{} packet per second per robot to a single team device on the wired network for debugging purposes 
 %(no size constraint for debug packets, but must be within the maximum single UDP packet size).
 
-Each team is allowed to send in total a maximum of \UDPPacketLimit{} messages during a complete game.
+Each team is allowed to send in total a maximum of \UDPPacketLimit{} messages during a complete game. This limit can change during a game only in these cases:
 
-For each minute of additional time added by the \emph{Allowance for time lost} rule (see Section \ref{sec:allowance_time_lost}), the limit is increased by 600 packets.
+\begin{itemize}
+	\item For each minute of additional time added by the \emph{Allowance for time lost} rule (see Section \ref{sec:allowance_time_lost}), the limit is immediately increased by 600 packets.
+	\item If the game proceeds to extra time (see Section \ref{sec:permitted_tiebreakers}), the limit is increased by 6000 packets before the beginning of the first half of extra time.
+\end{itemize}
+
+
 
 % when to count?
-Only messages sent by the robot players in the following game states count towards the communication limit: ready, set and playing.
+Only messages sent by the robot players in the following game states count towards the communication limit: \texttt{ready}, \texttt{set} and \texttt{playing}.
 Any messages sent during other game states do not count towards the teams message budget. 
 Limits do not apply during penalty kick shoot-out. 
 
