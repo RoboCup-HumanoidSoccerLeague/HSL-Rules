@@ -413,54 +413,83 @@ Offsides are not used in the RoboCup Humanoid Soccer League.
 \law{12}{Fouls and Misconduct}
 \label{sec:fouls_misconduct}
 
-The following actions are forbidden. In general, when a penalty applies, the robot shall be removed, not the ball.
+Actions that break the rules of play are penalized. The referee should use time penalties as the primary method of enforcing routine gameplay infractions and minor fouls (\cf\cref{sec:removal_penalty}). However, cautions and send-offs are available at the referee's discretion for serious, dangerous or repeated misconduct (\cf\cref{sec:caution_sendoff}).
 
-\sublaw{Penalty Procedure}
-\label{sec:penalty_procedure}
+When a robot commits an infraction, the head referee shall call out the \textbf{infraction} committed, the \textbf{team color} of the robot, and the \textbf{jersey number} of the robot. If available, the referee also raises the appropriate card to indicate the type of penalty that is applied. A blue card is used for time penalties, a yellow card is used for cautions, and a red card is used for send-offs.
 
-When a robot commits an infraction, the head referee shall call out the \textbf{infraction} committed, the \textbf{team color} of the robot, and the \textbf{jersey number} of the robot. The penalty for the infraction will be applied immediately. The robot handlers should perform the actual movement of the robots for the penalty so that the head referee can continue focusing on the game. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
+The penalty for the infraction will be applied immediately. Only the robot handlers of the penalized team should carry out the movements required to serve the penalty, without involvement from referees or any other member of either team. The operator of the GameController will send the appropriate signal to the robots indicating the infraction committed.
 
-Unless otherwise stated, all infractions result in the removal of the infringing robot from the field of play for a particular amount of time, after which it will be returned to the field of play (see Subsection \ref{sec:removal_penalty}).
-If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size - see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is removed according to the standard removal penalty. After the offending robot is removed, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized and removed, but play is not interrupted.
+If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size - see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is penalized. After the penalty has been applied, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized, but play is not interrupted.
 
-For penalties that are timed, the penalty time is considered to be over at the end of each half.
 
 \sublaw{Standard Removal Penalty}
 \label{sec:removal_penalty}
 
-Unless otherwise stated, all infractions result in the removal of the infringing robot from the field of play for a particular amount of time, after which it will be returned to the field of play. This process is called the \textit{standard removal penalty}.
+Robots receiving a \textit{standard removal penalty} are removed from the field of play for a specified amount of time, after which they are returned to the field of play.
 
-When the head referee indicates an infraction has been committed that results in the standard removal penalty, the robot handler for that team will remove the robot immediately from the field of play. The robot should be removed in such a way as to minimize the movement of the other robots and the ball. If the ball is inadvertently moved when removing the robot, the ball should be replaced to the position it was in when the robot was removed.
+When the head referee indicates an infraction has been committed that results in the standard removal penalty, the robot handler for that team will remove the robot immediately from the field of play. The robot should be removed in such a way as to minimize the movement of the other robots and the ball. If the ball is inadvertently moved when removing the robot, the ball should be replaced to the position it was in when the robot was removed. 
 
 The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up or sitting down.
 
-The initial duration of the standard removal penalty time is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, the penalty time increases by \qty{\StandardPenaltyIncrease}{\second} each time a team commits any infraction. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty.
+The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty. To avoid disproportionately penalizing minor infractions, the infractions \emph{Illegal Positioning}, \emph{Motion in Set}, and \emph{Local Game Stuck} result in a standard removal penalty but do not increase the penalty timer.
+
+\textbf{Example: } Player red 1 pushes player blue 1. As it is team red's first offense of the game, player red 1 is removed from the game for \qty{\StandardPenaltyTime}{\second} and team red's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}. Player red 2 now commits another offense by leaving the field. Player red 2 is removed from the game for \qty{\the\numexpr\StandardPenaltyTime+\StandardPenaltyIncrease\relax}{\second} and their penalty tracker again increases by \qty{\StandardPenaltyIncrease}{\second}. Finally, player blue 1 pushes player red 3. As team blue has not yet committed an offense, blue 1 is removed from play for  \qty{\StandardPenaltyTime}{\second} and team blue's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}.
 
 After a robot is penalized and before it starts serving its penalty, the robot handler may hand it over to its team who may perform maintenance on the robot. The penalty timer does not decrease while maintenance is being performed.
 
 To serve its penalty, the removed robot is placed on the touchline at the height of the penalty mark of its own half and facing the opposite touchline. The robot must be placed fully outside of the field. If the position at the height of the penalty mark is already occupied, a nearby position is chosen. When finding a nearby location, it \textbf{must} still be in the robot's own half, so that the symmetry of the field can be resolved by the robot's localization system. After the robot is placed, the robot handler announces ``\textless robot color\textgreater \textless robot number\textgreater Ready'', after which the GameController operator starts the penalty timer. After the penalty time elapses, the GameController operator will remove the penalty from the penalized robot, enabling it to autonomously re-enter the game without requiring additional intervention from the referees.
 
-If any team member interferes with the robot after it has started serving its penalty time (including button presses or connecting cables), the team member and the robot receive a warning, and the penalty timer is reset.
+If any team member interferes with the robot after it has started serving its penalty time (including button presses or connecting cables), the team member receives a warning, and the penalty timer is reset.
 
-Standard Removal Penalties are issued for the following offenses:
+Standard removal penalties are considered to be over at the end of each half.
+
+\sublaw{Cautions and Send-Offs}
+\label{sec:caution_sendoff}
+Referees may issue cautions or send-offs at their discretion for serious fouls, dangerous play or unsportsmanlike conduct. Routine gameplay infractions should be managed through time penalties instead.
+A caution results in a time penalty in addition to the caution itself. If a robot that has already received a caution is cautioned again, it is sent off. In especially serious cases, the referee may issue a direct send-off without first issuing a caution.
+
+When a caution or send-off is issued, the referee shall call out "Caution/Send-Off \textless robot color\textgreater \textless robot number\textgreater". The same removal procedures as for the standard removal penalty apply.
+
+Cautions are assigned to individual robots and remain associated with that robot for the duration of the match, regardless of substitutions. A substituted robot retains any cautions it has received and will still be considered cautioned if it later re-enters the match. A robot replacing a cautioned robot does not inherit its caution status.
+
+A send-off permanently removes the robot from the match. A sent-off robot may not be replaced by a substitute, resulting in the team continuing the match with one fewer robot.
+
+Cautions and send-offs issued against robots are cleared at the end of the game.
+
+Offenses that can result in a caution or send-off include, but aren't limited to
 
 \begin{itemize}
-	\item Illegal positioning*
-	\item Motion in set*
-	\item Local game stuck*
-	\item Incapable robot*
-	\item Request for pick-up
-	\item Ball holding
-	\item Leaving the field
+	\item Damage to the field
+	\item Damage to other robots
+	\item Endangering any human
+	\item Repeated deliberate violations of the rules
 \end{itemize}
 
-Offenses marked with a star (*) do not increase the incremental penalty count
+It is at the discretion of the head referee to decide whether a caution or send-off is warranted.
+
+\sublaw{Penalties Against Teams or Humans}
+\label{sec:penalties_against_humans}
+
+The referee can issue warnings, yellow and red cards against humans or teams at their discretion. Cards can be issued for offenses such as:
+
+\begin{itemize}
+	\item Offensive, violent or abusive behavior
+	\item Repeatedly ignoring referee instructions
+	\item Repeatedly entering the field without permission
+	\item Breaking the game rules to gain an advantage
+\end{itemize}
+
+Cards that are issued against humans or teams must be reported to the Organizing Committee immediately after the game. Cards against humans or teams persist between games. A human who receives a red card will be prohibited from entering the field or team area during games for the remainder of the competition. A team that commits serious or repeated violations may be disqualified from the competition. 
+
+\sublaw{Gameplay Infractions}
+\label{sec:offenses}
+This section describes infractions commonly encountered during regular gameplay. 
 
 \paragraph{Illegal Positioning}
 \label{sec:illegal_positioning}
 A robot is considered to be illegally positioned if, during the \texttt{set} phase, it is located outside the field of play, within the opposing team's half, or within the center circle when its team does not have kick-off. A robot is also considered to be illegally positioned if it encroaches into the avoidance areas during a free kick (\cf~\ref{sec:free_kick_execution}) or penalty kick (\cf~\ref{sec:penalty_kick}). The referee should not measure exact distances for  avoidance areas and shall only penalize robots that are clearly violating this rule. A robot making a reasonable effort to return to the field of play following a standard penalty shall not be penalized for illegal position.
 
-A robot penalized under illegal positioning has the ``Illegal Position'' penalty applied. Illegally positioned robots are subject to the standard removal penalty (\cf~\cref{sec:removal_penalty}). The head referee will call ``Illegal Position \textless robot color\textgreater \textless robot number\textgreater''. Referees may use ``Illegal Defender'' interchangeably to help with clarity. 
+Illegally positioned robots are subject to the standard removal penalty (\cf~\cref{sec:removal_penalty}). The head referee will call ``Illegal Position \textless robot color\textgreater \textless robot number\textgreater''. Referees may use ``Illegal Defender'' interchangeably to help with clarity. 
 For simplicity, Illegal Positioning penalties do not count towards the incremental penalty count.
 
 During the \texttt{set} and \texttt{playing} states, at most \textit{three} players can be within their own goal area at the same time. A robot is within the goal area if any part of its body is touching the ground inside the goal area or touching one of its lines. An ``Illegal Position'' penalty is applied when any additional players enter the area in \texttt{playing}, or to the excessive players closest to the border of the goal area in \texttt{set}. Note that if a player is pushed into the goal area by an opponent, this robot will not be subject to removal, unless it fails to exit the area within \qty{5}{\second} (or \qty{5}{\second} after getting up if the pushing led to falling).
@@ -502,7 +531,7 @@ Robots must not maintain a stance wider than a reasonable proportion of their bo
 \paragraph{Request for Pick-up}
 \label{sec:request_for_pick_up}
 
-A robot handler may request to pick up a robot if and only if a robot is in a dangerous situation that is likely to lead to physical injuries. The head referee must approve this request prior to the robot handler touching the robot. If a team member touches a robot without the permission of the referee, the respective robot and the person touching it each receive an official warning.
+A robot handler or team captain may request to pick up a robot if and only if a robot is in a dangerous situation that is likely to lead to physical injuries. The head referee must approve this request prior to the robot handler touching the robot. If a team member touches a robot without the permission of the referee, the robot receives a standard removal penalty and the person touching it receives an official warning.
 
 The referee may deny a request for pick-up. A pick-up is not granted for reasons such as being incorrectly configured or being unable to see the ball.
 
@@ -526,66 +555,26 @@ Additionally, a robot will also be subject to the standard removal penalty when:
 	\item The robot's fingers or other appendages become entangled in the net (without any time constraint).
 \end{itemize}
 
-\sublaw{Cautionable Offenses}
-
-The referee applies disciplinary sanctions through warnings, cautions (yellow cards), and sending-off offenses (red cards). A warning is an official verbal admonishment. The issuance of two warnings to the same player during a match results in a caution (yellow card). A yellow card constitutes a formal caution. The issuance of two yellow cards to the same player in the same match results in a sending-off (red card).
-A red card requires the player to be sent off. The player must immediately leave the field of play and the technical area and may not participate further in the match.
-
-Cards and warnings issued to players are cleared after the final whistle and do not persist between games.
-
-Teams may substitute a player who has received official warnings or cautions as usual. However, all
-warnings and cautions issued to the substituted player are transferred to the player entering the field.
-Players who have been sent off may not be substituted. As a result, the team must play the
-remainder of the match with one fewer player.
-
-Warnings are issued for the following offenses:
-
-\begin{itemize}
-	\item Manual interaction by team members
-	\item Playing with arms or hands
-\end{itemize}
-
-Cautions are issued for the following offenses:
-
-\begin{itemize}
-	\item Damage to the field
-	\item Pushing
-	\item Receiving two warnings
-\end{itemize}
-
-Players are sent off for the following offenses:
-
-\begin{itemize}
-	\item Endangering any human
-	\item Repeated deliberate violations of the rules
-	\item Actions that could cause significant damage to other robots
-	\item Receiving two cautions
-\end{itemize}
-
-\paragraph{Manual Interaction by Team Members}
-
-Manual interaction with the robots, either directly or via some communications mechanism, is not permitted. Team members (that are not robot handlers) can only touch one of their robots when a robot handler hands it over to them after a it has been penalized or substituted.
-
 \paragraph{Playing with Arms or Hands}
 \label{sec:playing_with_hands}
 
 Playing with arms/hands occurs when a field player or a goalkeeper outside its own penalty area moves its arms/hands to touch the ball (except during a fall or get-up). The goalkeeper is allowed to touch the ball with its arms/hands while it is within its own penalty area.
 
-A robot playing with arms/hands will be subject to the standard removal penalty and receive an official warning. In severe cases, e.g. using the hand or arm to deny the opposing team a goal, a caution may be awarded instead of a warning. The ball will be replaced at the point where it contacted the arms/hands of the offending robot. If an own goal is scored as a result of playing with arms/hands, the goal should count and the player should not be penalized. 
+A robot playing with arms/hands will be subject to the standard removal penalty. The ball will be replaced at the point where it contacted the arms/hands of the offending robot. If an own goal is scored as a result of playing with arms/hands, the goal should count and the player should not be penalized. 
 
 Accidental playing with arms/hands when a robot falls or executes a get-up routine will not be penalized. If the ball goes out of play in this case, normal kick-in rules will apply (\cf~\cref{sec:kick_in}). However, goals (except for own goals) resulting from a ball contact with the arms/hands during a fall or get-up do not count and result in a Goal Kick (\cf~\cref{sec:goal_kick}) as if the ball went over the goal line next to the goal.
-
-\paragraph{Damage to the Field}
-\label{sec:damage}
-
-A robot that damages the field, or poses a threat to spectator safety is removed from the field according to the standard penalty and receives a yellow card. In severe cases, the robot may receive a red card instead.
 
 \paragraph{Pushing}
 \label{sec:player_pushing}
 
 Pushing is any direct or indirect contact with an opponent robot that is either forceful enough to destabilize the opponent or continues for more than \qty{5}{\second}, even when the applied force is minimal. Front-to-front contact between robots does not constitute pushing, unless one robot is moving with significantly more force or speed than the other. Pushing may only occur between players of different teams. A robot pushed by another robot cannot simultaneously be called for pushing itself. In this case, only the initially offending robot will be penalized. A stationary robot cannot be penalized for pushing, including a robot that is kicking, provided that the ball was close enough where a kick could have succeeded at the start of the kick motion.
 
-If a pushing offense is committed, the head referee will call ``Pushing \textless robot color\textgreater \textless robot number\textgreater'' and the offending player will be cautioned and removed from play according to a standard penalty. If the ball moves significantly as a result of pushing, then it should be replaced to where it was at the time of the infraction.
+If a pushing offense is committed, the head referee will call ``Pushing \textless robot color\textgreater \textless robot number\textgreater'' and the offending player will be removed from play according to a standard penalty. If the ball moves significantly as a result of pushing, then it should be replaced to where it was at the time of the infraction.
+
+\sublaw{Manual Interaction by Team Members}
+\label{sec:manual_interaction}
+
+Manual interaction with the robots, either directly or via some communications mechanism, is not permitted. Team members (that are not robot handlers) can only touch one of their robots when a robot handler hands it over to them after a it has been penalized or substituted.
 
 \sublaw{Aborting a Penalty}
 \label{sec:aborting_penalty}
@@ -616,22 +605,6 @@ Repeated violation might result in disqualification from the tournament (includi
 	
 \paragraph{Visual perception} The use of flashlights or other bright light sources is not allowed during games. However, flash photography from the audience is allowable as long as the head referee believes the purpose is not to jam any of the robots.
 
-
-
-\sublaw{Penalties Against Teams or Humans}
-\label{sec:penalties_against_humans}
-
-The referee can issue warnings, yellow and red cards against humans or teams at their discretion. Cards can be issued for offenses such as:
-
-\begin{itemize}
-	\item Offensive, violent or abusive behavior
-	\item Repeatedly ignoring referee instructions
-	\item Repeatedly entering the field without permission
-	\item Breaking the game rules to gain an advantage
-\end{itemize}
-
-Cards that are issued against humans or teams must be reported to the Organizing Committee immediately after the game. Cards against humans or teams persist between games. A human who receives a red card will be prohibited from entering the field or team area during games for the remainder of the competition. A team that commits serious or repeated violations may be disqualified from the competition. 
-
 \law{13}{Free Kicks}
 \label{sec:free_kick}
 
@@ -642,7 +615,7 @@ A free kick is initiated in the following situations:
   \item When the ball goes over the touchlines, termed \emph{Kick-in} or \emph{Throw-in} (\cf~\cref{sec:kick_in}).
   \item When the ball goes over the goal line having last touched a player of the defending team, termed \emph{Corner Kick} (\cf~\cref{sec:corner_kick}).
   \item When the ball goes over the goal line having last touched a player of the attacking team, termed \emph{Goal Kick} (\cf~\cref{sec:goal_kick}).
-  \item When an infringement is awarded that requires play to be stopped (\cf~\cref{sec:penalty_procedure}), termed a \emph{Pushing Free Kick}.
+  \item When an infringement is awarded that requires play to be stopped (\cf~\cref{sec:fouls_misconduct}), termed a \emph{Pushing Free Kick}.
 \end{itemize}
 
 The head referee will announce a free kick by calling one of:
@@ -752,7 +725,6 @@ In this situation:
 \label{sec:penalty_kick}
 
 \sublaw{Penalty Kick}
-\label{sec:penalty_kick}
 
 A penalty kick is awarded against a team that commits an offense for which a \textbf{direct free kick} (\cf~\cref{sec:direct_free_kick}) is awarded, inside its own penalty area and while the ball is in play. A goal may be scored directly from a penalty kick.
 
