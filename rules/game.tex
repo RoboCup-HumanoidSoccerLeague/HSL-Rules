@@ -428,12 +428,9 @@ A robot penalized in-place must safely come to a stop immediately, and then is n
 
 The time for an in-place penalty is always \qty{\InPlacePenaltyTime}{\second}.
 
+In-place penalties do not increment the duration of subsequent standard removal penalties.
+
 If the penalized robot moved significantly from the position where it committed the infraction before stopping, the head referee may require a robot handler to reposition the robot to the point of the infraction, potentially calling a brief stop if necessary.
-
-\paragraph{Motion in Set}
-\label{sec:motion_in_set}
-
-Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are penalized in-place. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
 
 \sublaw{Standard Removal Penalty}
 \label{sec:removal_penalty}
@@ -444,7 +441,7 @@ When the head referee indicates an infraction has been committed that results in
 
 The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up or sitting down.
 
-The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty. To avoid disproportionately penalizing minor infractions, the infractions \emph{Illegal Positioning}, \emph{Motion in Set}, and \emph{Local Game Stuck} result in a standard removal penalty but do not increase the penalty timer.
+The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty. To avoid disproportionately penalizing minor infractions, the infractions \emph{Illegal Positioning}, \emph{Incapable Robot} and \emph{Local Game Stuck} result in a standard removal penalty but do not increase the penalty timer.
 
 \textbf{Example: } Player red 1 pushes player blue 1. As it is team red's first offense of the game, player red 1 is removed from the game for \qty{\StandardPenaltyTime}{\second} and team red's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}. Player red 2 now commits another offense by leaving the field. Player red 2 is removed from the game for \qty{\the\numexpr\StandardPenaltyTime+\StandardPenaltyIncrease\relax}{\second} and their penalty tracker again increases by \qty{\StandardPenaltyIncrease}{\second}. Finally, player blue 1 pushes player red 3. As team blue has not yet committed an offense, blue 1 is removed from play for  \qty{\StandardPenaltyTime}{\second} and team blue's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}.
 
@@ -508,6 +505,11 @@ For simplicity, Illegal Positioning penalties do not count towards the increment
 During the \texttt{set} and \texttt{playing} states, at most \textit{three} players can be within their own goal area at the same time. A robot is within the goal area if any part of its body is touching the ground inside the goal area or touching one of its lines. An ``Illegal Position'' penalty is applied when any additional players enter the area in \texttt{playing}, or to the excessive players closest to the border of the goal area in \texttt{set}. Note that if a player is pushed into the goal area by an opponent, this robot will not be subject to removal, unless it fails to exit the area within \qty{5}{\second} (or \qty{5}{\second} after getting up if the pushing led to falling).
 
 If an illegal defender kicks an own goal, the goal is scored for the opponent. If there is any doubt about whether a goal should count (e.g., the illegal defender infraction is called, but the robot scores the own goal immediately afterwards, before it is removed), then the decision shall be against the infringing robot.
+
+\paragraph{Motion in Set}
+\label{sec:motion_in_set}
+
+Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are penalized in-place. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
 
 \paragraph{Motion in Stop}
 \label{sec:motion_in_stop}
