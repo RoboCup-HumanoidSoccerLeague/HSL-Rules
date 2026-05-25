@@ -62,22 +62,20 @@ A robot in the \texttt{penalized} state has been removed from play due to an inf
 
 The \texttt{finished} state indicates the end of a game half or the match. Robots should cease all game-related activity.
 
-\paragraph{Stop (Emergency Stop)}
+\paragraph{Brief stop}
 \label{sec:state_emergency_stop}
 
-\improvement{This is a temporary stop, does not have to be emergency. A separate state might make problems in the implementation. Needs discussion on how it can be realized.}
+The referee may call a brief stop of play at any time. Common reasons for a brief stop are: a human needing to enter the field or approach the robot players (e.g. positioning the ball for a free kick, removing a penalized robot, ...) or emergency situations (e.g. a robot threatening to cause damage).
 
-The referee may call an emergency stop at any time for safety reasons. When an emergency stop is called, all robots must immediately cease all motion and behave as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately.
+When a brief stop is called, all robots must safely come to a stop as quickly as possible, and then remain still and cease all motion, behaving as if in the \texttt{set} state. No locomotion is permitted, not even for getting up. Robots must respond to this signal immediately. Moving during a brief stop results in a Motion in Stop penalty (see \cref{sec:motion_in_stop}), and possibly in a caution or send-off during an emergency situation.
 
-\improvement{Consequences for not complying are to be discussed in the next TC meeting(s)}
+The head referee signals a brief stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the stop signal.
 
-The head referee signals an emergency stop by calling ``Stop Play'' loudly and clearly. The GameController will also send the emergency stop signal.
+The game clock continues to run during a brief stop, while secondary timers and penalty timers are paused. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
 
-The game clock, secondary timers, and penalty timers are paused during an emergency stop. If a team was in the process of taking a kick-off or a free kick, that information is retained when the game resumes.
+During a brief stop, robots remain in place and must not be moved, except for untangling. If the situation requires the robots to be removed from the field, a different call must be made, such as a referee timeout.
 
-During an emergency stop, robots remain in place and must not be moved, except for untangling. If the situation requires the robots to be removed from the field, a different call must be made, such as a referee timeout.
-
-Play resumes when the head referee determines it is safe to continue. The procedure for resuming the game from an emergency stop is as follows:
+Play resumes when the head referee determines that the event that caused the stop is resolved. The procedure for resuming the game from a brief stop is as follows:
 \begin{itemize}
   \item The ball is placed where it was at the time of the stop (if it was in play)
   \item All humans leave the field
@@ -422,6 +420,18 @@ The penalty for the infraction will be applied immediately. Only the robot handl
 If a robot commits an offense in the vicinity of the ball (within the free kick avoidance radius, which is the center circle radius for the respective field size - see Table~\ref{tab:field_dim}), the game is interrupted and the offending player is penalized. After the penalty has been applied, the opposing team restarts play with a free kick (\cf~\cref{sec:free_kick}). If the offense occurred away from the ball, the offending robot is penalized, but play is not interrupted.
 
 
+\sublaw{In-Place Penalty}
+
+One infraction in particular has the robot penalized \textit{in-place}. Such a robot is not removed from the field and is not handed to the team for maintenance, but rather, it remains where it is on the field and immediately starts serving its penalty time.
+
+A robot penalized in-place must safely come to a stop immediately, and then is not allowed to move in any fashion until its penalty time expires. As an exception, the penalized robot is allowed to attempt to get up as normal.
+
+The time for an in-place penalty is always \qty{\InPlacePenaltyTime}{\second}.
+
+In-place penalties do not increment the duration of subsequent standard removal penalties.
+
+If the penalized robot moved significantly from the position where it committed the infraction before stopping, the head referee may require a robot handler to reposition the robot to the point of the infraction, potentially calling a brief stop if necessary.
+
 \sublaw{Standard Removal Penalty}
 \label{sec:removal_penalty}
 
@@ -431,7 +441,7 @@ When the head referee indicates an infraction has been committed that results in
 
 The GameController will send the appropriate penalty signal to the robot indicating the infraction committed. After a penalty is signaled to the robot, it is not allowed to move in any fashion except for standing up or sitting down.
 
-The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty. To avoid disproportionately penalizing minor infractions, the infractions \emph{Illegal Positioning}, \emph{Motion in Set}, and \emph{Local Game Stuck} result in a standard removal penalty but do not increase the penalty timer.
+The initial duration of the standard removal penalty is \qty{\StandardPenaltyTime}{\second}. Unless otherwise specified, each additional offense committed by a player on the same team increases that team's penalty duration by  \qty{\StandardPenaltyIncrease}{\second}. Penalty durations are tracked separately for each team. During the \texttt{set} state the penalty time counter will not decrease. The GameController will keep track of the time of the penalty. To avoid disproportionately penalizing minor infractions, the infractions \emph{Illegal Positioning}, \emph{Incapable Robot} and \emph{Local Game Stuck} result in a standard removal penalty but do not increase the penalty timer.
 
 \textbf{Example: } Player red 1 pushes player blue 1. As it is team red's first offense of the game, player red 1 is removed from the game for \qty{\StandardPenaltyTime}{\second} and team red's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}. Player red 2 now commits another offense by leaving the field. Player red 2 is removed from the game for \qty{\the\numexpr\StandardPenaltyTime+\StandardPenaltyIncrease\relax}{\second} and their penalty tracker again increases by \qty{\StandardPenaltyIncrease}{\second}. Finally, player blue 1 pushes player red 3. As team blue has not yet committed an offense, blue 1 is removed from play for  \qty{\StandardPenaltyTime}{\second} and team blue's penalty tracker increases by \qty{\StandardPenaltyIncrease}{\second}.
 
@@ -499,7 +509,12 @@ If an illegal defender kicks an own goal, the goal is scored for the opponent. I
 \paragraph{Motion in Set}
 \label{sec:motion_in_set}
 
-Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are awarded a standard penalty. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
+Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are penalized in-place. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
+
+\paragraph{Motion in Stop}
+\label{sec:motion_in_stop}
+
+Robots that begin moving their legs or locomote in any way during a brief stop \cref{sec:state_emergency_stop}, are awarded a standard penalty. The head referee will call ``Motion in Stop \textless robot color\textgreater \textless robot number\textgreater''.
 
 \paragraph{Local Game Stuck Penalty}
 \label{sec:pen_local_game_stuck}
