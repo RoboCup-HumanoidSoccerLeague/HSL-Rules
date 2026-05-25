@@ -497,7 +497,7 @@ This section describes infractions commonly encountered during regular gameplay.
 
 \paragraph{Illegal Positioning}
 \label{sec:illegal_positioning}
-A robot is considered to be illegally positioned if, during the \texttt{set} phase, it is located outside the field of play, within the opposing team's half, or within the center circle when its team does not have kick-off. A robot is also considered to be illegally positioned if it encroaches into the avoidance areas during a free kick (\cf~\ref{sec:free_kick_execution}) or penalty kick (\cf~\ref{sec:penalty_kick}). The referee should not measure exact distances for  avoidance areas and shall only penalize robots that are clearly violating this rule. A robot making a reasonable effort to return to the field of play following a standard penalty shall not be penalized for illegal position.
+A robot is considered to be illegally positioned if, during the \texttt{set} state, it is located outside the field of play, or violates the positioning rules for the current phase of play (see Section \ref{sec:kick_off} for kick-off and \ref{sec:penalty_kick} for penalty kicks). A robot is also considered to be illegally positioned if it encroaches into the avoidance areas during a free kick (\cf~\ref{sec:free_kick_execution}) or penalty kick (\cf~\ref{sec:penalty_kick}). The referee should not measure exact distances for  avoidance areas and shall only penalize robots that are clearly violating this rule. A robot making a reasonable effort to return to the field of play following a standard penalty shall not be penalized for illegal position.
 
 Illegally positioned robots are subject to the standard removal penalty (\cf~\cref{sec:removal_penalty}). The head referee will call ``Illegal Position \textless robot color\textgreater \textless robot number\textgreater''. Referees may use ``Illegal Defender'' interchangeably to help with clarity. 
 For simplicity, Illegal Positioning penalties do not count towards the incremental penalty count.
@@ -551,7 +551,7 @@ A robot handler or team captain may request to pick up a robot if and only if a 
 The referee may deny a request for pick-up. A pick-up is not granted for reasons such as being incorrectly configured or being unable to see the ball.
 
 \paragraph{Ball Holding}
-The goalkeeper is allowed to hold the ball for up to \qty{\BallHoldingTimeGoalkeeper}{\second} as long as it has at least one foot inside its own penalty area. In all other cases, robots are allowed to hold the ball for up to \qty{\BallHoldingTime}{\second}. Holding the ball for longer than this is not allowed. A robot is holding the ball, if the convex hull of the robot is covering more than half of the ball. It does not matter whether the offending robot is actually touching the ball. Repeatedly releasing and holding the ball in quick succession is treated as one continuous hold, even if individual holds are shorter than \qty{\BallHoldingTimeGoalkeeper}{\second}. In general, robots should release the ball for approximately as long as they were holding it to reset the clock. 
+The goalkeeper is allowed to hold the ball for up to \qty{\BallHoldingTimeGoalkeeper}{\second} as long as it has at least one foot inside its own penalty area. In all other cases, robots are allowed to hold the ball for up to \qty{\BallHoldingTime}{\second}. Holding the ball for longer than this is not allowed. A robot is holding the ball, if the convex hull of the robot is covering more than half of the ball. It does not matter whether the offending robot is actually touching the ball. Repeatedly releasing and holding the ball in quick succession is treated as one continuous hold, even if individual holds are shorter than the limit. In general, robots should release the ball for approximately as long as they were holding it to reset the clock. 
 
 Ball holding may not be called when a robot falls on a ball. The robot will either get up and hence free the ball, or the robot should be removed under the Fallen Robot rule. Further, ball holding may not be called when the ball becomes stuck between a robot's legs. In such a situation, the head referee should call ``Clear Ball'' and a robot handler or assistant referee should remove the ball and place it approximately where it was before it became stuck.
 
@@ -768,7 +768,7 @@ When the \texttt{ready} time ends, the GameController transitions to \texttt{set
 The head referee commences the penalty kick by blowing the whistle once and calling ``Playing''. The GameController activates the \texttt{playing} state after the standard delay (\cf~\cref{sec:state_set}). During this state:
 
 \begin{itemize}
-  \item The defending goalkeeper must remain on its feet (it is not allowed to "dive") until the ball is touched by the kicking team or the penaltty kick is complete.
+  \item The defending goalkeeper must remain on its feet (it is not allowed to "dive") until the ball is touched by the kicking team or the penalty kick is complete.
   \item The positioning rules remain into effect for the same duration.
 \end{itemize}
 
