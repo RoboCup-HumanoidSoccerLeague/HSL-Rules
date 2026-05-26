@@ -704,15 +704,15 @@ The ball must be stationary as play resumes, and is in play when it is kicked an
 \paragraph{Avoidance Region and Distance Requirements}
 During a free kick, only the attacking team may approach within the avoidance region of the ball. For all free kicks, the avoidance region is the center circle radius for the respective field size (see Table~\ref{tab:field_dim}). This means the same exclusion zone as during kick-off applies to all free kicks, an opponent robot must remain outside this radius from the ball until it is in play.
 
+Until the ball is in play, all opponents must remain outside of this avoidance region, unless they are on their own goal line between the goalposts, and outside the penalty area for free kicks inside the opponents' penalty area. Any players that find themselves in violation of these restrictions as the free kick is awarded must immediately make an effort to move away from the ball to outside the avoidance region until the violation is corrected. 
 
-Until the ball is in play, all opponents must remain outside of this avoidance region, unless they are on their own goal line between the goalposts, and outside the penalty area for free kicks inside the opponents' penalty area.
-
-All robots of the defensive team must immediately move away from the ball to outside the avoidance region when the free kick is awarded.
-Defensive robots that violate these restrictions are penalized with ``Illegal Positioning'' (\cf~\cref{sec:illegal_positioning}), which results in a standard removal penalty (\cf~\cref{sec:removal_penalty}).
+Defensive robots that violate this rule are penalized with ``Illegal Positioning'' (\cf~\cref{sec:illegal_positioning}), which results in a standard removal penalty (\cf~\cref{sec:removal_penalty}).
 Additional penalties against any further robots during the free kick, including pushing, do not result in an additional free kick but still incur the appropriate removal penalty.
 
 \paragraph{Sanctions and Retakes}
-If, when a free kick is taken, an opponent is closer to the ball than the required distance, the opponent receives a removal penalty and the kick is retaken.
+If, when a free kick is taken, an opponent is violating the rules above, that player receives a removal penalty and the kick is retaken.
+
+Note that, in particular, a defensive robot that had found itself already inside the avoidance zone as the free kick was called cannot be penalized if the kick is taken before it had time to leave, as long as it had been making an effort to move away from the ball.
 
 \paragraph{Completion}
 
@@ -877,16 +877,7 @@ After delivering the ball, the kicking robot must not touch the ball again until
 
 \sublaw{Offenses and Sanctions}
 
-If, after the ball is in play, the kicker touches the ball again before it has touched another player:
-\begin{itemize}
-\item An indirect free kick is awarded to the opposing team, to be taken from the place where the infringement occurred.
-\end{itemize}
-
-If, after the ball is in play, the kicker deliberately handles the ball before it has touched another player:
-\begin{itemize}
-\item A direct free kick is awarded to the opposing team, to be taken from the place where the infringement occurred.
-\item A penalty kick is awarded if the infringement occurred inside the kicker's penalty area.
-\end{itemize}
+If, after the ball is in play, the kicker touches the ball again before it has touched another player, an indirect free kick is awarded to the opposing team, to be taken from the place where the infringement occurred. This rule only applies if the kicking team has three or more robots on the field at the time of the second touch.
 
 If an opponent unfairly distracts or impedes the kicker, they are cautioned for unsporting behaviour.
 
@@ -911,16 +902,7 @@ The referee calls ``Goal Kick red'' and the ball is placed on the right corner o
 
 \sublaw{Offenses and Sanctions}
 
-If, after the ball is in play, the kicker touches the ball again before it has touched another player:
-\begin{itemize}
-\item An indirect free kick is awarded to the opposing team, to be taken from the place where the infringement occurred.
-\end{itemize}
-
-If, after the ball is in play, the kicker deliberately handles the ball before it has touched another player:
-\begin{itemize}
-\item A direct free kick is awarded to the opposing team, to be taken from the place where the infringement occurred.
-\item A penalty kick is awarded if the infringement occurred inside the kicker's penalty area.
-\end{itemize}
+If, after the ball is in play, the kicker touches the ball again before it has touched another player, an indirect free kick is awarded to the opposing team, to be taken from the place where the infringement occurred. This rule only applies if the kicking team has three or more robots on the field at the time of the second touch.
 
 In the event of any other infringement, the kick is retaken.
 
@@ -940,16 +922,7 @@ The referee calls ``Corner Kick blue'', the ball is placed on the corner to the 
 
 \sublaw{Offenses and Sanctions}
 
-If, after the ball is in play, the kicker touches the ball again before it has touched another player:
-\begin{itemize}
-\item An indirect free kick is awarded to the opposing team, to be taken from the place where the infringement occurred.
-\end{itemize}
-
-If, after the ball is in play, the kicker deliberately handles the ball before it has touched another player:
-\begin{itemize}
-\item A direct free kick is awarded to the opposing team, to be taken from the place where the infringement occurred.
-\item A penalty kick is awarded if the infringement occurred inside the kicker's penalty area.
-\end{itemize}
+If, after the ball is in play, the kicker touches the ball again before it has touched another player, an indirect free kick is awarded to the opposing team, to be taken from the place where the infringement occurred. This rule only applies if the kicking team has three or more robots on the field at the time of the second touch.
 
 In the event of any other infringement, the kick is retaken.
 
