@@ -100,11 +100,11 @@ During the half-time break both teams may perform any modifications on the hardw
 \sublaw{Signals}
 \label{sec:signals}
 
-The head referee uses a \emph{whistle} to signal certain changes in the game phases (\cf~\Cref{sec:robot_states}).
+The head referee uses a \emph{whistle} to signal certain changes in the game state (\cf~\Cref{sec:robot_states}).
 The head referee should make all whistle sounds from the T-junction of the halfway line.
-The following game phases are signaled by a whistle:
+The following transitions are signaled by a whistle:
 \begin{enumerate}
-\item \texttt{playing} -- one short whistle blows;
+\item \texttt{set} to \texttt{playing} -- one short whistle blows;
 \item \texttt{finished} at the end of the first half -- two short whistle blows;
 \item \texttt{finished} at the end of the second half -- two short plus one long whistle blow;
 \end{enumerate}
@@ -115,7 +115,7 @@ The following game phases are signaled by a whistle:
 \sublaw{Ready and Set States}
 \label{sec:ready_set_clock}
 
-In both knock-out and round-robin games, the game clock is not stopped during the Ready and Set states other than the initial kickoff of a period.
+In both knock-out and round-robin games, the game clock is not stopped during the Ready and Set states other than the initial kick-off of a period.
 
 \sublaw{Allowance For Time Lost}
 \label{sec:allowance_time_lost}
@@ -233,18 +233,18 @@ The team taking a kick-off is determined as follows:
 
 For every kick-off, during the \textbf{set} state, the ball is positioned on the center mark and is stationary. The players must follow these positioning rules:
 \begin{itemize}
-    \item all players of the team \textit{not} taking the kickoff must be in their own half of the field of play and outside of the center circle,
+    \item all players of the team \textit{not} taking the kick-off must be in their own half of the field of play and outside of the center circle,
 
-    \item all players of the team taking the kickoff must be in their own half of the field or inside the center circle,
+    \item all players of the team taking the kick-off must be in their own half of the field or inside the center circle,
 
-    \item at most one player of the kicking team may be outside its own half (it must still be inside the center circle). That player is designated as the kicking player for this kickoff.
+    \item at most one player of the kicking team may be outside its own half (it must still be inside the center circle). That player is designated as the kicking player for this kick-off.
 \end{itemize}
 
 Robots that do not follow these rules are penalized for illegal position. Then, the head referee gives the signal to start play with a whistle. At this point, the following rules apply:
 \begin{itemize}
     \item the positioning rules above still apply until the ball is in play,
     
-    \item if a kicking player was designated during the \textbf{set} state, that player \textit{must} take the kickoff. If a different player kicks the ball before the ball is in play, this is an offense and the kick-off is retaken,
+    \item if a kicking player was designated during the \textbf{set} state, that player \textit{must} take the kick-off. If a different player kicks the ball before the ball is in play, this is an offense and the kick-off is retaken,
 
     \item the ball is in play when it is kicked and clearly moves, or \qty{\KickOffBallFreeTime}{\second} after the referee has given the signal, whichever happens first. In either case, the head referee or the GameController operator will verbally announce this by the call ``Ball Free'',
 
@@ -284,7 +284,7 @@ Typical situations include, but are not limited to:
 \begin{enumerate}
     \item \textbf{Announcement and Preparation:} 
     	The head referee announces ``Dropped Ball''. 
-    	The game state switches to \texttt{ready} phase.
+    	The game state switches to \texttt{ready}.
     	No team is designated to take kick-off.
 
 	\item \textbf{Ready:}
@@ -296,7 +296,7 @@ Typical situations include, but are not limited to:
 		The referee places the ball on the center mark.
 
     \item \textbf{Playing:} 
-    	The referee signals the start and the game switches to \texttt{playing} phase (see \Cref{sec:signals}). 
+    	The referee signals the start and the game state switches to \texttt{playing} (see \Cref{sec:signals}). 
     	The ball is immediately in play.
 		A goal may be scored directly from a dropped ball.
 \end{enumerate}
@@ -508,7 +508,7 @@ If an illegal defender kicks an own goal, the goal is scored for the opponent. I
 \paragraph{Motion in Set}
 \label{sec:motion_in_set}
 
-Robots that begin moving their legs or locomote in any way during the \texttt{Set} phase, except for standing up after a fall, are penalized in-place. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
+Robots that begin moving their legs or locomote in any way during the \texttt{set} state, except for standing up after a fall, are penalized in-place. The head referee will call ``Motion in Set \textless robot color\textgreater \textless robot number\textgreater''. Note that falsely responding to a whistle on another field will result in this penalty. This rule does not apply to the movement of heads or arms. Motion in Set penalties do not count towards the incremental penalty count.
 
 \paragraph{Motion in Stop}
 \label{sec:motion_in_stop}
