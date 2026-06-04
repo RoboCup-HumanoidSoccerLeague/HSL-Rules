@@ -141,7 +141,7 @@ In exceptional circumstances, the head referee may decide to add time to the clo
 \paragraph{Team Timeout}
 \label{sec:team_timeout}
 
-Each team can call a \textbf{maximum of 1 timeout per game} with a total time of no more than \textbf{\TeamTimeoutDuration{} minutes}. During this time, both teams may change robots, change programs, or anything else that can be done within the time allotted. During normal game time, a team may call a timeout at any stoppage of play (after a goal, stuck game, before a half, etc.). Alternatively, a team may call a timeout before a penalty shootout if they have not used their timeout yet (\cf~\cref{sec:penalty_shoot_out}).
+Each team can call a \textbf{maximum of 1 timeout per game} with a total time of no more than \textbf{\TeamTimeoutDuration{} minutes}. During this time, both teams may change robots, change programs, or anything else that can be done within the time allotted. During normal game time, a team may only call a timeout during the \texttt{initial}, \texttt{ready}, \texttt{set} or \texttt{finished} states. Alternatively, a team may call a timeout before a penalty shootout if they have not used their timeout yet (\cf~\cref{sec:penalty_shoot_out}).
 
 The timeout ends when the team that called the timeout says they are finished, at which time they must be ready to play. The other team must be ready to play at the time the timeout runs out, or \textbf{\TeamTimeoutReadyTime{} minutes} after a prematurely called end of the timeout, whichever is earlier. If the other team is not ready to play in time, it must call a timeout of its own.
 
