@@ -48,18 +48,16 @@ A \emph{substitute player} may be substituted in to become a \emph{field player}
 
 \sublaw{Substitution Procedure}
 \label{sec:substitution_procedure}
-In all matches, the jersey numbers of the substitutes must be given to the referee prior to the start of the match. Any substitute whose jersey number is not given to the referee at this time may not take part in the match.
 
 To replace a player with a substitute, the following conditions must be observed:
 \begin{itemize}
-  \item The referee must be informed before any proposed substitution is made.
-  \item The substitution may only occur during a stoppage in the match.
-  \item The player being replaced must first be removed from the field.
-  \item The substitute only enters the field of play after the player being replaced has left and after receiving a signal from the referee.
-  \item The substitute enters the field of play at the standard re-entry point (on the touchline at the height of the penalty mark in the robot's own half, as used for returning from a penalty).
-  \item The substitution is completed when the substitute enters the field of play.
-  \item From that moment, the substitute becomes a player and the player replaced becomes a substituted player.
-  \item All substitutes are subject to the authority and jurisdiction of the referee, whether called upon to play or not.
+  \item The substitution may only occur during the \texttt{initial}, \texttt{set} and \texttt{finished} states (after any penalties are assigned). Robots subject to a standard removal penalty may also be substituted during a brief stop. See \cref{sec:robot_states} for details on the game states.
+  \item The team requests the substitution to the head referee. The substitiution can only be made if the head referee approves.
+  \item If the player being substituted is on the field, it must first be removed from the field.
+  \item The substitution is input in the GameController.
+  \item If the player being substituted is not subject to a standard removal penalty, the substitute can either enter the game immediately or remain in the team area for further maintenance and enter at any later time. In either case, when the substitute is ready to enter, it must be given to a robot handler for placement on the standard re-entry point (see \cref{sec:removal_penalty}), and the GameController operator must be informed. The robot will join the game immediately after.
+  \item If the player being substituted is subject to a standard removal penalty, the substitute inherits its penalty state and penalty timer. It then behaves like any other penalized robot, and re-enters the game according to the corresponding rules (see \cref{sec:removal_penalty}).
+  \item Robots that have been sent off cannot be replaced by a substitute (see \cref{sec:caution_sendoff}).
 \end{itemize}
 
 \paragraph{Changing the Goalkeeper}
@@ -67,7 +65,8 @@ To replace a player with a substitute, the following conditions must be observed
 Any of the other players may change places with the goalkeeper, provided that:
 \begin{itemize}
   \item The referee is informed before the change is made.
-  \item The change is requested during a stoppage in the match.
+  \item The change is approved by the head referee.
+  \item The change is requested during the \texttt{initial}, \texttt{set} or \texttt{finished} state.
 \end{itemize}
 
 \sublaw{Robot Players}

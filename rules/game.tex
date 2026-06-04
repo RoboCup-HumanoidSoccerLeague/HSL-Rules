@@ -150,7 +150,8 @@ The clock stops during timeouts and is reset to the time when the current stoppa
 After the completion of the timeout, the game resumes with a kick-off for the team which did not call the timeout.
 
 If a team is not ready to play at the assigned time, it must use its timeout. After the timeout has expired, or if the team does not use it, the referee shall start the game with only the ready team on the field, if the other team is still not prepared.
-The unready team may return its robots to the field in accordance with the rules for “Request for Pick-up” (\cf~\cref{sec:request_for_pick_up}).
+The unready team may return its robots to the field by having a robot handler place them on the standard re-entry point (see \cref{sec:removal_penalty}) and informing the GameController operator. The robots will join the game immediately. The team may return all its robots to the field at the same time, or return different robots (or groups of robots) at different times.
+
 If both teams are not ready, the same procedure applies.
 
 \paragraph{Referee Timeout}
