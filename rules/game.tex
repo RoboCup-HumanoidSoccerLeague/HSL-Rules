@@ -22,7 +22,7 @@ Robots must respond appropriately to each state transition.
 	Dashed lines denote technical state \texttt{safe}. Dashed transitions are activated through dedicated buttons or switches on the robot.
 	Solid lines denote game states. Transitions between game states are activated by the GameController.
 	The transition from \texttt{set} to \texttt{playing} (denoted by a double line) is additionally activated by a whistle.
-	Final state \texttt{finished} is denoted by double circle.
+	Final state \texttt{finished} is denoted by a double circle.
 	}
 	\label{fig:game_states}
 \end{figure}
@@ -369,7 +369,7 @@ The ball is out of play when:
 \sublaw{Ball In Play}
 The ball is in play at all other times, including (but not limited to) when:
 \begin{itemize}
-	\item the ball rebounds off the head referee or a assistant referee, the goalpost, or the crossbar, and remains inside the field of play (i.e., within the region bounded by the touchlines and goal lines)
+	\item the ball rebounds off the head referee or an assistant referee, the goalpost, or the crossbar, and remains inside the field of play (i.e., within the region bounded by the touchlines and goal lines)
 	\item the ball rebounds off a robot player, including a robot located beside the field but outside the field of play, provided that the ball has not left the field of play during the rebound
 	\item the ball rebounds off a robot handler who has been permitted by the head referee to enter the field of play, provided that the head referee determines that the contact was not intentionally caused by the robot handler
 \end{itemize}
@@ -588,7 +588,7 @@ If a pushing offense is committed, the head referee will call ``Pushing \textles
 \sublaw{Manual Interaction by Team Members}
 \label{sec:manual_interaction}
 
-Manual interaction with the robots, either directly or via some communications mechanism, is not permitted. Team members (that are not robot handlers) can only touch one of their robots when a robot handler hands it over to them after a it has been penalized or substituted.
+Manual interaction with the robots, either directly or via some communications mechanism, is not permitted. Team members (that are not robot handlers) can only touch one of their robots when a robot handler hands it over to them after it has been penalized or substituted.
 
 \sublaw{Aborting a Penalty}
 \label{sec:aborting_penalty}
