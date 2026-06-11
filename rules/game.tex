@@ -141,7 +141,15 @@ In exceptional circumstances, the head referee may decide to add time to the clo
 \paragraph{Team Timeout}
 \label{sec:team_timeout}
 
-Each team can call a \textbf{maximum of 1 timeout per game} with a total time of no more than \textbf{\TeamTimeoutDuration{} minutes}. During this time, both teams may change robots, change programs, or anything else that can be done within the time allotted. During normal game time, a team may call a timeout at any stoppage of play (after a goal, stuck game, before a half, etc.). Alternatively, a team may call a timeout before a penalty shootout if they have not used their timeout yet (\cf~\cref{sec:penalty_shoot_out}).
+Each team can call a \textbf{maximum of 1 timeout per game} with a total time of no more than \textbf{\TeamTimeoutDuration{} minutes}. During this time, both teams may change robots, change programs, or anything else that can be done within the time allotted.
+
+A team may only call their timeout at one of these times:
+
+\begin{itemize}
+  \item Before a period of play begins (including a half of extra time)
+  \item During the \texttt{ready} and \texttt{set} states pertaining to a stoppage of play that is restarted with a kick-off or a dropped ball (\cf~\cref{sec:kick_off}, \cref{sec:dropped_ball}), for example after a goal or a Global Game Stuck event (\cf~\cref{sec:game_stuck})
+  \item Before a penalty shootout (\cf~\cref{sec:penalty_shoot_out})
+\end{itemize}
 
 The timeout ends when the team that called the timeout says they are finished, at which time they must be ready to play. The other team must be ready to play at the time the timeout runs out, or \textbf{\TeamTimeoutReadyTime{} minutes} after a prematurely called end of the timeout, whichever is earlier. If the other team is not ready to play in time, it must call a timeout of its own.
 
@@ -150,7 +158,8 @@ The clock stops during timeouts and is reset to the time when the current stoppa
 After the completion of the timeout, the game resumes with a kick-off for the team which did not call the timeout.
 
 If a team is not ready to play at the assigned time, it must use its timeout. After the timeout has expired, or if the team does not use it, the referee shall start the game with only the ready team on the field, if the other team is still not prepared.
-The unready team may return its robots to the field in accordance with the rules for “Request for Pick-up” (\cf~\cref{sec:request_for_pick_up}).
+The unready team may return its robots to the field by having a robot handler place them on the standard re-entry point (see \cref{sec:removal_penalty}) and informing the GameController operator. The robots will join the game immediately. The team may return all its robots to the field at the same time, or return different robots (or groups of robots) at different times.
+
 If both teams are not ready, the same procedure applies.
 
 \paragraph{Referee Timeout}
@@ -167,27 +176,6 @@ If a team was going to have kick-off at the time the referee timeout was called 
 \label{sec:mercy_rule}
 
 A game will conclude once the game score shows a goal difference of 10. Ending the game is mandatory once a goal difference of 10 is reached.
-
-\sublaw{Forfeit Rule}
-Teams who do not make a good faith effort to participate in a scheduled game are considered to forfeit the game.
-
-If a team notifies the technical committee that they wish to forfeit less than two hours before their scheduled game time, simply fails to show up for their game, or decides during their game that they wish to forfeit, then the opposing team will play the match against an empty field.
-However, any own goals will not be scored.
-Hence, after an opponent forfeits, the team playing against an empty field cannot do worse than they were doing at the time the opponent decided to forfeit.
-Teams may choose to forfeit at any stoppage of play.
-However, once a forfeit is announced, they may not reverse this decision.
-
-If a team notifies the technical committee that they wish to forfeit at least two hours before their schedule game time, the following procedure will be followed.
-\begin{itemize}
-  \item If a team chooses to forfeit a match in the round robin games the other team plays the match against an empty field.
-    However, any own goals will not be scored.
-  \item If a team chooses to forfeit in a knock-out game it gets replaced by the next best qualified team, \ie the team it kicked out or left behind in the round robins.
-\end{itemize}
-
-Note that there are a few unlikely cases that are not covered by these rules.
-If a situation is not covered by these rules, the technical committee and the organizing committee will work together to make a decision.
-
-Any forfeit will result in a qualification penalty being recorded but the circumstances of the forfeit will affect the severity of the offense and the impact on future qualification.
 
 
 \sublaw{Ball Stop Rule}
@@ -431,6 +419,8 @@ In-place penalties do not increment the duration of subsequent standard removal 
 
 If the penalized robot moved significantly from the position where it committed the infraction before stopping, the head referee may require a robot handler to reposition the robot to the point of the infraction, potentially calling a brief stop if necessary.
 
+In-place penalties are considered to be over at the end of each half.
+
 \sublaw{Standard Removal Penalty}
 \label{sec:removal_penalty}
 
@@ -476,6 +466,8 @@ Offenses that can result in a caution or send-off include, but aren't limited to
 
 It is at the discretion of the head referee to decide whether a caution or send-off is warranted.
 
+Teams are ultimately responsible for their robots to play in a safe and sportsmanlike manner. Repeated, \textit{willing} dangerous behavior (including neglecting to correct a safety issue discovered previosuly), especially over multiple games, may be considered unsporting conduct by the team (see below).
+
 \sublaw{Penalties Against Teams or Humans}
 \label{sec:penalties_against_humans}
 
@@ -485,7 +477,8 @@ The referee can issue warnings, yellow and red cards against humans or teams at 
 	\item Offensive, violent or abusive behavior
 	\item Repeatedly ignoring referee instructions
 	\item Repeatedly entering the field without permission
-	\item Breaking the game rules to gain an advantage
+	\item Breaking the game rules or exploiting loopholes to gain an unfair advantage
+	\item Repeated, willing dangerous behavior by the team's robots (see above)
 \end{itemize}
 
 Cards that are issued against humans or teams must be reported to the Organizing Committee immediately after the game. Cards against humans or teams persist between games. A human who receives a red card will be prohibited from entering the field or team area during games for the remainder of the competition. A team that commits serious or repeated violations may be disqualified from the competition. 

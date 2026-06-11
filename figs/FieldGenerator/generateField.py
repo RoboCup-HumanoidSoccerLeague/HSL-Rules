@@ -16,12 +16,19 @@ import json
 import math
 import cairo
 import sys
+from pathlib import Path
 
 # read the field dimensions from the rules from a JSON file
 
 assert len(sys.argv) == 2
 
-with open(sys.argv[1]) as f:
+field_specification_path = Path(sys.argv[1])
+_base_name = field_specification_path.stem
+field_technical_name = _base_name + "_technical.pdf"
+field_technical_cc_name = _base_name + "_technical_cc.pdf"
+field_technical_pm_name = _base_name + "_technical_pm.pdf"
+
+with open(field_specification_path) as f:
     o = json.load(f)
 
 field_length = o['field']['length']
@@ -296,7 +303,7 @@ height_in_m = field_width + 2 * border_strip_width + 2 * padding
 
 width, height = 72 * 10 * (width_in_m / height_in_m), 72 * 10
 
-surface = cairo.PDFSurface('field_technical.pdf', width, height)
+surface = cairo.PDFSurface(field_technical_name, width, height)
 context = cairo.Context(surface)
 
 # fill the background with white
@@ -425,7 +432,7 @@ height_in_m = penalty_mark_size + 2 * padding
 
 width, height = 72 * 10, 72 * 10
 
-surface = cairo.PDFSurface('field_technical_pm.pdf', width, height)
+surface = cairo.PDFSurface(field_technical_pm_name, width, height)
 context = cairo.Context(surface)
 
 # fill the background with white
@@ -495,7 +502,7 @@ height_in_m = center_circle_diameter + 2 * padding
 
 width, height = 72 * 10, 72 * 10
 
-surface = cairo.PDFSurface('field_technical_cc.pdf', width, height)
+surface = cairo.PDFSurface(field_technical_cc_name, width, height)
 context = cairo.Context(surface)
 
 # fill the background with white
