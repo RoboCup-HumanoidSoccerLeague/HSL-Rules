@@ -128,6 +128,7 @@ The following weight restrictions apply for each division:
 
 
 \sublaw{Approved Standard Platforms}
+\label{sec:approved-standard-platforms}
 The following commercially available robotic platforms are approved for participation in the \leaguenameabbr. 
 
 The following are the list of pre-approved standard platforms that require no modifications:
@@ -409,8 +410,12 @@ Examples for such components are a physical button on the robot, emergency switc
 Robots can be equipped with a remote emergency button.
 A remote emergency button is a device that is not physically attached to the robot and can send a remote signal to the robot causing it to stop all movement and assume a safe posture.
 Each emergency stop button can only be connected to one specific robot.
-The remote emergency button cannot perform any additional functions.
 
+Manufacturer(s) of a standard platform robots may provide a remote emergency button (or functionality) as part of the operating procedures of the robot. Unless otherwise listed in \Cref{sec:approved-standard-platforms} these may be available at all times. 
+
+Where a robot is equipped with a remote emergency button in addition to manufacturer provisions, the remote emergency button should not perform any additional functions.
+
+Where a remote emergency stop is activated via a device that performs other functions (such as teleoperated control of the robot), during game play the device must be placed in a specially marked zone within the team's Technical Area (\cf~\Cref{sec:robot_handlers}). Further, the device may only be touched for the purpose activating the remote emergency button.  Any other interaction with the device will result in a penalty against the team (\cf~\Cref{sec:penalties_against_humans}).
 
 \paragraph{GameController Stop}
 The robots must comply with the GameController protocol and immediately assume a safe pose when the command is sent by the GameController as formulated in \Cref{sec:state_emergency_stop,sec:wireless}.
