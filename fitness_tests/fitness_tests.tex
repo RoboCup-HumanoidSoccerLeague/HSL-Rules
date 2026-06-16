@@ -62,17 +62,17 @@ Each target is scored independently.
 This fitness test measures how quickly a robot can recover and resume normal operation after falling forward or backward.
 
 \subsection{Setup}
-The robot is placed on the ground in the center of the field in either the prone or supine position. 
+The robot is placed on the ground in the center of the field in either the prone (face down) or supine (face up) position. 
 \subsection{Challenge Execution}
 Each attempt starts with the robot already on the ground in the assigned pose (flat on the front or back).
 The robot must then autonomously recover and stand up.
-The test is performed with two separate attempts: one forward fall and one backward fall.
+The test is performed with two separate attempts: one starting from the prone position and one from the supine position.
 
-For each fall direction, teams start the robot recovery behavior via a single button press.
+For each starting position, teams start the robot recovery behavior via a single button press.
 Code changes between forward and backward fall attempts are allowed.
 
 \subsection{Scoring}
 The head referee starts timing at the button press, and stops the timer when the robot is standing on both feet.
 The robot must remain stable for at least three seconds after reaching its standing position for the time to be counted.
-The fastest recovery time across all attempts for each fall direction is recorded.
-Each direction is scored independently.
+The fastest recovery time across all attempts for each starting position is recorded.
+Each starting position is scored independently.
