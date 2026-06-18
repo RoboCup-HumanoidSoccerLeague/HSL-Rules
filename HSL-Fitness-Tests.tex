@@ -1,0 +1,144 @@
+% !TeX spellcheck = en_US
+\documentclass[12pt]{article}
+
+\usepackage{times,fullpage,xspace,fancyhdr,url,color}
+\usepackage[pdftex]{graphicx}
+\usepackage[pdftex,
+            colorlinks=true,
+            urlcolor=black,
+            linkcolor=black,
+            citecolor=black,
+            bookmarksopen=false,
+            bookmarksnumbered=true,
+            pdfstartview=FitH]{hyperref}
+
+\input{common/variables}
+\input{common/dates}
+
+% Fitness-test-specific fallback values if not supplied by shared variables.
+\providecommand{\MaxTimePassingLeaderboard}{120}
+
+\pdfcompresslevel=9
+\hypersetup{
+ pdftitle={\leaguename The Fitness Tests},
+ pdfauthor={Technical Committee HSL},
+}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{xargs}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{siunitx}
+\usepackage[capitalize,noabbrev]{cleveref}
+\usepackage[official]{eurosym}
+\usepackage[useregional]{datetime2}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{calc,math}
+\DTMlangsetup[en-GB]{ord=raise,monthyearsep={,\space}}
+
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=green,backgroundcolor=green!25,bordercolor=green,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+
+% comment 'disable' in to disable all the todo notes :)
+\usepackage
+[
+%disable
+]{todonotes}
+
+\usepackage[theorems]{tcolorbox}
+\newtcbtheorem[number within=section]{hintbox}{}%
+{colback=red!10,colframe=red!45!black,fonttitle=\bfseries}{th}
+
+\sloppy
+\newcommand{\ie}{\mbox{i.\,e.}\xspace}
+\newcommand{\eg}{\mbox{e.\,g.}\xspace}
+%\newcommand{\cf}{\mbox{cf.}\xspace}
+\newcommand{\cf}{see\xspace}
+% \newcommand{\comment}[1]{\marginpar{\pdfannot width 4in height .5in depth 8pt {/Subtype /Text /Contents (#1)}}}
+\newcommand{\inparagraph}[1]{\paragraph{#1\hspace{-1em} }}
+
+
+% some colors
+\definecolor{orange}{rgb}{1,0.5,0}
+\definecolor{red}{rgb}{1,0,0}
+\definecolor{green}{rgb}{0,1,0}
+
+
+\title{The \leaguename\\ Fitness Tests}
+\author{RoboCup Technical Committee}
+\date{(\RCYear fitness tests, as of \today)}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt plus 6pt minus 3 pt}
+\setcounter{tocdepth}{1}
+\widowpenalty=10000
+\clubpenalty=10000
+
+\pagestyle{fancy}
+\lhead{}
+\chead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% needed to align an image and text correctly side by side
+\newcommand{\imagebox}[1]{\raisebox{2ex}{\raisebox{-\height}{#1}}}
+
+\input{figs/fitness_tests/fitness_test_field_macros}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+Questions or comments on the fitness test rules should be submitted via \url{https://github.com/RoboCup-HumanoidSoccerLeague/HSL-Rules/issues}, to the \texttt{\#rule-book} channel on the RoboCup Official Discord server, or by mail to \url{rc-hsl-tc@lists.robocup.org}.
+\end{center}
+
+\newpage
+
+\tableofcontents
+\setcounter{tocdepth}{3}
+
+\thispagestyle{fancy}
+
+\clearpage
+
+\cfoot{\thepage}
+\setcounter{page}{1}
+
+\section{Introduction}
+Starting in 2026, a fitness test will be introduced to track and compare team performances across key skills over multiple years. 
+These fitness tests track the development of the league and are used to make informed decisions on rule changes such as field sizes or game duration.
+They further aim to motivate teams to improve in specific areas valuable to humanoid robotic soccer and to compile a record of the top-performing components and skills. 
+By highlighting these individual skills, the league encourages focused development in areas that contribute to overall team performance, and creates a showcase of the best technical abilities in the league.
+
+\textbf{The \RCYear fitness tests will be a trial run to ensure feasibility, and as such will not have any impact on team scores and will not award any certificates or trophies. Failing to complete these fitness tests will not have any negative repercussions. However, all teams are required to show up to their assigned slots and must declare if they are unable to complete any of the challenges.}
+
+\subsection{Challenge Rules}
+
+The fitness tests are conducted as part of the robot inspection and consist of three individual challenges as described below. Each challenge can be attempted up to three times and should be attempted at least once. If a robot is unable to complete any of the challenges, the team may declare this and thus skip the challenge. A skipped challenge is marked as "not attempted". If a challenge is attempted multiple times, the best result is counted.
+
+Challenges require a single robot. If a team has multiple different robot platforms, they may ask for permission to make a second attempt at the fitness test with another robot platform, but are not required to do so. The OC may reject this request if the schedule does not allow for it. Teams are not allowed to use multiple different robot platforms in the same fitness test attempt.
+
+\subsection{Setup}
+
+The fitness tests are conducted on a small division field. Additional required materials include a stopwatch, a tape measure and one ball of each division.
+
+\subsection{Results}
+
+The results of the fitness tests will be recorded and published on the Humanoid Soccer League website (hsl.robocup.org). Results will be kept indefinitely to allow analysis of the development of the league over time.
+
+Unless otherwise specified, all results are recorded in SI base units with 2 decimals of accuracy.
+
+\input{fitness_tests/fitness_tests}
+
+\end{document}
