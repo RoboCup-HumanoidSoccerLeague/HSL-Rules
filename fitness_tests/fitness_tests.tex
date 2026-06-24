@@ -18,12 +18,13 @@ The setup is illustrated in \cref{fig:walk_test_s}.
 \subsection{Challenge Execution}
 In each attempt, the active robot must walk autonomously in a straight run from the starting side of the field to the opposite goal line.
 Code changes are not allowed during an attempt, but are allowed between attempts.
-The run ends when the robot crosses the opposite goal line. The attempt also ends if the robot falls and is unable to get up within \FallenRobotGetUpTime~seconds or if the total duration of the attempt exceeds one minute.
+
+The run ends when the robot touches or crosses the opposite goal line. The attempt also ends if the robot falls and is unable to get up within \FallenRobotGetUpTime~seconds or if the total duration of the attempt exceeds one minute (as determined by "Scoring" below).
 
 \subsection{Scoring}
-The head referee starts the timer once the robot touches the starting goal line and stops the timer once the target goal line is touched. The lowest time across all attempts is recorded. 
+The head referee starts the timer once the robot touches or crosses the starting goal line and stops the timer once the target goal line is touched or crossed. The lowest time across all attempts is recorded. 
 
-If the robot is unable to reach the target goal line, the distance traveled is recorded instead.
+If the robot is unable to reach the target goal line, the distance traveled is recorded instead, measured as the projection onto the touchline of the segment from the point where the robot crossed the starting goal line to the robot's final position.
 
 \section{Kick Accuracy Test}
 This fitness test measures the accuracy with which a robot can kick an HSL competition soccer ball toward specified targets.
@@ -42,11 +43,15 @@ The competing robot is placed in the center of the goal line facing the ball.
 
 \subsection{Challenge Execution}
 Each attempt consists of kicking toward each of the three targets (illustrated in \cref{fig:kick_accuracy_test_s}):
+
 \begin{itemize}
     \item The center mark in the center circle
     \item The left corner on the opposite side of the field
     \item The right corner on the opposite side of the field
 \end{itemize}
+
+The robot is placed at its starting position before each kick.
+
 In each attempt, for each kick, participating teams must start the robot behavior of their competing robot via a single button press. The robot then has \qty{\PenaltyShootoutKickTime}{\second} to kick the ball towards the current target.
 The competing robot must not touch the ball a second time after the ball has clearly moved, otherwise the attempt ends immediately without scoring and the robot continues with the next target.
 Once the ball has come to a complete stop, the distance from the ball to the target is measured.
@@ -60,15 +65,16 @@ Each target is scored independently.
 \section{Recovery from Fall Fitness Test}
 This fitness test measures how quickly a robot can recover and resume normal operation after falling forward or backward.
 
-\subsection{Setup}
-The robot is placed on the ground in the center of the field in either the prone (face down) or supine (face up) position. 
-\subsection{Challenge Execution}
-Each attempt starts with the robot already on the ground in the assigned pose (flat on the front or back).
-The robot must then autonomously recover and stand up.
-The test is performed with two separate attempts: one starting from the prone position and one from the supine position.
+An attempt of this test consists of two separate get-up trials: one starting from the prone (face down) position and one from the supine (face up) position.
 
-For each starting position, teams start the robot recovery behavior via a single button press.
-Code changes between forward and backward fall attempts are allowed.
+\subsection{Setup}
+The robot is placed already on the ground in the center of the field in the assigned position (flat on the front or back).
+
+\subsection{Challenge Execution}
+After being placed lying on the ground, the robot must autonomously recover and stand up.
+
+For each attempt, for each starting position, teams start the robot recovery behavior via a single button press.
+Code changes are allowed when changing starting positions.
 
 \subsection{Scoring}
 The head referee starts timing at the button press, and stops the timer when the robot is standing on both feet.
