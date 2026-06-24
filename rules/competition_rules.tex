@@ -26,17 +26,30 @@ However, these rules will be upheld at the yearly international RoboCup competit
 
 % As this section was added late in 2026, this space is reserved for the 2027 TC to outline the competition rules for that year's RoboCup.
 
-% \subsection{Setup and Inspection}
-% \label{sec:setup_and_inspection}
+\subsection{Robot Inspection}
+\label{sec:inspection}
 
-% As this section was added late in 2026, this space is reserved for the 2027 TC to outline the competition rules for that year's RoboCup.
+Every team participating in a RoboCup HSL competition must bring all robot platforms they intend to use to the league organizing committees for inspection before they can be used in a match. If a team has multiple different robot platforms or configurations, the team must bring one robot of each configuration to the inspection. If the team has multiple of the same robot platform, it is sufficient to only inspect one of them. The team must also bring one sample of each jersey they intend to use to the inspection.
+
+\subsubsection{Procedure}
+During inspection, the robot's height and weight are measured and compared against the allowed measurements as detailed in §3.5 of the rule book. Measurements are taken with the robot standing upright with its knees fully extended. The head of the robot must be oriented in such a way that it is tilted to either its maximum upwards tilt angle or the horizon line, whichever is lower. 
+
+The inspector then verifies that used sensors and other special modifications are in line with the rule book. This step is intended to identify clearly non-compliant features, an in-depth technical review will not be conducted. Where compliance cannot be determined from visual inspection alone, inspectors may request clarification from the team. The robot jerseys are also inspected.
+
+Finally, robots are inspected for potential safety problems and the team demonstrates the emergency stop procedure. The team must demonstrate that they are able to immediately and physically bring the robot into a safe state.
+
+\subsubsection{Pre-Approved Robots}
+Robot platforms that are included in the list of pre-approved standard platforms do not need to be measured. However, they still need to be brought to the inspection to verify that they are unmodified and that the emergency stop procedures work.
+
+\subsubsection{Reinspection}
+If a robot fails the initial inspection or is modified after inspection, it needs to be reinspected. Reinspection can be requested at any time. A robot without a valid inspection is not allowed to participate in any match. If a robot is modified from a previously approved version, only the modified components need to be inspected.
 
 \subsection{Referee Duty}
 \label{sec:referee_duty}
 
-Each team has to referee a number of games.
+Each team must provide at least one person familiar with the rule book to referee games and assist  during the robot inspection.
 A schedule will be released specifying the games for which each team is required to provide referees.
-The teams assigned to referee a game are allowed to decide among themselves which roles each team will fulfill. It is advised that the head referee and the GameController operator come from the same team.
+The teams assigned to referee a game are allowed to decide among themselves which roles each team will fulfill.
 
 A team may swap their scheduled refereeing duties with another team, but the team listed on the referee schedule will be held accountable if referees fail to appear for a game they are scheduled to referee.
 
@@ -48,10 +61,8 @@ If a team believes providing referees for games will be an extreme hardship, the
 The Organizing and Technical Committees will then consider the request and attempt to find an acceptable solution.
 
 Referees must have good knowledge of the rules as applied in the tournament, and the operator of the GameController must be experienced in using that software.
-Referees and the GameController should be selected among the more senior members of a team, and preferably have prior experience with games in RoboCup.
-
-In each game, each of the teams playing shall be able to veto one and only one eligible referee with no reason required.
-The veto must be delivered before the start of the game (the first \texttt{ready} state) or during a timeout.
+Referees and the GameController operator should be selected among the more senior members of a team, and preferably have prior experience with games in RoboCup.
+A training session will be held during the setup days to refresh the knowledge of the rules and make note of especially important points. All referees are required to attend this meeting.
 
 The selection of referees, including the application of the above rules,
 must always be made under the constraint that no member of a team may be allowed to
@@ -110,16 +121,13 @@ A team may be disqualified during the RoboCup competition for:
 \begin{itemize}
   \item Receiving a red card assigned to their team as humans (\cf~\cref{sec:penalties_against_humans})
   \item A serious violation of the terms of a team's qualification
-  \item Gaining a Qualification Penalty during the course of the competition
+  \item Gaining multiple serious qualification penalties during the course of the competition
   \item A serious breach of ethics, or serious behavior unbecoming of participants of RoboCup.
 \end{itemize}
 
-\textbf{Example.} A team promises to use their novel contribution in RoboCup games, but fails to do so.
-Alternatively, a team deliberately misleads the technical committee about the novelty of their work and/or their contribution to the league, such that they are deemed to have copied another team.
-
 A team can \textit{only} be disqualified by a decision of the \textit{Board of Trustees of the RoboCup Federation}.
-The RoboCup Soccer League executive must petition the board in writing at their soonest possible availability.
-The executive must simultaneously inform the relevant team of the petition in writing.
+The RoboCup Soccer League executive committee must petition the board in writing at their soonest possible availability.
+The executive committee must simultaneously inform the relevant team of the petition in writing.
 
 A disqualified team automatically forfeits all games (\cf~\cref{sec:forfeit}).
 For practicality, the disqualification should not apply \textit{retroactively}.
@@ -128,12 +136,23 @@ However, by majority vote of the team leaders, provisions for retroactive disqua
 \subsection{Awards}
 \label{awards}
 
+A trophy is awarded to the winner, second and third place of the soccer tournament in each of the individual divisions. In case of less than 10 teams participating in a division the team ranked third will be awarded a certificate instead	of a trophy. In case of less than 6 teams participating in a division the team ranked second will also be awarded a certificate instead of a trophy.
+
+A trophy is awarded to the team ranked first on the technical challenges and certificates
+are awarded to the teams second and third in the technical challenges. In case less than 10 teams participate in the technical challenges in a division, the team ranked first in the technical challenges will be awarded a certificate instead of a trophy. 
+
 \subsubsection{Best Referee Voting}
 
-Teams will be asked to vote for the team who has provided the best referrees throughout the competition.
-Specifics on the voting process and awards will be detailed by the Organizing Committee during a referree meeting before
-the start of the competition.
+A certificate is awarded to the best referee as voted by the team leaders.
+Specifics on the voting process will be detailed by the Organizing Committee during a referree meeting before the start of the competition.
 
-\subsubsection{Best Humanoid Award}
+% \subsubsection{Best Humanoid Award}
 
-TBA
+% TBA
+
+\section{Conflict Resolution}
+It is the responsibility of the team leader to inspect the other team’s robots an hour in advance of a game. Any concern regarding the rule compliance of any of the robots must be brought to the attention of the referee. If the referee is unavailable, they have to be brought to the attention of the Technical Committee instead.	
+
+Every result of a game needs to be signed by both team leaders and all robot handlers and referees involved in the game. Doubts concerning a serious violation of any rule during a specific game must be brought up to a member of the Technical Committee and investigated before signing the result. By signing the result sheet, a team agrees that the result arose from a fair game. Concerns must be brought to the attention of the Technical Committee within half an hour of the completion of the game. 
+
+If a team brings up an official concern to the Technical Committee, a meeting of the Technical Committee must be called as soon as possible. If the team of a member of the Technical Committee is	directly involved in the game in question, the respective member is excluded from the meeting. At least three members	of the Technical Committee need to be part of the meeting and the decision process. If less than three members of the Technical Committee are available, members of the Organizing committee or, if necessary, Trustees or members of committees from other leagues have to be called into the meeting. Members of these meetings may request to inspect the hardware, robot model and software of any team involved in the issue. If serious violations of rules or recurrent unsportive behavior are detected, the committee may, among others, decide to invalidate the result of the game in question or take disciplinary actions against a team as defined in Law 12.4, depending on the severity of the rule violation. The decisions of the committee meeting need to be announced to the whole league. If teams are requested to make changes to their code for the next game, they need to receive a period of at least four hours to make the requested change. If their next game was scheduled earlier than this, the game needs to be postponed.

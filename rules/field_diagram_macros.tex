@@ -1,0 +1,206 @@
+% Shared TikZ helpers for rulebook and fitness test field visualizations.
+
+\providecommand{\FieldAnnotation}[5]{%
+  \draw[thick] ($#1$) -- ($#1 + (#3:#4)$);
+  \draw[thick] ($#2$) -- ($#2 + (#3:#4)$);
+  \draw[<->, thick] ($#1 + (#3:#4/2)$) -- ($#2 + (#3:#4/2)$);
+  \node at ($#1!0.5!#2 + (#3:#4)$) {#5};
+}
+
+\providecommand{\FieldDrawGoal}[4]{%
+  \draw[goalLine]
+  ($#1 + (90+#4:#2/2)$) --
+  ($#1 + (90+#4:#2/2) + (180+#4:#3+\goalLineWidth/2)$) --
+  ($#1 + (-90+#4:#2/2) + (180+#4:#3+\goalLineWidth/2)$) --
+  ($#1 + (-90+#4:#2/2)$);
+}
+
+\providecommand{\FieldDrawPenaltyMark}[2]{%
+  \fill[white] #1 circle (#2/2);
+}
+
+\providecommand{\SetFieldCanvas}[2]{%
+  \def\fieldCanvasHalfLengthValue{#1}%
+  \def\fieldCanvasHalfWidthValue{#2}%
+}
+
+\providecommand{\SetFieldGeometryScale}[1]{%
+  \def\fieldGeometryScaleValue{#1}%
+}
+
+\providecommand{\SetFieldDrawingScale}[1]{%
+  \def\fieldDrawingScaleValue{#1}%
+}
+
+\providecommand{\ConfigureSmallField}{%
+  \def\fieldDrawingScaleValue{0.0125}%
+  \def\fieldLengthValue{9.0}%
+  \def\fieldWidthValue{6.0}%
+  \def\goalDepthValue{0.5}%
+  \def\goalWidthValue{1.8}%
+  \def\goalAreaLengthValue{1.0}%
+  \def\goalAreaWidthValue{3.0}%
+  \def\penaltyAreaLengthValue{2.0}%
+  \def\penaltyAreaWidthValue{4.0}%
+  \def\penaltyMarkDistValue{1.5}%
+  \def\penaltyMarkLengthValue{0.10}%
+  \def\cornerArcRadiusValue{0.0}%
+  \def\centerCircleDiameterValue{1.5}%
+  \def\fieldLineWidthValue{0.05}%
+  \def\goalLineWidthValue{0.10}%
+  \def\borderStripValue{1.0}%
+  \SetFieldGeometryScale{1.0}%
+  \SetFieldCanvas{5.5}{4.0}%
+}
+
+\providecommand{\ConfigureMediumField}{%
+  \def\fieldDrawingScaleValue{0.01}%
+  \def\fieldLengthValue{14.0}%
+  \def\fieldWidthValue{9.0}%
+  \def\goalDepthValue{0.7}%
+  \def\goalWidthValue{2.4}%
+  \def\goalAreaLengthValue{1.0}%
+  \def\goalAreaWidthValue{4.0}%
+  \def\penaltyAreaLengthValue{3.0}%
+  \def\penaltyAreaWidthValue{6.0}%
+  \def\penaltyMarkDistValue{2.0}%
+  \def\penaltyMarkLengthValue{0.10}%
+  \def\cornerArcRadiusValue{0.5}%
+  \def\centerCircleDiameterValue{3.0}%
+  \def\fieldLineWidthValue{0.05}%
+  \def\goalLineWidthValue{0.10}%
+  \def\borderStripValue{1.0}%
+  \SetFieldGeometryScale{1.0}%
+  \SetFieldCanvas{8.0}{5.5}%
+}
+
+\providecommand{\ConfigureLargeField}{%
+  \def\fieldDrawingScaleValue{0.006666}%
+  \def\fieldLengthValue{22.0}%
+  \def\fieldWidthValue{14.0}%
+  \def\goalDepthValue{0.6}%
+  \def\goalWidthValue{2.4}%
+  \def\goalAreaLengthValue{1.0}%
+  \def\goalAreaWidthValue{4.0}%
+  \def\penaltyAreaLengthValue{3.5}%
+  \def\penaltyAreaWidthValue{7.0}%
+  \def\penaltyMarkDistValue{2.5}%
+  \def\penaltyMarkLengthValue{0.15}%
+  \def\cornerArcRadiusValue{1.0}%
+  \def\centerCircleDiameterValue{4.0}%
+  \def\fieldLineWidthValue{0.12}%
+  \def\goalLineWidthValue{0.20}%
+  \def\borderStripValue{1.0}%
+  \SetFieldGeometryScale{1.0}%
+  \SetFieldCanvas{12.0}{8.0}%
+}
+
+\providecommand{\DrawConfiguredField}[1]{%
+  \begin{tikzpicture}[
+    x=\fieldDrawingScaleValue*100cm,
+    y=\fieldDrawingScaleValue*100cm,
+    fieldLine/.style = {line width=\fieldDrawingScaleValue*5cm, color=white},
+    goalLine/.style = {line width=\fieldDrawingScaleValue*10cm, color=white}
+  ]
+    \tikzmath{
+      \borderStrip=\borderStripValue;
+      \fieldLength=\fieldLengthValue;
+      \fieldWidth=\fieldWidthValue;
+      \goalDepth=\goalDepthValue;
+      \goalWidth=\goalWidthValue;
+      \goalAreaLength=\goalAreaLengthValue;
+      \goalAreaWidth=\goalAreaWidthValue;
+      \penaltyAreaLength=\penaltyAreaLengthValue;
+      \penaltyAreaWidth=\penaltyAreaWidthValue;
+      \penaltyMarkDist=\penaltyMarkDistValue;
+      \penaltyMarkLength=\penaltyMarkLengthValue;
+      \cornerArcRadius=\cornerArcRadiusValue;
+      \centerCircleDiameter=\centerCircleDiameterValue;
+      \fieldLineWidth=\fieldLineWidthValue;
+      \goalLineWidth=\goalLineWidthValue;
+      \arenaWidth=\fieldWidth + 2 * \borderStrip;
+      \arenaLength=\fieldLength + 2 * \borderStrip;
+      \hflw=\fieldLineWidth/2;
+    }
+
+    \path[use as bounding box]
+      (-\fieldCanvasHalfLengthValue,-\fieldCanvasHalfWidthValue)
+      rectangle
+      (\fieldCanvasHalfLengthValue,\fieldCanvasHalfWidthValue);
+
+    \begin{scope}[scale=\fieldGeometryScaleValue]
+      \coordinate (center) at (0,0);
+      \coordinate (fieldBL) at ($(-\fieldLength/2,-\fieldWidth/2)$);
+      \coordinate (fieldBR) at ($(\fieldLength/2,-\fieldWidth/2)$);
+      \coordinate (fieldTL) at ($(-\fieldLength/2,\fieldWidth/2)$);
+      \coordinate (fieldTR) at ($(\fieldLength/2,\fieldWidth/2)$);
+      \coordinate (fieldLineBL) at ($(fieldBL) + (\hflw,\hflw)$);
+      \coordinate (fieldLineBR) at ($(fieldBR) + (-\hflw,\hflw)$);
+      \coordinate (fieldLineTL) at ($(fieldTL) + (\hflw,-\hflw)$);
+      \coordinate (fieldLineTR) at ($(fieldTR) + (-\hflw,-\hflw)$);
+      \coordinate (goalL) at ($(-\fieldLength/2,0)$);
+      \coordinate (goalR) at ($(\fieldLength/2,0)$);
+      \coordinate (goalLineL) at ($(goalL) + (\hflw,0)$);
+      \coordinate (goalLineR) at ($(goalR) + (-\hflw,0)$);
+      \coordinate (penaltyMarkL) at ($(-\fieldLength/2 + \penaltyMarkDist,0)$);
+      \coordinate (penaltyMarkR) at ($(\fieldLength/2 - \penaltyMarkDist,0)$);
+      \coordinate (goalAreaLineL) at ($(-\fieldLength/2 + \goalAreaLength - \hflw,0)$);
+      \coordinate (goalAreaLineR) at ($(\fieldLength/2 - \goalAreaLength + \hflw,0)$);
+
+      \fill[black!40!green] ($(-\arenaLength/2,-\arenaWidth/2)$) rectangle ($(\arenaLength/2,\arenaWidth/2)$);
+
+      \draw[fieldLine] ($(fieldBL) + (\hflw,\hflw)$) rectangle ($(fieldTR) - (\hflw,\hflw)$);
+
+      \ifdim \cornerArcRadius pt > 0pt
+        \draw[fieldLine] (fieldBL) + (0:\cornerArcRadius) arc (0:90:\cornerArcRadius);
+        \draw[fieldLine] (fieldBR) + (90:\cornerArcRadius) arc (90:180:\cornerArcRadius);
+        \draw[fieldLine] (fieldTR) + (180:\cornerArcRadius) arc (180:270:\cornerArcRadius);
+        \draw[fieldLine] (fieldTL) + (270:\cornerArcRadius) arc (270:360:\cornerArcRadius);
+      \fi
+
+      \draw[fieldLine] ($(0,-\fieldWidth/2 + \hflw)$) rectangle ($(0,\fieldWidth/2 - \hflw)$);
+      \FieldDrawGoal{(goalL)}{\goalWidth}{\goalDepth}{0};
+      \FieldDrawGoal{(goalR)}{\goalWidth}{\goalDepth}{180};
+
+      \draw[fieldLine] ($(-\fieldLength/2 + \hflw,-\goalAreaWidth/2 + \hflw)$)
+        rectangle
+        ($(-\fieldLength/2 - \hflw + \goalAreaLength,\goalAreaWidth/2 - \hflw)$);
+      \draw[fieldLine] ($(\fieldLength/2 - \hflw,-\goalAreaWidth/2 + \hflw)$)
+        rectangle
+        ($(\fieldLength/2 + \hflw - \goalAreaLength,\goalAreaWidth/2 - \hflw)$);
+
+      \draw[fieldLine] ($(-\fieldLength/2 + \hflw,-\penaltyAreaWidth/2 + \hflw)$)
+        rectangle
+        ($(-\fieldLength/2 - \hflw + \penaltyAreaLength,\penaltyAreaWidth/2 - \hflw)$);
+      \draw[fieldLine] ($(\fieldLength/2 - \hflw,-\penaltyAreaWidth/2 + \hflw)$)
+        rectangle
+        ($(\fieldLength/2 + \hflw - \penaltyAreaLength,\penaltyAreaWidth/2 - \hflw)$);
+
+      \FieldDrawPenaltyMark{(penaltyMarkL)}{\penaltyMarkLength}
+      \FieldDrawPenaltyMark{(penaltyMarkR)}{\penaltyMarkLength}
+      \draw[fieldLine] (center) circle (\centerCircleDiameter/2 - \fieldLineWidth/2);
+      \FieldDrawPenaltyMark{(center)}{\penaltyMarkLength}
+
+      \coordinate (goalLFront) at ($(goalL) + (0:\fieldLineWidth)$);
+      \coordinate (goalLBack) at ($(goalL) + (180:\goalDepth)$);
+      \coordinate (goalLBottom) at ($(goalL) - (90:\goalWidth/2 - \goalLineWidth/2)$);
+      \coordinate (goalLTop) at ($(goalL) + (90:\goalWidth/2 - \goalLineWidth/2)$);
+      \coordinate (goalAreaLT1) at ($(-\fieldLength/2,\goalAreaWidth/2)$);
+      \coordinate (goalAreaLT2) at ($(goalAreaLT1) + (0:\goalAreaLength)$);
+      \coordinate (goalAreaLT3) at ($(goalAreaLT2) + (-90:\goalAreaWidth)$);
+      \coordinate (goalAreaRT1) at ($(\fieldLength/2,\goalAreaWidth/2)$);
+      \coordinate (goalAreaRT2) at ($(goalAreaRT1) + (180:\goalAreaLength)$);
+      \coordinate (goalAreaRT3) at ($(goalAreaRT2) + (-90:\goalAreaWidth)$);
+      \coordinate (penaltyAreaLT1) at ($(\fieldLength/2,\penaltyAreaWidth/2)$);
+      \coordinate (penaltyAreaLT2) at ($(penaltyAreaLT1) + (180:\penaltyAreaLength)$);
+      \coordinate (penaltyAreaLT3) at ($(penaltyAreaLT2) + (-90:\penaltyAreaWidth)$);
+      \coordinate (centerA1) at ($(center) + (-45:\centerCircleDiameter/2)$);
+      \coordinate (centerA2) at ($(center) + (135:\centerCircleDiameter/2)$);
+      \coordinate (borderStripA1) at ($(fieldTL) + (90:\borderStrip)$);
+      \coordinate (borderStripA2) at ($(fieldTL) + (180:\borderStrip)$);
+      \coordinate (cornerArcMeasureStart) at ($(fieldTR) + (180:\cornerArcRadius)$);
+
+      #1
+    \end{scope}
+  \end{tikzpicture}%
+}
