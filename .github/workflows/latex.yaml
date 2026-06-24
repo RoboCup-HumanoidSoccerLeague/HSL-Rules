@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'Rules.pdf'
       - 'Challenges.pdf'
+      - 'HSL-Fitness-Tests.pdf'
 
 permissions:
   contents: write
@@ -30,18 +31,23 @@ jobs:
         with:
           root_file: Challenges.tex
 
+      - name: Compile HSL-Fitness-Tests
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: HSL-Fitness-Tests.tex
+
       - name: Commit PDFs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if git diff --quiet -- Rules.pdf Challenges.pdf; then
+          if git diff --quiet -- Rules.pdf Challenges.pdf HSL-Fitness-Tests.pdf; then
             echo "No PDF changes"
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add Rules.pdf Challenges.pdf
+          git add Rules.pdf Challenges.pdf HSL-Fitness-Tests.pdf
           git commit -m "Auto-build PDFs"
 
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
