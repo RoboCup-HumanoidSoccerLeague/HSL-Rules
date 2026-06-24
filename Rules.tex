@@ -126,27 +126,31 @@
 \newcounter{lawtmp} 
 
 \newcommand{\law}[2]{%
-  \par\refstepcounter{lawtmp}% creates a unique anchor each time (for hyperlinks)
+  \par
   \setcounter{subsection}{#1}%
   \setcounter{subsubsection}{0}%
-  \renewcommand{\thelawtmp}{\thesubsection}
+  \renewcommand{\thelawtmp}{\thesubsection}%
+  \refstepcounter{lawtmp}% % creates a unique anchor each time (for hyperlinks)
   \subsection*{§ #1\quad #2}% printed heading
-  %\addcontentsline{toc}{subsection}{\protect\numberline{}§ #1\quad #2}
   \addcontentsline{toc}{subsection}{%
     \protect\numberline{}\makebox[2.5em][l]{§ #1} #2%
   }%
 }
 
+% this has been changed from the previous version b/c \ref and \cref were not working properly.
+% This specific snippet was generated with assistance from an LLM..
 \newcommand{\sublaw}[1]{%
-  \par\refstepcounter{lawtmp}% creates a unique anchor each time (for hyperlinks)
-  \begingroup
-    \renewcommand{\thelawtmp}{\thesubsubsection}%
-    \renewcommand{\thesubsubsection}{§~\thesubsection.\arabic{subsubsection}}%
-    \subsubsection{#1}%
-  \endgroup
+  \par
+  \stepcounter{subsubsection}%
+  \renewcommand{\thelawtmp}{\thesubsection.\arabic{subsubsection}}%
+  \refstepcounter{lawtmp}%
+  \subsubsection*{§~\thelawtmp\quad #1}%
+  \addcontentsline{toc}{subsubsection}{%
+    \protect\numberline{}§~\thelawtmp\quad #1%
+  }%
 }
 
-\renewcommand{\theparagraph}{§~\thesubsubsection.\arabic{paragraph}}%
+\renewcommand{\theparagraph}{§~\thesubsection.\arabic{subsubsection}.\arabic{paragraph}}
 
 
 % proper names for the \Cref and \cref

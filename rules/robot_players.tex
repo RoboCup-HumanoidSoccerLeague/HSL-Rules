@@ -52,7 +52,7 @@ A \emph{substitute player} may be substituted in to become a \emph{field player}
 To replace a player with a substitute, the following conditions must be observed:
 \begin{itemize}
   \item The substitution may only occur during the \texttt{initial}, \texttt{set} and \texttt{finished} states (after any penalties are assigned). Robots subject to a standard removal penalty may also be substituted during a brief stop. See \cref{sec:robot_states} for details on the game states.
-  \item The team requests the substitution to the head referee. The substitiution can only be made if the head referee approves.
+  \item The team requests the substitution to the head referee. The substitution can only be made if the head referee approves.
   \item If the player being substituted is on the field, it must first be removed from the field.
   \item The substitution is input in the GameController.
   \item If the player being substituted is not subject to a standard removal penalty, the substitute can either enter the game immediately or remain in the team area for further maintenance and enter at any later time. In either case, when the substitute is ready to enter, it must be given to a robot handler for placement on the standard re-entry point (see \cref{sec:removal_penalty}), and the GameController operator must be informed. The robot will join the game immediately after.
@@ -108,7 +108,7 @@ $H_{top}$ is measured with the head of the robot oriented in such a way that it
 is tilted to either its maximum upwards tilt angle or the horizon line,
 whichever is lower.
 
-The height of the head $H_{head}$, including the neck, satisfies $0.1 \cdot H_{top} \leq H_{head} \leq 0.3 \cdot H_{top}$. $H_{head}$ is defined as the vertical distance from the axis of the first arm joint at the shoulder to the top of the head.
+The height of the head $H_{head}$, including the neck, satisfies $0.1 \cdot H_{top} \leq H_{head} \leq 0.3 \cdot H_{top}$, where $H_{head}$ is defined as the vertical distance from the axis of the first arm joint at the shoulder to the top of the head.
 
 \paragraph{Weight Restrictions}
 
@@ -147,7 +147,7 @@ Aldebaran & Nao V5, and Nao V6 \\
 Robotis   & DARwIn-OP \\
 Booster   & T1, and K1 \\
 Fourier   & GR1, GR1-Pro, and GR2 \\
-Unitiree  & G1++, H1++ \\
+Unitree  & G1++, H1++ \\
 \end{tblr}
 
 Additional humanoid robot platforms can be approved upon request. Please send your request for approval to \url{hsl_tc@lists.robocup.org}.
@@ -204,7 +204,7 @@ Their use might be prohibited in the future.
 
 Sensors providing information regarding the robot's orientation in space with relation to the ground are permitted. This includes sensors such as gyrometer, accelerometer, as well as integrated inertial measurement units (IMU), as long as they provide only relative measurements and no measurements of the absolute direction, such as a compass.
 
-An IMU with an integrated compass can be used as long as the compass not used.
+An IMU with an integrated compass can be used as long as the compass is not used.
 
 The sensors can be placed in the head and/or in the torso of the robot.
 
@@ -213,7 +213,7 @@ The sound sensors, e.g., microphones, shall be placed in the head of the robot.
 The number of microphones is not limited.
 
 \paragraph{Haptic Sensing}
-Any passive sensor allowing haptic measurement is permitted, such as force sensors, touch sensors, buttons/bumpers, capacitative touch sensors.
+Any passive sensor allowing haptic measurement is permitted, such as force sensors, touch sensors, buttons/bumpers, capacitive touch sensors.
 
 Haptic sensors can be placed at any location of the robot's body and are not limited in number.
 
@@ -284,7 +284,7 @@ The use of listed sensors that are not considered human-like is accepted, but di
 
 Robots participating in the \leaguenameabbr competitions must act autonomously during a game. 
 
-Any use external power supply, teleoperation, remote control, remote processing, remote sensing, or remote brain of any kind is prohibited.
+Any use of external power supplies, teleoperation, remote control, remote processing, remote sensing, or remote brain of any kind is prohibited.
 
 Communication is only allowed among robots on the field, between the robots and the referees, and between the robots and the GameController.
 
@@ -293,7 +293,7 @@ Communication is only allowed among robots on the field, between the robots and 
 
 %In general, there are no restrictions on communication between robots in play on the field using visual signaling (\eg, gestures) or the robot's built-in microphones, speakers, and infrared transceivers.
 
-The robots are permitted to communicate through visual signaling (\eg, gestures) and / or acoustic signaling using the robot's built-in microphones and speakers.
+The robots are permitted to communicate through visual signaling (\eg, gestures) and/or acoustic signaling using the robot's built-in microphones and speakers.
 
 Communication that causes excessive discomfort to an audience, affects the safety of an audience, or violates normal playing rules is not permitted.
 
@@ -301,7 +301,7 @@ Communication that causes excessive discomfort to an audience, affects the safet
 \paragraph{Wireless Communications:}
 \label{sec:wireless}
 
-The robots are permitted to communicate through WiFi using builtin wireless adapters. 
+The robots are permitted to communicate through WiFi using built-in wireless adapters. 
 
 % technical
 A field is equipped with a wireless access point that must be used for any wireless communication during the game.
@@ -358,11 +358,11 @@ The limit of allowed packets will be lowered in future competitions to encourage
 
 \paragraph{GameController Communication:}
 
-The GameController will communicate at \GameControllerPacketRate{} packets per second.
+The GameController will communicate at \GameControllerPacketRate{} packet(s) per second.
 
 Robots are required to respond to GameController messages and send status update packets to the GameController.
 
-The format for the GameController messages and for the responses is defined in the official GameController\footnote{\url{https://github.com/RoboCup-HumanoidSoccerLeague/GameController/blob/master/game_controller_msgs/headers/RoboCupGameControlData.h}}
+The format for the GameController messages and for the responses is defined in the official GameController.\footnote{\url{https://github.com/RoboCup-HumanoidSoccerLeague/GameController/blob/master/game_controller_msgs/headers/RoboCupGameControlData.h}}
 
 
 \paragraph{Debug Communication:}
@@ -371,7 +371,7 @@ The format for the GameController messages and for the responses is defined in t
 %
 Team specific debug information may be sent to an external computer owned by the team. 
 Each robot may send debug information in a single UDP packet to a single team device on the wired network.
-The robot may sent at most \UDPDebugPacketRate{} packets per second.
+The robot may send at most \UDPDebugPacketRate{} packet(s) per second.
 The size of a single packet is not explicitly restricted, but must be within the maximum single UDP packet size (typically 64kB).
 
 
@@ -396,14 +396,14 @@ It is the responsibility of the teams to ensure that a robot can be physically s
 
 The team must be able to demonstrate their ability to physically stop their robots on request at any time during the competition.
 
-In order to ensure that a robot can be physically stopped a robot at any time, the robots can be equipped with dedicated safety features.
+In order to ensure that a robot can be physically stopped at any time, the robots can be equipped with dedicated safety features.
 
 \subparagraph{Passive Features}
 The robot can be equipped with passive components that allow for it to be physically restrained without danger to the human handler.
 Examples of such components are grips or handles on the back of the robot, and design features of the robot's body that allows a human to safely hold the robot.
 
 \subparagraph{Active Features}
-The robot can be equipped with active components that makes the robot to immediately stop all movements and assume a safe posture.
+The robot can be equipped with active components that make the robot immediately stop all movements and assume a safe posture.
 Examples for such components are a physical button on the robot, emergency switch on the robot, remote emergency button.
 
 \subparagraph{Remote Emergency Button}
