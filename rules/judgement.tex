@@ -59,7 +59,7 @@ The head referee can request any robot be stopped if it becomes a threat to the 
 
 The head referee ensures that no unauthorized persons enter the field of play.
 
-The head referee should avoid handling the ball (except for placing a ball for kick-off), and avoid handling the robots. Their duty is to monitor and adjudicate the game. The head referee should only handle robots and the ball if absolutely necessary to expedite game-play, where the robot handlers are otherwise occupied or too far away, and only if it doesn't compromise their own safety.
+The head referee should avoid handling the ball (except for placing a ball for kick-off), and avoid handling the robots. Their duty is to monitor and adjudicate the game. The head referee should only handle robots and the ball if absolutely necessary to expedite game-play, where the robot handlers and assistant referees are otherwise occupied or too far away, and only if it doesn't compromise their own safety.
 
 The head referee may decide at any point before or during a game to relocate any objects around the field, or direct persons to another position around the field.
 
@@ -68,9 +68,7 @@ The head referee may decide at any point before or during a game to relocate any
 \sublaw{Assistant Referees}
 \label{sec:assistant_referee}
 
-The assistant referees assist the head referee with offenses and other events when they have a clearer view. For example, they indicate when the ball has completely crossed over the line of the field, and which team is awarded the resulting goal or free kick. They can also point out rule violations that occurred outside of the head referee's view.
-
-The assistant referees assist the head referee in officiating the match. They help monitor play, track the ball going out of bounds, and communicate with the head referee about incidents they observe.
+The assistant referees assist the head referee in officiating the match, especially with offenses and other events when they have a clearer view. For example, they indicate when the ball has completely crossed over the line of the field, and which team is awarded the resulting goal or free kick. They can also point out rule violations that occurred outside of the head referee's view.
 
 Assistant referees may replace the ball when it goes off the field or becomes stuck between a player's feet. Robot handling is performed by the designated robot handlers (\cf~\Cref{sec:robot_handlers}), not by assistant referees, unless otherwise discussed with teams beforehand.
 
@@ -85,9 +83,9 @@ The operator of the GameController is a referee who sits at a PC in the technica
 
 They will signal any change in the game state or penalties to the robots via the wireless as they are announced by the head referee. Note that for both kick-offs and goals, the moment of whistling is determining, not the verbal announcement of the head referee. They should repeat the call of the head referee as they do so, to confirm it was heard correctly.
 
-The operator will also inform the robot handlers when a timed penalty is over and a robot has to be placed back on the field. They should announce events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}.
+The GameController operator announces events that occur automatically in the GameController due to elapsed time, such as the ball coming into play after a kick-off, penalty kick or free kick, or the state changing from \texttt{ready} to \texttt{set}. They also announce when a robot is returning to play from a penalty. Before they actually allow the robot to return, they make sure it is safe for any nearby humans to do so.
 
-They are also responsible for keeping the time of each half. They should count aloud the remaining seconds in a half once the time remaining is \qty{5}{\second} or less.
+Finally, they are also responsible for keeping the time of each half. They should count aloud the remaining seconds in a half once the time remaining is \qty{5}{\second} or less.
 
 \sublaw{Referee List for Friendly Games}
 \label{sec:referee_list}
@@ -143,7 +141,7 @@ Robot handlers must not use the remote emergency button to intentionally incapac
 
 The GameController contact is a team official. They sit next to the GameController operator and they are allowed to communicate with them, e.g. for the purpose of signaling that a penalized robot is ready to start serving its penalty time.
 
-Each team has at most one GameController contact, who cannot also be a robot handler. The GC contact role is usually covered by the captain, unless the captain is also a handler, in which case a different team member must be designated.
+Each team has one GameController contact, who cannot also be a robot handler. The GC contact role is usually covered by the captain, unless the captain is also a handler, in which case a different team member must be designated.
 
 
 \sublaw{Humans Allowed on the Field}
