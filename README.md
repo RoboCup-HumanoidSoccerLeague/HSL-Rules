@@ -1,7 +1,7 @@
 # Rules
 
 > [!WARNING]
-> ⚠️ The 2026 ruleset is currently under development. This repository will be updated as rules progress is made.
+> ⚠️ The 2027 ruleset is currently under development. This repository will be updated as rules progress is made.
 
 This repository contains the sources of the rule book for the RoboCup -- Humanoid Soccer League.
 The main document is `Rules.tex`.
