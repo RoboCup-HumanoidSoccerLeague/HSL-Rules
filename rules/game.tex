@@ -35,7 +35,7 @@ The \texttt{initial} state is active before the game begins. Robots should be pl
 \paragraph{Ready}
 \label{sec:state_ready}
 
-The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off or other set plays. The \texttt{ready} state lasts \qty{\ReadyPhaseDuration}{\second}. Robots must reach legal positions before the \texttt{set} state begins.
+The \texttt{ready} state begins when signaled by the GameController. During this state, robots may autonomously move to their designated positions for kick-off (\cf~\cref{sec:kick_off}) or penalty kick (\cf~\cref{sec:penalty_kick}). The \texttt{ready} state lasts \qty{\ReadyPhaseDuration}{\second}. Robots must reach legal positions before the \texttt{set} state begins.
 
 \paragraph{Set}
 \label{sec:state_set}
@@ -648,7 +648,7 @@ A direct free kick allows the attacking team to score a goal directly from the k
   \item If a direct free kick is kicked directly into the team's own goal, a corner kick is awarded to the opposing team.
 \end{itemize}
 
-The following set plays are direct free kicks: \emph{Corner Kick}, \emph{Goal Kick}, and \emph{Pushing Free Kick}.
+The following are direct free kicks: \emph{Corner Kick}, \emph{Goal Kick}, and \emph{Pushing Free Kick}.
 
 Note: If the attacking team fails to execute the free kick within the time limit, the defending team may also score directly (see Failed Free Kick in~\cref{sec:free_kick_execution}).
 
@@ -662,7 +662,7 @@ An indirect free kick requires the ball to be touched by another player before t
   \item If an indirect free kick is kicked directly into the team's own goal, a corner kick is awarded to the opposing team.
 \end{itemize}
 
-The following set plays are indirect free kicks: \emph{Kick-in} / \emph{Throw-in}.
+The following are indirect free kicks: \emph{Kick-in} / \emph{Throw-in}.
 
 Note: If the attacking team fails to execute the free kick within the time limit, the defending team may score directly without the indirect requirement (see Failed Free Kick in~\cref{sec:free_kick_execution}).
 
